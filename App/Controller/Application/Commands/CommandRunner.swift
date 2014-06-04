@@ -15,7 +15,7 @@ class CommandRunner {
     func executeCommand(command :Command) {
         if command.isKindOfClass(AsynchronousCommand) {
             self.sharedOperationQueue.addOperation(command)
-            returng
+            return
         }
         command.execute()
     }
