@@ -12,7 +12,7 @@ import Foundation
 
 class AsynchronousCommand : Command {
     
-    var commandCompletionBlock: (error: NSError?) -> Void = { (error: NSError?) -> Void in
+    var commandCompletionBlock: (error: NSError?) -> Void = { error in
         //a completion block with nothing by default
     }
     var error: NSError? = nil
@@ -53,6 +53,8 @@ class AsynchronousCommand : Command {
         self.setExecuting(true)
         self.main()
     }
+    
+    // we have to cater for some pretty shitty old KVO patterns. Here, take up more lines of code why dont you.
     
     override func cancel() {
         self.stopAllSubCommandsAndDependants()
@@ -112,14 +114,6 @@ class AsynchronousCommand : Command {
         }
         
         self.clearSubCommands()
-        //todo:
-        /*
-        for (NSOperation *op in [TSCommandRunner sharedOperationQueue].operations) {
-            if ([op.dependencies containsObject:self]) {
-                [op cancel];
-            }
-        }
-        */
     }
     
     func addSubCommand(command: AsynchronousCommand) {
