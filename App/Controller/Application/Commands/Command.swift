@@ -1,5 +1,5 @@
 //
-//  TSViewController.swift
+//  Command.swift
 //  TSBoilerplateSwift
 //
 //  Created by Tim Sawtell on 4/06/2014.
@@ -7,8 +7,7 @@
 //
 
 import Foundation
-import UIKit
 
-class TSViewController : UIViewController {
-    @IBOutlet var scrollViewToResize : UIScrollView?
+class Command: NSOperation {
+    var saveModel: Bool = false
 }

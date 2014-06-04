@@ -14,6 +14,11 @@
 		2B54AE89193ED5C000DDB1E8 /* AlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B54AE80193ED5C000DDB1E8 /* AlertViewController.xib */; };
 		2B54AE8B193ED5EB00DDB1E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B54AE75193ED5C000DDB1E8 /* AppDelegate.swift */; };
 		2B54AE8E193ED63900DDB1E8 /* TSBoilerplateSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B54AE83193ED5C000DDB1E8 /* TSBoilerplateSwiftTests.swift */; };
+		2BAD4702193ED8F600BB718A /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAD4701193ED8F600BB718A /* DemoViewController.swift */; };
+		2BAD4704193ED94300BB718A /* TSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAD4703193ED94300BB718A /* TSViewController.swift */; };
+		2BAD4706193EDC5A00BB718A /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAD4705193EDC5A00BB718A /* Command.swift */; };
+		2BAD4708193EDD5000BB718A /* AsynchronousCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAD4707193EDD5000BB718A /* AsynchronousCommand.swift */; };
+		2BAD470A193EE95E00BB718A /* CommandRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAD4709193EE95E00BB718A /* CommandRunner.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +55,11 @@
 		2B54AE7E193ED5C000DDB1E8 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		2B54AE80193ED5C000DDB1E8 /* AlertViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertViewController.xib; sourceTree = "<group>"; };
 		2B54AE83193ED5C000DDB1E8 /* TSBoilerplateSwiftTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSBoilerplateSwiftTests.swift; sourceTree = "<group>"; };
+		2BAD4701193ED8F600BB718A /* DemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
+		2BAD4703193ED94300BB718A /* TSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSViewController.swift; sourceTree = "<group>"; };
+		2BAD4705193EDC5A00BB718A /* Command.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
+		2BAD4707193EDD5000BB718A /* AsynchronousCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsynchronousCommand.swift; sourceTree = "<group>"; };
+		2BAD4709193EE95E00BB718A /* CommandRunner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandRunner.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +141,9 @@
 		2B54AE6B193ED5C000DDB1E8 /* Commands */ = {
 			isa = PBXGroup;
 			children = (
+				2BAD4705193EDC5A00BB718A /* Command.swift */,
+				2BAD4707193EDD5000BB718A /* AsynchronousCommand.swift */,
+				2BAD4709193EE95E00BB718A /* CommandRunner.swift */,
 			);
 			path = Commands;
 			sourceTree = "<group>";
@@ -138,6 +151,7 @@
 		2B54AE6C193ED5C000DDB1E8 /* TopLevelControllers */ = {
 			isa = PBXGroup;
 			children = (
+				2BAD4703193ED94300BB718A /* TSViewController.swift */,
 			);
 			path = TopLevelControllers;
 			sourceTree = "<group>";
@@ -145,6 +159,7 @@
 		2B54AE6D193ED5C000DDB1E8 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				2BAD4701193ED8F600BB718A /* DemoViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -366,6 +381,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B54AE8B193ED5EB00DDB1E8 /* AppDelegate.swift in Sources */,
+				2BAD470A193EE95E00BB718A /* CommandRunner.swift in Sources */,
+				2BAD4704193ED94300BB718A /* TSViewController.swift in Sources */,
+				2BAD4702193ED8F600BB718A /* DemoViewController.swift in Sources */,
+				2BAD4706193EDC5A00BB718A /* Command.swift in Sources */,
+				2BAD4708193EDD5000BB718A /* AsynchronousCommand.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -565,6 +585,7 @@
 				2B54AE63193ED5A100DDB1E8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2B54AE64193ED5A100DDB1E8 /* Build configuration list for PBXNativeTarget "TSBoilerplateSwiftTests" */ = {
 			isa = XCConfigurationList;
@@ -573,6 +594,7 @@
 				2B54AE66193ED5A100DDB1E8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
