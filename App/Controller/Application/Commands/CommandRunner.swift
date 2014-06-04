@@ -8,14 +8,14 @@
 
 import Foundation
 
-class CommandRunner: NSObject {
+class CommandRunner {
     
     let sharedOperationQueue: NSOperationQueue = NSOperationQueue()
     
     func executeCommand(command :Command) {
         if command.isKindOfClass(AsynchronousCommand) {
             self.sharedOperationQueue.addOperation(command)
-            return
+            returng
         }
         command.execute()
     }

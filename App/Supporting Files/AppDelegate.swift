@@ -8,8 +8,6 @@
 
 import UIKit
 
-let commandRunner = CommandRunner()
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
                             
