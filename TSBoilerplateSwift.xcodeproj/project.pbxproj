@@ -19,6 +19,7 @@
 		2BAD4706193EDC5A00BB718A /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAD4705193EDC5A00BB718A /* Command.swift */; };
 		2BAD4708193EDD5000BB718A /* AsynchronousCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAD4707193EDD5000BB718A /* AsynchronousCommand.swift */; };
 		2BAD470A193EE95E00BB718A /* CommandRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAD4709193EE95E00BB718A /* CommandRunner.swift */; };
+		2BAD470D193FCFC900BB718A /* iTunesSearchCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAD470C193FCFC900BB718A /* iTunesSearchCommand.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,13 @@
 			remoteGlobalIDString = 2B54AE44193ED5A100DDB1E8;
 			remoteInfo = TSBoilerplateSwift;
 		};
+		2BAD470E193FD94F00BB718A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2B54AE3D193ED5A100DDB1E8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2B54AE44193ED5A100DDB1E8;
+			remoteInfo = TSBoilerplateSwift;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +68,7 @@
 		2BAD4705193EDC5A00BB718A /* Command.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
 		2BAD4707193EDD5000BB718A /* AsynchronousCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsynchronousCommand.swift; sourceTree = "<group>"; };
 		2BAD4709193EE95E00BB718A /* CommandRunner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandRunner.swift; sourceTree = "<group>"; };
+		2BAD470C193FCFC900BB718A /* iTunesSearchCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iTunesSearchCommand.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +150,7 @@
 		2B54AE6B193ED5C000DDB1E8 /* Commands */ = {
 			isa = PBXGroup;
 			children = (
+				2BAD470B193FCFAA00BB718A /* Web */,
 				2BAD4705193EDC5A00BB718A /* Command.swift */,
 				2BAD4707193EDD5000BB718A /* AsynchronousCommand.swift */,
 				2BAD4709193EE95E00BB718A /* CommandRunner.swift */,
@@ -276,6 +286,14 @@
 			path = Tests;
 			sourceTree = "<group>";
 		};
+		2BAD470B193FCFAA00BB718A /* Web */ = {
+			isa = PBXGroup;
+			children = (
+				2BAD470C193FCFC900BB718A /* iTunesSearchCommand.swift */,
+			);
+			path = Web;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -310,6 +328,7 @@
 				2B54AE59193ED5A100DDB1E8 /* PBXTargetDependency */,
 				2B54AE8D193ED63800DDB1E8 /* PBXTargetDependency */,
 				2B54AE90193ED69100DDB1E8 /* PBXTargetDependency */,
+				2BAD470F193FD94F00BB718A /* PBXTargetDependency */,
 			);
 			name = TSBoilerplateSwiftTests;
 			productName = TSBoilerplateSwiftTests;
@@ -382,6 +401,7 @@
 			files = (
 				2B54AE8B193ED5EB00DDB1E8 /* AppDelegate.swift in Sources */,
 				2BAD470A193EE95E00BB718A /* CommandRunner.swift in Sources */,
+				2BAD470D193FCFC900BB718A /* iTunesSearchCommand.swift in Sources */,
 				2BAD4704193ED94300BB718A /* TSViewController.swift in Sources */,
 				2BAD4702193ED8F600BB718A /* DemoViewController.swift in Sources */,
 				2BAD4706193EDC5A00BB718A /* Command.swift in Sources */,
@@ -414,6 +434,11 @@
 			isa = PBXTargetDependency;
 			target = 2B54AE44193ED5A100DDB1E8 /* TSBoilerplateSwift */;
 			targetProxy = 2B54AE8F193ED69100DDB1E8 /* PBXContainerItemProxy */;
+		};
+		2BAD470F193FD94F00BB718A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2B54AE44193ED5A100DDB1E8 /* TSBoilerplateSwift */;
+			targetProxy = 2BAD470E193FD94F00BB718A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

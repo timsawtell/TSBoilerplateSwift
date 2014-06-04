@@ -11,5 +11,14 @@ import UIKit
 
 class DemoViewController : TSViewController {
     
-    
+    override func viewDidLoad()  {
+        super.viewDidLoad()
+        
+        var asyncCommand = iTunesSearchCommand()
+        asyncCommand.commandCompletionBlock = {error in
+            NSLog("command finished")
+        }
+        
+        commandRunner.executeCommand(asyncCommand)
+    }
 }

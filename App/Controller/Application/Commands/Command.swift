@@ -10,4 +10,8 @@ import Foundation
 
 class Command: NSOperation {
     var saveModel: Bool = false
+    
+    func execute() {
+        
+    }
 }

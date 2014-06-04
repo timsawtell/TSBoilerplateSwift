@@ -8,6 +8,8 @@
 
 import UIKit
 
+let commandRunner = CommandRunner()
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
                             
@@ -15,16 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
-        // Override point for customization after application launch.
-        
-        var asyncCommand: AsynchronousCommand = AsynchronousCommand()
-        asyncCommand.finalCompletionBlock = { (error: NSError) -> Void in
-            NSLog("abc")
-        }
-        
-        var commandRunner: CommandRunner = CommandRunner()
-        commandRunner.executeCommand(asyncCommand)
-        
+        // Override point for customization after application launch.       
         return true
     }
 
