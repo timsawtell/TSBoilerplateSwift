@@ -14,13 +14,16 @@ class DemoViewController : TSViewController {
     override func viewDidLoad()  {
         super.viewDidLoad()
         
+        NSLog("before it is \(model.strings.count)")
+        model.strings.append("\(NSDate.date)")
+        model.save()
+        NSLog("after it is \(model.strings.count)")
+        
+        
         var asyncCommand = iTunesSearchCommand()
         asyncCommand.commandCompletionBlock = {error in
             NSLog("command finished")
         }
-        
         commandRunner.executeCommand(asyncCommand)
-        
-        NSLog("\(model.strings)")
     }
 }

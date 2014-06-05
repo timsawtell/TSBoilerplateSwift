@@ -19,7 +19,7 @@ class ModelBuilder {
         if (nil == data) {
             return Model()
         } else {
-            if let modelInstance = CommandCenter.securelyUnarchiveData(data, key: kModelArchiveKey) as? Model {
+            if let modelInstance = CommandCenter.securelyUnarchiveData(data, ofClass:Model.self, key: kModelArchiveKey) as? Model {
                 return modelInstance
             }
         }
