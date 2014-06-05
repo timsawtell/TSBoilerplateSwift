@@ -39,7 +39,6 @@ class AsynchronousCommand : Command {
     override func main() {
         weak var weakSelf: AsynchronousCommand? = self
         self.completionBlock = {
-            var block: dispatch_block_t
             if let strongSelf = weakSelf {
                 dispatch_async(dispatch_get_main_queue()) {
                     strongSelf.commandCompletionBlock(error: strongSelf.error)
@@ -66,15 +65,17 @@ class AsynchronousCommand : Command {
         }
     }
     
-    func setExecuting(executing: Bool) {
+    func setExecuting(setExecuting: Bool) {
+        if executing == setExecuting {return}
         willChangeValueForKey("isExecuting")
-        _isExecuting = executing
+        _isExecuting = setExecuting
         didChangeValueForKey("isExecuting")
     }
     
-    func setFinished(finished: Bool) {
+    func setFinished(setFinished: Bool) {
+        if finished == setFinished {return}
         willChangeValueForKey("isFinished")
-        _isFinished = finished
+        _isFinished = setFinished
         didChangeValueForKey("isFinished")
     }
     

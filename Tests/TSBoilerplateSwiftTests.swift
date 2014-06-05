@@ -26,12 +26,17 @@ class TSBoilerplateSwiftTests: XCTestCase {
     * when I cancel a parent command, the subcommands should also be cancelled
     */
     func testSubCommands() {
-        var a: AsynchronousCommand = AsynchronousCommand()
-        var b: AsynchronousCommand = AsynchronousCommand()
-        var c: AsynchronousCommand = AsynchronousCommand()
+        var a: TestAsyncCommand = TestAsyncCommand()
+        var b: TestAsyncCommand = TestAsyncCommand()
+        var c: TestAsyncCommand = TestAsyncCommand()
         
-        c.commandCompletionBlock = { (error: NSError?) -> Void in
+        var commandFinished = expectationWithDescription("command finished")
+        
+        c.commandCompletionBlock = { error in
             b.cancel()
+            XCTAssertTrue(b.cancelled, "b wasn't cancelled")
+            XCTAssertTrue(a.cancelled, "a wasn't cancelled")
+            commandFinished.fulfill()
         }
         c.addSubCommand(b)
         b.addSubCommand(a)
@@ -42,16 +47,6 @@ class TSBoilerplateSwiftTests: XCTestCase {
         XCTAssertEqual(a.parentCommand!, b, "the parentCommand for a should be b");
         
         commandRunner.executeCommand(c)
-        
-        var commandFinished = expectationWithDescription("command finished")
-        c.finish()
-        
-        dispatch_after(2, dispatch_get_current_queue(), { dispatch_block_t in
-            XCTAssertTrue(b.cancelled, "b wasn't cancelled")
-            XCTAssertTrue(a.cancelled, "a wasn't cancelled")
-            commandFinished.fulfill()
-        })
-        
         waitForExpectationsWithTimeout(4, handler: nil)
     }
     

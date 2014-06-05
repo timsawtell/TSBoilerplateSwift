@@ -14,7 +14,8 @@ class CommandRunner {
     
     func executeCommand(command :Command) {
         if let asyncCommand = command as? AsynchronousCommand {
-            sharedOperationQueue.addOperation(command)
+            if asyncCommand.finished || asyncCommand.cancelled { return }
+            sharedOperationQueue.addOperation(asyncCommand)
             return
         }
         command.execute()
