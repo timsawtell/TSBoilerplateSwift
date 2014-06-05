@@ -1,9 +1,9 @@
 #!/bin/sh
 
 DATA_MODEL_FILE="$PROJECT_DIR/App/Model/CoreDataModel/Model.xcdatamodeld/Model.xcdatamodel"
-DATA_MODEL_SOURCE_DIR="$PROJECT_DIR/App/Model/ModelObjects/Ignore"
-DATA_MODEL_SOURCE_MACHINE_DIR="$PROJECT_DIR/App/Model/ModelObjects/Swift"
-MOGENERATOR="mogenerator"
+DATA_MODEL_SOURCE_DIR="$PROJECT_DIR/App/Model/ModelObjects/Human"
+DATA_MODEL_SOURCE_MACHINE_DIR="$PROJECT_DIR/App/Model/ModelObjects/Machine"
+MOGENERATOR="mogeneratorswift"
 
 MOGENERATOR_TEMPLATES="$PROJECT_DIR/App/Model/CoreDataModel/MogenTemplate"
 MOGENERATOR_BIN="$MOGENERATOR_TEMPLATES/$MOGENERATOR"

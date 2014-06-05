@@ -1,4 +1,20 @@
+//  _<$managedObjectClassName$>.m
+// DO NOT EDIT. This file is machine-generated and constantly overwritten.
+// Make changes to <$managedObjectClassName$>.h instead.
 
+<$option betweenWhitespace ignoreCommandSpaces $>
+
+#import "_<$managedObjectClassName$>.h"
+
+<$foreach Attribute noninheritedAttributes do$><$if Attribute.hasDefinedAttributeType$>
+NSString * const kModelProperty<$managedObjectClassName$><$Attribute.name.initialCapitalString$> = @"<$Attribute.name$>";
+<$endif$><$endforeach do$>
+<$foreach Relationship noninheritedRelationships do$>
+NSString * const kModelProperty<$managedObjectClassName$><$Relationship.name.initialCapitalString$> = @"<$Relationship.name$>";
+<$endforeach do$>
+<$foreach Relationship noninheritedRelationships do$>
+NSString * const kModelDictionary<$managedObjectClassName$><$Relationship.name.initialCapitalString$> = @"<$managedObjectClassName$>.<$Relationship.name$>";
+<$endforeach do$>
 
 <$foreach Relationship noninheritedRelationships do$>
 #import "<$Relationship.destinationEntity.managedObjectClassName$>.h"
@@ -20,7 +36,7 @@
     NSMutableSet *set = [NSMutableSet setWithSet:[super dictionaryRepresentationKeys]];
     
     <$foreach Attribute noninheritedAttributes do$><$if Attribute.hasDefinedAttributeType$>
-      [set addObject:kModelProperty<$managedObjectClassName$><$Attribute.name.initialCapitalString$>];
+	  [set addObject:kModelProperty<$managedObjectClassName$><$Attribute.name.initialCapitalString$>];
     <$endif$><$endforeach do$>
     <$foreach Relationship noninheritedRelationships do$>
     [set addObject:kModelDictionary<$managedObjectClassName$><$Relationship.name.initialCapitalString$>];

@@ -27,5 +27,6 @@ class DemoViewController : TSViewController {
         globalCommandRunner.executeCommand(asyncCommand)
         
         Model.sharedModel()?.strings.append("e")
+
     }
 }
