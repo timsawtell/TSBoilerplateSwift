@@ -8,6 +8,8 @@
 
 import Foundation
 
+var modelInitialised = false // so that a programmer doesn't accidentally try and reference the class func sharedModel() again instead of using the const model from Singleton
+
 class Model :NSObject, NSSecureCoding {
     
     var strings: String[] = [];
@@ -34,5 +36,24 @@ class Model :NSObject, NSSecureCoding {
     
     init(coder aDecoder: NSCoder!) {
         strings = aDecoder.decodeObjectOfClass(NSArray.self, forKey: "strings") as String[]
+    }
+    
+    class func sharedModel() -> Model? {
+        if modelInitialised {
+            return model // the global from Singleton.swift
+        }
+        var path = CommandCenter.pathForModel()
+        var error: NSError?
+        let data = NSData.dataWithContentsOfFile(path, options: NSDataReadingOptions.DataReadingMappedIfSafe, error:&error)
+        if (nil == data) {
+            modelInitialised = true
+            return Model()
+        } else {
+            if let modelInstance = CommandCenter.securelyUnarchiveData(data, ofClass:Model.self, key: kModelArchiveKey) as? Model {
+                modelInitialised = true
+                return modelInstance
+            }
+        }
+        return nil
     }
 }

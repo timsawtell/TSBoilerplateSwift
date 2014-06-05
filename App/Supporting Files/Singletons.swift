@@ -8,21 +8,5 @@
 
 import Foundation
 
-let model = ModelBuilder.getModel()!
+let model = Model.sharedModel()!
 let commandRunner = CommandRunner()
-
-class ModelBuilder {
-    class func getModel() -> Model? {
-        var path = CommandCenter.pathForModel()
-        var error: NSError?
-        let data = NSData.dataWithContentsOfFile(path, options: NSDataReadingOptions.DataReadingMappedIfSafe, error:&error)
-        if (nil == data) {
-            return Model()
-        } else {
-            if let modelInstance = CommandCenter.securelyUnarchiveData(data, ofClass:Model.self, key: kModelArchiveKey) as? Model {
-                return modelInstance
-            }
-        }
-        return nil
-    }
-}
