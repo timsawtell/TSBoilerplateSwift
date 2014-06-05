@@ -20,5 +20,7 @@ class DemoViewController : TSViewController {
         }
         
         commandRunner.executeCommand(asyncCommand)
+        
+        NSLog("\(model.strings)")
     }
 }
