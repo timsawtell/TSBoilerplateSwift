@@ -27,12 +27,12 @@ class AsynchronousCommand : Command {
     
     override var executing: Bool {
         get {
-            return self._isExecuting
+            return _isExecuting
         }
     }
     override var finished: Bool {
         get {
-            return self._isFinished
+            return _isFinished
         }
     }
     
@@ -46,46 +46,46 @@ class AsynchronousCommand : Command {
                 }
             }
         }
-        self.execute()
+        execute()
     }
     
     override func start() {
-        self.setExecuting(true)
-        self.main()
+        setExecuting(true)
+        main()
     }
     
     // we have to cater for some pretty shitty old KVO patterns. Here, take up more lines of code why dont you.
     
     override func cancel() {
-        self.stopAllSubCommandsAndDependants()
-        self.willChangeValueForKey("isCancelled")
+        stopAllSubCommandsAndDependants()
+        willChangeValueForKey("isCancelled")
         super.cancel()
-        self.didChangeValueForKey("isCancelled")
-        if self.executing {
-            self.finish()
+        didChangeValueForKey("isCancelled")
+        if executing {
+            finish()
         }
     }
     
     func setExecuting(executing: Bool) {
-        self.willChangeValueForKey("isExecuting")
-        self._isExecuting = executing
-        self.didChangeValueForKey("isExecuting")
+        willChangeValueForKey("isExecuting")
+        _isExecuting = executing
+        didChangeValueForKey("isExecuting")
     }
     
     func setFinished(finished: Bool) {
-        self.willChangeValueForKey("isFinished")
-        self._isFinished = finished
-        self.didChangeValueForKey("isFinished")
+        willChangeValueForKey("isFinished")
+        _isFinished = finished
+        didChangeValueForKey("isFinished")
     }
     
     func finish() {
         
-        if nil != self.error {
-            self.stopAllSubCommandsAndDependants()
+        if nil != error {
+            stopAllSubCommandsAndDependants()
         }
         
         // if I am a subcommand (I am if I have a parentCommand) then check if my parent has no other sub commands running. If so, then finish the parent as well
-        if let parent = self.parentCommand {
+        if let parent = parentCommand {
             var runningSubCommands: Bool = false
             for cmd: AsynchronousCommand in parent.subCommands {
                 //if equal { continue } // don't look at self in this loop
@@ -97,32 +97,32 @@ class AsynchronousCommand : Command {
             }
             
             if !runningSubCommands {
-                self.setExecuting(false)
-                self.setFinished(true)
-                self.parentCommand?.finish()
-                self.parentCommand?.clearSubCommands() // clear the reference to sub commands, allows dealloc
+                setExecuting(false)
+                setFinished(true)
+                parentCommand?.finish()
+                parentCommand?.clearSubCommands() // clear the reference to sub commands, allows dealloc
                 return
             }
         }
-        self.setFinished(true)
-        self.setExecuting(false)
+        setFinished(true)
+        setExecuting(false)
     }
     
     func stopAllSubCommandsAndDependants() {
-        for cmd in self.subCommands {
+        for cmd in subCommands {
             cmd.cancel()
         }
         
-        self.clearSubCommands()
+        clearSubCommands()
     }
     
     func addSubCommand(command: AsynchronousCommand) {
         command.parentCommand = self;
-        self.subCommands.append(command)
+        subCommands.append(command)
     }
     
     func clearSubCommands() {
-        self.subCommands = AsynchronousCommand[]()
+        subCommands = AsynchronousCommand[]()
     }
     
 }

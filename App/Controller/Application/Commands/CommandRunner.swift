@@ -10,11 +10,11 @@ import Foundation
 
 class CommandRunner {
     
-    let sharedOperationQueue: NSOperationQueue = NSOperationQueue()
+    let sharedOperationQueue = NSOperationQueue()
     
     func executeCommand(command :Command) {
-        if command.isKindOfClass(AsynchronousCommand) {
-            self.sharedOperationQueue.addOperation(command)
+        if let asyncCommand = command as? AsynchronousCommand {
+            sharedOperationQueue.addOperation(command)
             return
         }
         command.execute()

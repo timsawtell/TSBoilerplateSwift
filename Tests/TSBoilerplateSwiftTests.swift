@@ -43,7 +43,7 @@ class TSBoilerplateSwiftTests: XCTestCase {
         
         commandRunner.executeCommand(c)
         
-        var commandFinished: XCTestExpectation = self.expectationWithDescription("command finished")
+        var commandFinished = expectationWithDescription("command finished")
         c.finish()
         
         dispatch_after(2, dispatch_get_current_queue(), { dispatch_block_t in
@@ -52,7 +52,7 @@ class TSBoilerplateSwiftTests: XCTestCase {
             commandFinished.fulfill()
         })
         
-        self.waitForExpectationsWithTimeout(4, handler: nil)
+        waitForExpectationsWithTimeout(4, handler: nil)
     }
     
 }
