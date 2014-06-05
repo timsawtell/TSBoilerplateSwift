@@ -12,9 +12,9 @@ class _Book {
 
 		let kModelPropertyBookAuthor = "author"
 
-				var advertisement: _BookAdvertisement;
+					var advertisement: BookAdvertisement?;
 
-				weak var author: _Author?
+				weak var author: Author?
 
 			var blurb: NSString?
 
@@ -22,41 +22,41 @@ class _Book {
 
 			var title: NSString?
 
-			func setAdvertisement(advertisement_: _BookAdvertisement?, setInverse: Bool) {
+			func setAdvertisement(advertisement_: BookAdvertisement?, setInverse: Bool) {
 
-	    				if advertisement_ == nil && setInverse {
-	        				self.advertisement?.setBook(nil, setInverse: false)
-	    				}
+		    				if advertisement_ == nil && setInverse {
+		        				self.advertisement?.setBook(nil, setInverse: false)
+		    				}
 
-		    		if !self.advertisement.isEqaul(advertisement_) {
+		    		if !self.advertisement == advertisement_ {
 						        self.advertisement = advertisement_
 		    		}
 
-		    			if setInverse {
-		        			self.advertisement?.setBook(self, setInverse: false)
-		    			}
+			    			if setInverse {
+			        			self.advertisement?.setBook(self as? Book , setInverse: false)
+			    			}
 
 			}
 
-			func setAdvertisement(advertisement_: _BookAdvertisement) {
+			func setAdvertisement(advertisement_: BookAdvertisement) {
 			    self.setAdvertisement(advertisement_, setInverse: true)
 			}
 
-			func setAuthor(author_: _Author?, setInverse: Bool) {
+			func setAuthor(author_: Author?, setInverse: Bool) {
 
 	    				if author_ == nil && setInverse {
-	        				author.removeBooksObject(self, setInverse: false);
+	        				author.removeBooksObject(self as? Book, setInverse: false);
 	    				}
 
-					    self.author = author_;
+					    self.author = author_
 
 		    			if setInverse {
-		        			self.author.addBooksObject(self, setInverse: false)
+		        			self.author.addBooksObject(self as? Book, setInverse: false)
 		    			}
 
 			}
 
-			func setAuthor(author_: _Author) {
+			func setAuthor(author_: Author) {
 			    self.setAuthor(author_, setInverse: true)
 			}
 

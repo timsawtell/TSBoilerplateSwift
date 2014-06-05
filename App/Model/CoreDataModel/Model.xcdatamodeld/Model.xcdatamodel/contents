@@ -9,7 +9,7 @@
         <attribute name="blurb" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="price" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="advertisement" maxCount="1" deletionRule="Nullify" destinationEntity="BookAdvertisement" inverseName="book" inverseEntity="BookAdvertisement" syncable="YES"/>
+        <relationship name="advertisement" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BookAdvertisement" inverseName="book" inverseEntity="BookAdvertisement" syncable="YES"/>
         <relationship name="author" transient="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Author" inverseName="books" inverseEntity="Author" syncable="YES"/>
     </entity>
     <entity name="BookAdvertisement" representedClassName="BookAdvertisement" syncable="YES">
@@ -18,8 +18,8 @@
         <relationship name="book" transient="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Book" inverseName="advertisement" inverseEntity="Book" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Book" positionX="0" positionY="0" width="128" height="118"/>
         <element name="Author" positionX="0" positionY="27" width="128" height="88"/>
+        <element name="Book" positionX="0" positionY="0" width="128" height="118"/>
         <element name="BookAdvertisement" positionX="18" positionY="54" width="128" height="88"/>
     </elements>
 </model>

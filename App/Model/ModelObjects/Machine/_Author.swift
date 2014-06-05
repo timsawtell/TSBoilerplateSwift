@@ -14,16 +14,16 @@ class _Author {
 
 			var name: NSString?
 
-			func addBooksObject(value_: _Book, setInverse: Bool) {
+			func addBooksObject(value_: Book, setInverse: Bool) {
 				self.books.addObject(value_)
 
 						if setInverse {
-					        value_.setAuthor(self, setInverse:false);
+					        value_.setAuthor(self as? Author, setInverse:false);
 					    }
 
 			}
 
-			func addBooksObject(value_: _Book) {
+			func addBooksObject(value_: Book) {
 				self.addBooksObject(value_, setInverse: true)
 			}
 
@@ -31,7 +31,7 @@ class _Author {
 				self.books = NSMutableSet();
 			}
 
-			func removeBooksObject(value_: _Book, setInverse: Bool) {
+			func removeBooksObject(value_: Book, setInverse: Bool) {
 
 					    if setInverse {
 					        value_.setAuthor(nil, setInverse:false);
@@ -42,7 +42,7 @@ class _Author {
 			    }
 			}
 
-			func removeBooksObject(value_: _Book) {
+			func removeBooksObject(value_: Book) {
 				self.removeBooksObject(value_, setInverse:true)
 			}
 

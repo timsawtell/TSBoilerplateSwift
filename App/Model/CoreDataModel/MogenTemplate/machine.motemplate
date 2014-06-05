@@ -19,9 +19,13 @@ class _<$managedObjectClassName$> {
 			var <$Relationship.name$>: NSMutableSet = NSMutableSet()
 		<$else$>
 			<$if Relationship.isTransient $>
-				weak var <$Relationship.name$>: _<$Relationship.destinationEntity.managedObjectClassName$>?
+				weak var <$Relationship.name$>: <$Relationship.destinationEntity.managedObjectClassName$>?
 			<$else$>
-				var <$Relationship.name$>: _<$Relationship.destinationEntity.managedObjectClassName$>;
+				<$if Relationship.isOptional $>
+					var <$Relationship.name$>: <$Relationship.destinationEntity.managedObjectClassName$>?;
+				<$else$>
+					var <$Relationship.name$>: <$Relationship.destinationEntity.managedObjectClassName$>;
+				<$endif$>
 			<$endif$>
 		<$endif$>
 	<$endforeach do$>
@@ -34,19 +38,19 @@ class _<$managedObjectClassName$> {
 
 	<$foreach Relationship noninheritedRelationships do$>
 		<$if Relationship.isToMany$>
-			func add<$Relationship.name.initialCapitalString$>Object(value_: _<$Relationship.destinationEntity.managedObjectClassName$>, setInverse: Bool) {
+			func add<$Relationship.name.initialCapitalString$>Object(value_: <$Relationship.destinationEntity.managedObjectClassName$>, setInverse: Bool) {
 				self.<$Relationship.name$>.addObject(value_)
 				<$if Relationship.inverseRelationship$>
 					<$if ! Relationship.inverseRelationship.isToMany$>
 						if setInverse {
-					        value_.set<$Relationship.inverseRelationship.name.initialCapitalString$>(self, setInverse:false);
+					        value_.set<$Relationship.inverseRelationship.name.initialCapitalString$>(self as? <$managedObjectClassName$>, setInverse:false);
 					    }
 				    <$endif$>
 				<$endif$>
 			}
 
 
-			func add<$Relationship.name.initialCapitalString$>Object(value_: _<$Relationship.destinationEntity.managedObjectClassName$>) {
+			func add<$Relationship.name.initialCapitalString$>Object(value_: <$Relationship.destinationEntity.managedObjectClassName$>) {
 				self.add<$Relationship.name.initialCapitalString$>Object(value_, setInverse: true)
 			}
 
@@ -54,7 +58,7 @@ class _<$managedObjectClassName$> {
 				self.<$Relationship.name$> = NSMutableSet();
 			}
 
-			func remove<$Relationship.name.initialCapitalString$>Object(value_: _<$Relationship.destinationEntity.managedObjectClassName$>, setInverse: Bool) {
+			func remove<$Relationship.name.initialCapitalString$>Object(value_: <$Relationship.destinationEntity.managedObjectClassName$>, setInverse: Bool) {
 				<$if Relationship.inverseRelationship$>
 					<$if ! Relationship.inverseRelationship.isToMany$>
 					    if setInverse {
@@ -68,27 +72,33 @@ class _<$managedObjectClassName$> {
 			}
 
 
-			func remove<$Relationship.name.initialCapitalString$>Object(value_: _<$Relationship.destinationEntity.managedObjectClassName$>) {
+			func remove<$Relationship.name.initialCapitalString$>Object(value_: <$Relationship.destinationEntity.managedObjectClassName$>) {
 				self.remove<$Relationship.name.initialCapitalString$>Object(value_, setInverse:true)
 			}
 		<$else$>
-			func set<$Relationship.name.initialCapitalString$>(<$Relationship.name$>_: _<$Relationship.destinationEntity.managedObjectClassName$>?, setInverse: Bool) {
+			func set<$Relationship.name.initialCapitalString$>(<$Relationship.name$>_: <$Relationship.destinationEntity.managedObjectClassName$>?, setInverse: Bool) {
 	    		<$if Relationship.inverseRelationship$>
 	    			<$if Relationship.inverseRelationship.isToMany$>
 	    				if <$Relationship.name$>_ == nil && setInverse {
-	        				<$Relationship.name$>.remove<$Relationship.inverseRelationship.name.initialCapitalString$>Object(self, setInverse: false);
+	        				<$Relationship.name$>.remove<$Relationship.inverseRelationship.name.initialCapitalString$>Object(self as? <$managedObjectClassName$>, setInverse: false);
 	    				}
 	   				<$else$>
-	    				if <$Relationship.name$>_ == nil && setInverse {
-	        				self.<$Relationship.name$>?.set<$Relationship.inverseRelationship.name.initialCapitalString$>(nil, setInverse: false)
-	    				}
+	   					<$if Relationship.isTransient || Relationship.isOptional$>
+		    				if <$Relationship.name$>_ == nil && setInverse {
+		        				self.<$Relationship.name$>?.set<$Relationship.inverseRelationship.name.initialCapitalString$>(nil, setInverse: false)
+		    				}
+		    			<$else$>
+		    				if <$Relationship.name$>_ == nil && setInverse {
+		        				self.<$Relationship.name$>.set<$Relationship.inverseRelationship.name.initialCapitalString$>(nil, setInverse: false)
+		    				}
+		    			<$endif$>
 	    			<$endif$>
 	    		<$endif$>
 
 		    	<$if Relationship.isTransient$>
-					<$"    "$>self.<$Relationship.name$> = <$Relationship.name$>_;
+					<$"    "$>self.<$Relationship.name$> = <$Relationship.name$>_
 		    	<$else$>
-		    		if !self.<$Relationship.name$>.isEqaul(<$Relationship.name$>_) {
+		    		if !self.<$Relationship.name$> == <$Relationship.name$>_ {
 						<$"        "$>self.<$Relationship.name$> = <$Relationship.name$>_
 		    		}
 		   	 	<$endif$>
@@ -96,17 +106,23 @@ class _<$managedObjectClassName$> {
 		    	<$if Relationship.inverseRelationship$>
 		    		<$if Relationship.inverseRelationship.isToMany$>
 		    			if setInverse {
-		        			self.<$Relationship.name$>.add<$Relationship.inverseRelationship.name.initialCapitalString$>Object(self, setInverse: false)
+		        			self.<$Relationship.name$>.add<$Relationship.inverseRelationship.name.initialCapitalString$>Object(self as? <$managedObjectClassName$>, setInverse: false)
 		    			}
 		    		<$else$>
-		    			if setInverse {
-		        			self.<$Relationship.name$>?.set<$Relationship.inverseRelationship.name.initialCapitalString$>(self, setInverse: false)
-		    			}
+		    			<$if Relationship.isTransient || Relationship.isOptional$>
+			    			if setInverse {
+			        			self.<$Relationship.name$>?.set<$Relationship.inverseRelationship.name.initialCapitalString$>(self as? <$managedObjectClassName$> , setInverse: false)
+			    			}
+		    			<$else$>
+			    			if setInverse {
+			        			self.<$Relationship.name$>.set<$Relationship.inverseRelationship.name.initialCapitalString$>(self as? <$managedObjectClassName$>, setInverse: false)
+			    			}
+		    			<$endif$>
 		    		<$endif$>
 		    	<$endif$>
 			}
 
-			func set<$Relationship.name.initialCapitalString$>(<$Relationship.name$>_: _<$Relationship.destinationEntity.managedObjectClassName$>) {
+			func set<$Relationship.name.initialCapitalString$>(<$Relationship.name$>_: <$Relationship.destinationEntity.managedObjectClassName$>) {
 			    self.set<$Relationship.name.initialCapitalString$>(<$Relationship.name$>_, setInverse: true)
 			}
 

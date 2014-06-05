@@ -8,27 +8,27 @@ class _BookAdvertisement {
 
 		let kModelPropertyBookAdvertisementBook = "book"
 
-				weak var book: _Book?
+				weak var book: Book?
 
 			var body: NSString?
 
 			var title: NSString?
 
-			func setBook(book_: _Book?, setInverse: Bool) {
+			func setBook(book_: Book?, setInverse: Bool) {
 
-	    				if book_ == nil && setInverse {
-	        				self.book?.setAdvertisement(nil, setInverse: false)
-	    				}
+		    				if book_ == nil && setInverse {
+		        				self.book?.setAdvertisement(nil, setInverse: false)
+		    				}
 
-					    self.book = book_;
+					    self.book = book_
 
-		    			if setInverse {
-		        			self.book?.setAdvertisement(self, setInverse: false)
-		    			}
+			    			if setInverse {
+			        			self.book?.setAdvertisement(self as? BookAdvertisement , setInverse: false)
+			    			}
 
 			}
 
-			func setBook(book_: _Book) {
+			func setBook(book_: Book) {
 			    self.setBook(book_, setInverse: true)
 			}
 
