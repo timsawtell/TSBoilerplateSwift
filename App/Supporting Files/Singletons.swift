@@ -8,5 +8,5 @@
 
 import Foundation
 
-let model = Model.sharedModel()!
-let commandRunner = CommandRunner()
+let globalCommandRunner = CommandRunner()
+let globalModel = Model.sharedModel()!

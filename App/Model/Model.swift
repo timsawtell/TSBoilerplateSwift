@@ -8,7 +8,7 @@
 
 import Foundation
 
-var modelInitialised = false // so that a programmer doesn't accidentally try and reference the class func sharedModel() again instead of using the const model from Singleton
+var _modelInstantied = false // just in case a programmer doesnt use the globalModel object from Singleton.swift and instead calls Model.sharedModel()
 
 class Model :NSObject, NSSecureCoding {
     
@@ -39,18 +39,18 @@ class Model :NSObject, NSSecureCoding {
     }
     
     class func sharedModel() -> Model? {
-        if modelInitialised {
-            return model // the global from Singleton.swift
+        if _modelInstantied {
+            return globalModel // return the already instantiated global from Singleton.swift
         }
         var path = CommandCenter.pathForModel()
         var error: NSError?
         let data = NSData.dataWithContentsOfFile(path, options: NSDataReadingOptions.DataReadingMappedIfSafe, error:&error)
         if (nil == data) {
-            modelInitialised = true
+            _modelInstantied = true
             return Model()
         } else {
             if let modelInstance = CommandCenter.securelyUnarchiveData(data, ofClass:Model.self, key: kModelArchiveKey) as? Model {
-                modelInitialised = true
+                _modelInstantied = true
                 return modelInstance
             }
         }
