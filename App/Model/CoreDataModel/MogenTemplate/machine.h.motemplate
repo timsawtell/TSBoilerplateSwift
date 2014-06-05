@@ -1,0 +1,56 @@
+import Foundation
+
+class <$managedObjectClassName$> {
+
+	<$checkNonTransientRelationshipCycles $>
+
+	<$foreach Attribute noninheritedAttributes do$>
+		<$if Attribute.hasDefinedAttributeType$>
+			let kModelProperty<$managedObjectClassName$><$Attribute.name.initialCapitalString$>= "<$Attribute.name$>"
+		<$endif$>
+	<$endforeach do$>
+
+	<$foreach Relationship noninheritedRelationships do$>
+		extern NSString * const kModelProperty<$managedObjectClassName$><$Relationship.name.initialCapitalString$> ="<$Relationship.name$>"
+	<$endforeach do$>
+	
+	<$foreach Attribute noninheritedAttributes do$>
+		<$if Attribute.hasDefinedAttributeType$>
+			var <$Attribute.name$>: <$Attribute.objectAttributeType$>
+		<$endif$>
+			<$if Attribute.hasScalarAttributeType$>
+				var <$Attribute.name$>Value: <$Attribute.scalarAttributeType$>
+			<$endif$>
+		<$endif$>
+	<$endforeach do$>
+}
+
+
+
+<$foreach Relationship noninheritedRelationships do$>
+	<$if Relationship.isToMany$>
+		@property (nonatomic, strong, readonly) NSSet *<$Relationship.name$>;
+	<$else$>
+	<$if Relationship.isTransient $>
+		@property (nonatomic, weak, readwrite) <$Relationship.destinationEntity.managedObjectClassName$> *<$Relationship.name$>;<$else$>@property (nonatomic, strong, readwrite) <$Relationship.destinationEntity.managedObjectClassName$> *<$Relationship.name$>;
+	<$endif$>
+<$endif$>
+<$endforeach do$>
+
+<$foreach Relationship noninheritedRelationships do$>
+	<$if Relationship.isToMany$>
+		- (void)add<$Relationship.name.initialCapitalString$>Object:(<$Relationship.destinationEntity.managedObjectClassName$>*)value_ settingInverse: (BOOL) setInverse;
+		- (void)add<$Relationship.name.initialCapitalString$>Object:(<$Relationship.destinationEntity.managedObjectClassName$>*)value_;
+		- (void)removeAll<$Relationship.name.initialCapitalString$>;
+		- (void)remove<$Relationship.name.initialCapitalString$>Object:(<$Relationship.destinationEntity.managedObjectClassName$>*)value_ settingInverse: (BOOL) setInverse;
+		- (void)remove<$Relationship.name.initialCapitalString$>Object:(<$Relationship.destinationEntity.managedObjectClassName$>*)value_;
+	<$endif$>
+<$endforeach do$>
+
+<$foreach Relationship noninheritedRelationships do$>
+	<$if ! Relationship.isToMany$>
+		- (void)set<$Relationship.name.initialCapitalString$>: (<$Relationship.destinationEntity.managedObjectClassName$>*) <$Relationship.name$>_ settingInverse: (BOOL) setInverse;
+	<$endif$>
+<$endforeach do$>
+
+@end

@@ -6,7 +6,22 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		2B25BF51194042E200E8B065 /* BuildDataModel */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 2B25BF52194042E200E8B065 /* Build configuration list for PBXAggregateTarget "BuildDataModel" */;
+			buildPhases = (
+				2B25BF55194042E700E8B065 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = BuildDataModel;
+			productName = BuildDataModel;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
+		2B25BF23194041B600E8B065 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2B25BF19194041B600E8B065 /* Model.xcdatamodeld */; };
 		2B54AE84193ED5C000DDB1E8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2B54AE6F193ED5C000DDB1E8 /* InfoPlist.strings */; };
 		2B54AE85193ED5C000DDB1E8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B54AE73193ED5C000DDB1E8 /* Images.xcassets */; };
 		2B54AE87193ED5C000DDB1E8 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2B54AE79193ED5C000DDB1E8 /* Info.plist */; };
@@ -33,6 +48,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		2B25BF4F1940420D00E8B065 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2B54AE3D193ED5A100DDB1E8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2B54AE44193ED5A100DDB1E8;
+			remoteInfo = TSBoilerplateSwift;
+		};
 		2B54AE58193ED5A100DDB1E8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2B54AE3D193ED5A100DDB1E8 /* Project object */;
@@ -78,6 +100,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2B25BF1A194041B600E8B065 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		2B25BF4E1940420900E8B065 /* TSBoilerplateSwift copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "TSBoilerplateSwift copy-Info.plist"; path = "/Users/timsa/Developer/iOS/TSBoilerplateSwift/TSBoilerplateSwift copy-Info.plist"; sourceTree = "<absolute>"; };
 		2B54AE45193ED5A100DDB1E8 /* TSBoilerplateSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TSBoilerplateSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B54AE57193ED5A100DDB1E8 /* TSBoilerplateSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TSBoilerplateSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B54AE70193ED5C000DDB1E8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -118,6 +142,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2B25BF17194041B600E8B065 /* CoreDataModel */ = {
+			isa = PBXGroup;
+			children = (
+				2B25BF19194041B600E8B065 /* Model.xcdatamodeld */,
+				2B25BF2A194041D600E8B065 /* Human */,
+				2B25BF2B194041D600E8B065 /* Machine */,
+			);
+			path = CoreDataModel;
+			sourceTree = "<group>";
+		};
+		2B25BF2A194041D600E8B065 /* Human */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Human;
+			sourceTree = "<group>";
+		};
+		2B25BF2B194041D600E8B065 /* Machine */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Machine;
+			sourceTree = "<group>";
+		};
 		2B54AE3C193ED5A100DDB1E8 = {
 			isa = PBXGroup;
 			children = (
@@ -125,6 +173,7 @@
 				2B54AE67193ED5C000DDB1E8 /* App */,
 				2B54AE81193ED5C000DDB1E8 /* External */,
 				2B54AE82193ED5C000DDB1E8 /* Tests */,
+				2B25BF4E1940420900E8B065 /* TSBoilerplateSwift copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -215,6 +264,7 @@
 		2B54AE71193ED5C000DDB1E8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2B25BF17194041B600E8B065 /* CoreDataModel */,
 				2BAD471C193FF1D600BB718A /* Model.swift */,
 			);
 			path = Model;
@@ -365,6 +415,7 @@
 				2BAD470F193FD94F00BB718A /* PBXTargetDependency */,
 				2BAD4711193FD94F00BB718A /* PBXTargetDependency */,
 				2BAD4721193FF73500BB718A /* PBXTargetDependency */,
+				2B25BF501940420D00E8B065 /* PBXTargetDependency */,
 			);
 			name = TSBoilerplateSwiftTests;
 			productName = TSBoilerplateSwiftTests;
@@ -380,6 +431,9 @@
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Sawtell Software";
 				TargetAttributes = {
+					2B25BF51194042E200E8B065 = {
+						CreatedOnToolsVersion = 6.0;
+					};
 					2B54AE44193ED5A100DDB1E8 = {
 						CreatedOnToolsVersion = 6.0;
 					};
@@ -404,6 +458,7 @@
 			targets = (
 				2B54AE44193ED5A100DDB1E8 /* TSBoilerplateSwift */,
 				2B54AE56193ED5A100DDB1E8 /* TSBoilerplateSwiftTests */,
+				2B25BF51194042E200E8B065 /* BuildDataModel */,
 			);
 		};
 /* End PBXProject section */
@@ -430,6 +485,22 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2B25BF55194042E700E8B065 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "source \"$PROJECT_DIR/App/Model/CoreDataModel/generateDataModel.sh\"";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2B54AE41193ED5A100DDB1E8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -446,6 +517,7 @@
 				2BAD4702193ED8F600BB718A /* DemoViewController.swift in Sources */,
 				2BAD4706193EDC5A00BB718A /* Command.swift in Sources */,
 				2BAD4708193EDD5000BB718A /* AsynchronousCommand.swift in Sources */,
+				2B25BF23194041B600E8B065 /* Model.xcdatamodeld in Sources */,
 				2B84EAF8194003F90063A646 /* constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -466,6 +538,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		2B25BF501940420D00E8B065 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2B54AE44193ED5A100DDB1E8 /* TSBoilerplateSwift */;
+			targetProxy = 2B25BF4F1940420D00E8B065 /* PBXContainerItemProxy */;
+		};
 		2B54AE59193ED5A100DDB1E8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2B54AE44193ED5A100DDB1E8 /* TSBoilerplateSwift */;
@@ -510,6 +587,20 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		2B25BF53194042E200E8B065 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		2B25BF54194042E200E8B065 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		2B54AE5F193ED5A100DDB1E8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -650,6 +741,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2B25BF52194042E200E8B065 /* Build configuration list for PBXAggregateTarget "BuildDataModel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2B25BF53194042E200E8B065 /* Debug */,
+				2B25BF54194042E200E8B065 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		2B54AE40193ED5A100DDB1E8 /* Build configuration list for PBXProject "TSBoilerplateSwift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -678,6 +777,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		2B25BF19194041B600E8B065 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2B25BF1A194041B600E8B065 /* Model.xcdatamodel */,
+			);
+			currentVersion = 2B25BF1A194041B600E8B065 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 2B54AE3D193ED5A100DDB1E8 /* Project object */;
 }
