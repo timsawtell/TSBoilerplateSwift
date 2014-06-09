@@ -1,6 +1,6 @@
 import Foundation
 
-class _<$managedObjectClassName$> {
+class _<$managedObjectClassName$>: NSObject, NSCoding {
 
 	<$checkNonTransientRelationshipCycles $>
 
@@ -19,12 +19,12 @@ class _<$managedObjectClassName$> {
 			var <$Relationship.name$>: NSMutableSet = NSMutableSet()
 		<$else$>
 			<$if Relationship.isTransient $>
-				weak var <$Relationship.name$>: <$Relationship.destinationEntity.managedObjectClassName$>?
+				weak var <$Relationship.name$>: _<$Relationship.destinationEntity.managedObjectClassName$>?
 			<$else$>
 				<$if Relationship.isOptional $>
-					var <$Relationship.name$>: <$Relationship.destinationEntity.managedObjectClassName$>?;
+					var <$Relationship.name$>: _<$Relationship.destinationEntity.managedObjectClassName$>?;
 				<$else$>
-					var <$Relationship.name$>: <$Relationship.destinationEntity.managedObjectClassName$>;
+					var <$Relationship.name$>: _<$Relationship.destinationEntity.managedObjectClassName$>;
 				<$endif$>
 			<$endif$>
 		<$endif$>
@@ -38,19 +38,19 @@ class _<$managedObjectClassName$> {
 
 	<$foreach Relationship noninheritedRelationships do$>
 		<$if Relationship.isToMany$>
-			func add<$Relationship.name.initialCapitalString$>Object(value_: <$Relationship.destinationEntity.managedObjectClassName$>, setInverse: Bool) {
+			func add<$Relationship.name.initialCapitalString$>Object(value_: _<$Relationship.destinationEntity.managedObjectClassName$>, setInverse: Bool) {
 				self.<$Relationship.name$>.addObject(value_)
 				<$if Relationship.inverseRelationship$>
 					<$if ! Relationship.inverseRelationship.isToMany$>
 						if setInverse {
-					        value_.set<$Relationship.inverseRelationship.name.initialCapitalString$>(self as? <$managedObjectClassName$>, setInverse:false);
+					        value_.set<$Relationship.inverseRelationship.name.initialCapitalString$>(self, setInverse:false);
 					    }
 				    <$endif$>
 				<$endif$>
 			}
 
 
-			func add<$Relationship.name.initialCapitalString$>Object(value_: <$Relationship.destinationEntity.managedObjectClassName$>) {
+			func add<$Relationship.name.initialCapitalString$>Object(value_: _<$Relationship.destinationEntity.managedObjectClassName$>) {
 				self.add<$Relationship.name.initialCapitalString$>Object(value_, setInverse: true)
 			}
 
@@ -58,7 +58,7 @@ class _<$managedObjectClassName$> {
 				self.<$Relationship.name$> = NSMutableSet();
 			}
 
-			func remove<$Relationship.name.initialCapitalString$>Object(value_: <$Relationship.destinationEntity.managedObjectClassName$>, setInverse: Bool) {
+			func remove<$Relationship.name.initialCapitalString$>Object(value_: _<$Relationship.destinationEntity.managedObjectClassName$>, setInverse: Bool) {
 				<$if Relationship.inverseRelationship$>
 					<$if ! Relationship.inverseRelationship.isToMany$>
 					    if setInverse {
@@ -72,16 +72,22 @@ class _<$managedObjectClassName$> {
 			}
 
 
-			func remove<$Relationship.name.initialCapitalString$>Object(value_: <$Relationship.destinationEntity.managedObjectClassName$>) {
+			func remove<$Relationship.name.initialCapitalString$>Object(value_: _<$Relationship.destinationEntity.managedObjectClassName$>) {
 				self.remove<$Relationship.name.initialCapitalString$>Object(value_, setInverse:true)
 			}
 		<$else$>
-			func set<$Relationship.name.initialCapitalString$>(<$Relationship.name$>_: <$Relationship.destinationEntity.managedObjectClassName$>?, setInverse: Bool) {
+			func set<$Relationship.name.initialCapitalString$>(<$Relationship.name$>_: _<$Relationship.destinationEntity.managedObjectClassName$>?, setInverse: Bool) {
 	    		<$if Relationship.inverseRelationship$>
 	    			<$if Relationship.inverseRelationship.isToMany$>
-	    				if <$Relationship.name$>_ == nil && setInverse {
-	        				<$Relationship.name$>.remove<$Relationship.inverseRelationship.name.initialCapitalString$>Object(self as? <$managedObjectClassName$>, setInverse: false);
-	    				}
+	    				<$if Relationship.isTransient || Relationship.isOptional$>
+		    				if <$Relationship.name$>_ == nil && setInverse {
+		        				self.<$Relationship.name$>?.remove<$Relationship.inverseRelationship.name.initialCapitalString$>Object(self, setInverse: false)
+		    				}
+	    				<$else$>
+		    				if <$Relationship.name$>_ == nil && setInverse {
+		        				self.<$Relationship.name$>.remove<$Relationship.inverseRelationship.name.initialCapitalString$>Object(self, setInverse: false)
+		    				}
+	    				<$endif$>
 	   				<$else$>
 	   					<$if Relationship.isTransient || Relationship.isOptional$>
 		    				if <$Relationship.name$>_ == nil && setInverse {
@@ -95,37 +101,117 @@ class _<$managedObjectClassName$> {
 	    			<$endif$>
 	    		<$endif$>
 
-		    	<$if Relationship.isTransient$>
-					<$"    "$>self.<$Relationship.name$> = <$Relationship.name$>_
-		    	<$else$>
-		    		if !self.<$Relationship.name$> == <$Relationship.name$>_ {
-						<$"        "$>self.<$Relationship.name$> = <$Relationship.name$>_
-		    		}
-		   	 	<$endif$>
+		    	self.<$Relationship.name$> = <$Relationship.name$>_
 
 		    	<$if Relationship.inverseRelationship$>
 		    		<$if Relationship.inverseRelationship.isToMany$>
-		    			if setInverse {
-		        			self.<$Relationship.name$>.add<$Relationship.inverseRelationship.name.initialCapitalString$>Object(self as? <$managedObjectClassName$>, setInverse: false)
-		    			}
+		    			<$if Relationship.inverseRelationship.isTransient || Relationship.inverseRelationship.isOptional$>
+			    			if setInverse {
+			        			self.<$Relationship.name$>?.add<$Relationship.inverseRelationship.name.initialCapitalString$>Object(self, setInverse: false)//0
+			    			}
+		    			<$else$>
+		    				if setInverse {
+			        			self.<$Relationship.name$>.add<$Relationship.inverseRelationship.name.initialCapitalString$>Object(self, setInverse: false)//1
+			    			}
+		    			<$endif$>
 		    		<$else$>
 		    			<$if Relationship.isTransient || Relationship.isOptional$>
 			    			if setInverse {
-			        			self.<$Relationship.name$>?.set<$Relationship.inverseRelationship.name.initialCapitalString$>(self as? <$managedObjectClassName$> , setInverse: false)
+			        			self.<$Relationship.name$>?.set<$Relationship.inverseRelationship.name.initialCapitalString$>(self, setInverse: false)//2
 			    			}
 		    			<$else$>
 			    			if setInverse {
-			        			self.<$Relationship.name$>.set<$Relationship.inverseRelationship.name.initialCapitalString$>(self as? <$managedObjectClassName$>, setInverse: false)
+			        			self.<$Relationship.name$>.set<$Relationship.inverseRelationship.name.initialCapitalString$>(self, setInverse: false)//3
 			    			}
 		    			<$endif$>
 		    		<$endif$>
 		    	<$endif$>
 			}
 
-			func set<$Relationship.name.initialCapitalString$>(<$Relationship.name$>_: <$Relationship.destinationEntity.managedObjectClassName$>) {
-			    self.set<$Relationship.name.initialCapitalString$>(<$Relationship.name$>_, setInverse: true)
-			}
+			<$if Relationship.isTransient || Relationship.isOptional$>
+				func set<$Relationship.name.initialCapitalString$>(<$Relationship.name$>_: _<$Relationship.destinationEntity.managedObjectClassName$>?) {
+				    self.set<$Relationship.name.initialCapitalString$>(<$Relationship.name$>_, setInverse: true)
+				}
+			<$else$>
+				func set<$Relationship.name.initialCapitalString$>(<$Relationship.name$>_: _<$Relationship.destinationEntity.managedObjectClassName$>) {
+				    self.set<$Relationship.name.initialCapitalString$>(<$Relationship.name$>_, setInverse: true)
+				}
+			<$endif$>
 
 		<$endif$>
 	<$endforeach do$>
+
+
+	func encodeWithCoder(aCoder: NSCoder!) {
+		<$foreach Attribute noninheritedAttributes do$>
+			<$if Attribute.hasDefinedAttributeType$>
+	    		aCoder.encodeObject(self.<$Attribute.name$>, forKey:kModelProperty<$managedObjectClassName$><$Attribute.name.initialCapitalString$>)
+	    	<$endif$>
+	    <$endforeach do$>
+	    <$foreach Relationship noninheritedRelationships do$>
+	    	aCoder.encodeObject(self.<$Relationship.name$>, forKey:kModelProperty<$managedObjectClassName$><$Relationship.name.initialCapitalString$>)
+	    <$endforeach do$>
+    	
+    }
+
+    init(coder aDecoder: NSCoder!) {
+    	<$foreach Attribute noninheritedAttributes do$>
+			<$if Attribute.hasDefinedAttributeType$>
+	    			<$if Relationship.isTransient || Relationship.isOptional$>
+	    				self.<$Attribute.name$> = aDecoder.decodeObjectForKey(kModelProperty<$managedObjectClassName$><$Attribute.name.initialCapitalString$>) as? <$Attribute.attributeValueClassName$>
+	    			<$else$>
+						self.<$Attribute.name$> = aDecoder.decodeObjectForKey(kModelProperty<$managedObjectClassName$><$Attribute.name.initialCapitalString$>) as <$Attribute.attributeValueClassName$>
+	    			<$endif$>
+	    	<$endif$> 
+	    <$endforeach do$>
+		<$foreach Relationship noninheritedRelationships do$>
+	        <$if Relationship.isToMany$>
+	        	self.<$Relationship.name$> = aDecoder.decodeObjectForKey(kModelProperty<$managedObjectClassName$><$Relationship.name.initialCapitalString$>) as NSMutableSet
+	        <$else$>
+	        	self.<$Relationship.name$> = aDecoder.decodeObjectForKey(kModelProperty<$managedObjectClassName$><$Relationship.name.initialCapitalString$>) as? _<$Relationship.destinationEntity.managedObjectClassName$>
+	        <$endif$>
+	    <$endforeach do$>
+    }
+
+/* to be fixed when Swift supports creating a set of Class types
+
+    class func supportsSecureCoding() -> Bool {
+        return true
+    }
+
+    func encodeWithCoder(aCoder: NSCoder!) {
+		<$foreach Attribute noninheritedAttributes do$>
+			<$if Attribute.hasDefinedAttributeType$>
+	    		aCoder.encodeObject(self.<$Attribute.name$>, forKey:kModelProperty<$managedObjectClassName$><$Attribute.name.initialCapitalString$>)
+	    	<$endif$>
+	    <$endforeach do$>
+	    <$foreach Relationship noninheritedRelationships do$>
+	    	aCoder.encodeObject(self.<$Relationship.name$>, forKey:kModelProperty<$managedObjectClassName$><$Relationship.name.initialCapitalString$>)
+	    <$endforeach do$>
+    	
+    }
+
+    init(coder aDecoder: NSCoder!) {
+    	<$foreach Attribute noninheritedAttributes do$>
+			<$if Attribute.hasDefinedAttributeType$>
+	    			<$if Relationship.isTransient || Relationship.isOptional$>
+	    				self.<$Attribute.name$> = aDecoder.decodeObjectOfClass(<$Attribute.attributeValueClassName$>.self, forKey:kModelProperty<$managedObjectClassName$><$Attribute.name.initialCapitalString$>) as? <$Attribute.attributeValueClassName$>
+	    			<$else$>
+						self.<$Attribute.name$> = aDecoder.decodeObjectOfClass(<$Attribute.attributeValueClassName$>.self, forKey:kModelProperty<$managedObjectClassName$><$Attribute.name.initialCapitalString$>) as <$Attribute.attributeValueClassName$>
+	    			<$endif$>
+	    	<$endif$> 
+	    <$endforeach do$>
+		<$foreach Relationship noninheritedRelationships do$>
+	        <$if Relationship.isToMany$>
+	        	self.<$Relationship.name$> = aDecoder.decodeObjectOfClass(NSMutableSet.self, forKey:kModelProperty<$managedObjectClassName$><$Relationship.name.initialCapitalString$>) as NSMutableSet
+	        <$else$>
+	        	self.<$Relationship.name$> = aDecoder.decodeObjectOfClass(<$Relationship.destinationEntity.managedObjectClassName$>.self, forKey:kModelProperty<$managedObjectClassName$><$Relationship.name.initialCapitalString$>) as? _<$Relationship.destinationEntity.managedObjectClassName$>
+	        <$endif$>
+	    <$endforeach do$>
+    }
+*/
+	init() {
+    }
+
+
 }

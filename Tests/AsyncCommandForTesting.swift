@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TestAsyncCommand: AsynchronousCommand {
+class AsyncCommandForTesting: AsynchronousCommand {
     
     override func execute() {
         // do nothing, just finish

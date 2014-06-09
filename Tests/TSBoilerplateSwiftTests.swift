@@ -8,6 +8,8 @@
 
 import XCTest
 
+let commandRunner = CommandRunner()
+
 class TSBoilerplateSwiftTests: XCTestCase {
     
     override func setUp() {
@@ -26,9 +28,9 @@ class TSBoilerplateSwiftTests: XCTestCase {
     * when I cancel a parent command, the subcommands should also be cancelled
     */
     func testSubCommands() {
-        var a: TestAsyncCommand = TestAsyncCommand()
-        var b: TestAsyncCommand = TestAsyncCommand()
-        var c: TestAsyncCommand = TestAsyncCommand()
+        var a: AsyncCommandForTesting = AsyncCommandForTesting()
+        var b: AsyncCommandForTesting = AsyncCommandForTesting()
+        var c: AsyncCommandForTesting = AsyncCommandForTesting()
         
         var commandFinished = expectationWithDescription("command finished")
         

@@ -17,6 +17,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
         // Override point for customization after application launch.  
 
+        var book = Book()
+        book.title = "A storm of swords"
+        var author = Author()
+        author.name = "George R. R. Martin"
+        book.setAuthor(author)
+        globalModel.books.addObject(book)
+        globalModel.save()
+        
         return true
     }
 
