@@ -121,8 +121,7 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
                     UIView.animateWithDuration(0.2, animations:{
                         scrollView.scrollRectToVisible(nextControl.frame, animated: true)
                         }, completion: ({ finished in
-                            nextControl.becomeFirstResponder()
-                            var a:Bool // are you fucking kidding me Swift? Take this line out and see what happens
+                            var n = nextControl.becomeFirstResponder() // are you fucking kidding me Swift? becomeFirstResponser returns a bool, so unless I capture this in a variable the parser will think I'm trying to return Bool from this block (and won't compile)
                             }))
                     
                     break
@@ -146,8 +145,7 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
                     UIView.animateWithDuration(0.2, animations:{
                         scrollView.scrollRectToVisible(nextControl.frame, animated: true)
                         }, completion: ({ finished in
-                            nextControl.becomeFirstResponder()
-                            var a:Bool // are you fucking kidding me Swift? Take this line out and see what happens
+                            var n = nextControl.becomeFirstResponder() // are you fucking kidding me Swift? becomeFirstResponser returns a bool, so unless I capture this in a variable the parser will think I'm trying to return Bool from this block (and won't compile)
                         }))
                     break
                 }
