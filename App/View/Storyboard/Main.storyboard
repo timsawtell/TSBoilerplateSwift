@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.11"/>
     </dependencies>
     <scenes>
-        <!--Demo View Controller-->
+        <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="DemoViewController" customModule="TSBoilerplateSwift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="TSViewController" customModule="TSBoilerplateSwift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -18,19 +18,81 @@
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EpC-Ap-yBm">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k5E-5w-VGk">
+                                        <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <variation key="widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="20" y="42" width="97" height="30"/>
+                                        </variation>
+                                        <connections>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="DRt-yO-Osu"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lnv-ac-Kqx">
+                                        <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <variation key="widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="20" y="225" width="97" height="30"/>
+                                        </variation>
+                                        <connections>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="X3f-cJ-hfc"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xjj-pc-IR8">
+                                        <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <variation key="widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="20" y="430" width="97" height="30"/>
+                                        </variation>
+                                        <connections>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="jLs-TZ-8Ti"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" red="0.62774801069999997" green="0.97219759230000002" blue="0.67075576169999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="k5E-5w-VGk"/>
+                                        <exclude reference="lnv-ac-Kqx"/>
+                                        <exclude reference="xjj-pc-IR8"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="subviews">
+                                        <include reference="k5E-5w-VGk"/>
+                                        <include reference="lnv-ac-Kqx"/>
+                                        <include reference="xjj-pc-IR8"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="640"/>
                                 </variation>
                                 <connections>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="PMQ-RM-bx1"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="rom-hA-4j7"/>
                                 </connections>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="EpC-Ap-yBm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="4Tf-NG-NgV"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="EpC-Ap-yBm" secondAttribute="bottom" id="Qhh-SX-ObF"/>
+                            <constraint firstAttribute="trailing" secondItem="EpC-Ap-yBm" secondAttribute="trailing" id="bpr-ao-sXz"/>
+                            <constraint firstItem="EpC-Ap-yBm" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="r0U-mm-ZNd"/>
+                        </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="EpC-Ap-yBm"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="4Tf-NG-NgV"/>
+                                <exclude reference="bpr-ao-sXz"/>
+                                <exclude reference="r0U-mm-ZNd"/>
+                                <exclude reference="Qhh-SX-ObF"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -38,7 +100,22 @@
                                 <include reference="EpC-Ap-yBm"/>
                             </mask>
                         </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="4Tf-NG-NgV"/>
+                                <include reference="bpr-ao-sXz"/>
+                                <include reference="r0U-mm-ZNd"/>
+                                <include reference="Qhh-SX-ObF"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="scrollViewToResize" destination="EpC-Ap-yBm" id="D1T-w8-PJD"/>
+                        <outlet property="tf1" destination="k5E-5w-VGk" id="kHH-F0-38G"/>
+                        <outlet property="tf2" destination="lnv-ac-Kqx" id="5JN-hb-87Z"/>
+                        <outlet property="tf3" destination="xjj-pc-IR8" id="ypn-uh-QUh"/>
+                        <outlet property="view" destination="8bC-Xf-vdC" id="9tR-zw-N4T"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
