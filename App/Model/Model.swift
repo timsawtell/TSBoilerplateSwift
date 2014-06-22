@@ -10,7 +10,7 @@ import Foundation
 
 var _modelInstantied = false // just in case a programmer doesnt use the globalModel object from Singleton.swift and instead calls Model.sharedModel()
 
-class Model :NSObject {
+class Model :NSObject, NSCoding {
     
     var strings: NSMutableArray = []
     var books: NSMutableArray = []
@@ -31,7 +31,7 @@ class Model :NSObject {
     }
     */
     
-    //NSSecureCoding
+    //NSCoding
     func encodeWithCoder(aCoder: NSCoder!) {
         aCoder.encodeObject(strings, forKey: "strings")
         aCoder.encodeObject(books, forKey: "books")
