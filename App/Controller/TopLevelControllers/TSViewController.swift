@@ -17,6 +17,7 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
     // todo: move the above IBOutlets to the DemoViewController, as soon as XCode lets you hook up an IBOutlet from a parent class (this) to a subclass (DemoViewController)
     @IBOutlet var scrollViewToResize : UIScrollView?
     var inputFields = NSArray()
+    var activitySuperview = UIView() //for the show message function
     weak var activeControl: UIResponder?
     
     override func viewDidLoad() {
@@ -213,5 +214,88 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
         } else {
             activeControl = nil
         }
+    }
+    
+    func showActivityScreen(message: String) {
+        activitySuperview = UIView(frame: view.bounds)
+        activitySuperview.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight
+        view.addSubview(activitySuperview)
+        let dimmerView = UIView(frame: activitySuperview.bounds)
+        dimmerView.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight
+        dimmerView.backgroundColor = UIColor(white: 0.0, alpha: 1.0)
+        dimmerView.alpha = 0.6
+        activitySuperview.addSubview(dimmerView)
+        let boxEdge: Float = 250.0
+        let containerBG = CGRectMake(
+            (activitySuperview.bounds.size.width / 2) - (boxEdge / 2),
+            (activitySuperview.bounds.height / 2) - (boxEdge / 2), boxEdge, boxEdge)
+        
+        let containerView = UIView(frame: containerBG)
+        containerView.autoresizingMask = .FlexibleTopMargin | .FlexibleBottomMargin | .FlexibleLeftMargin | .FlexibleRightMargin
+        containerView.backgroundColor = UIColor.clearColor()
+        activitySuperview.addSubview(containerView)
+        
+        let spinnerEdge: Float = 90
+        let spinnerBG = CGRectMake((containerBG.size.width / 2) - (spinnerEdge / 2),
+            (containerBG.size.height / 2) - (spinnerEdge / 2), spinnerEdge, spinnerEdge)
+        let spinnerBGView = UIView(frame: spinnerBG)
+        spinnerBGView.backgroundColor = ColorWithHexString("5266A4")
+        spinnerBGView.opaque = false
+        spinnerBGView.layer.cornerRadius = 45
+        containerView.addSubview(spinnerBGView)
+        
+        if (message.isSane()) {
+            let messageLabel = UILabel(frame: CGRectMake(20, spinnerBG.origin.y - 50, containerView.bounds.size.width - 40, 70))
+            messageLabel.text = message
+            messageLabel.numberOfLines = 1
+            messageLabel.font = UIFont(name: "Helvetica-Bold", size: 18)
+            messageLabel.shadowColor = UIColor.blackColor()
+            messageLabel.shadowOffset = CGSizeMake(0, 1)
+            messageLabel.textColor = UIColor.whiteColor()
+            messageLabel.backgroundColor = UIColor.clearColor()
+            messageLabel.textAlignment = .Center
+            containerView.addSubview(messageLabel)
+        }
+        
+        let progressFrame = CGRectMake((spinnerBG.size.width / 2) - 25, (spinnerBG.size.height / 2) - 25, 50, 50)
+        let progressView = FFCircularProgressView(frame: progressFrame)
+        progressView.iconLayer.hidden = true
+        progressView.tintColor = UIColor.whiteColor()
+        spinnerBGView.addSubview(progressView)
+        progressView.startSpinProgressBackgroundLayer()
+        
+        UIView.beginAnimations("fadeglow", context: nil)
+        UIView.setAnimationDuration(1.5)
+        UIView.setAnimationRepeatAutoreverses(true)
+        UIView.setAnimationRepeatCount(MAXFLOAT)
+        spinnerBGView.alpha = 0.8
+        UIView.commitAnimations()
+        
+        activitySuperview.alpha = 0
+        weak var weakSelf = self
+        UIView.animateWithDuration(0.3, animations: {
+            if let strongSelf = weakSelf {
+                strongSelf.activitySuperview.alpha = 1
+            }
+        })
+    }
+    
+    func showActivityScreen() {
+        showActivityScreen("Loading")
+    }
+    
+    func hideActivityScreen() {
+        activitySuperview.alpha = 1
+        weak var weakSelf = self
+        
+        UIView.animateWithDuration(0.5, animations: {
+            if let strongSelf = weakSelf {
+                strongSelf.activitySuperview.alpha = 0
+            }
+        }, completion: { (complete) in
+            if let strongSelf = weakSelf {
+                strongSelf.activitySuperview.removeFromSuperview()
+            }
+        })
     }
 }

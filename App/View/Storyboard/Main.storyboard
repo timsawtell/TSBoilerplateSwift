@@ -72,7 +72,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="640"/>
                                 </variation>
                                 <connections>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="rom-hA-4j7"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="pTS-5l-v8g"/>
                                 </connections>
                             </scrollView>
                         </subviews>
@@ -110,11 +110,11 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="scrollViewToResize" destination="EpC-Ap-yBm" id="D1T-w8-PJD"/>
+                        <outlet property="scrollViewToResize" destination="EpC-Ap-yBm" id="Ag0-Gk-NzH"/>
                         <outlet property="tf1" destination="k5E-5w-VGk" id="kHH-F0-38G"/>
                         <outlet property="tf2" destination="lnv-ac-Kqx" id="5JN-hb-87Z"/>
                         <outlet property="tf3" destination="xjj-pc-IR8" id="ypn-uh-QUh"/>
-                        <outlet property="view" destination="8bC-Xf-vdC" id="9tR-zw-N4T"/>
+                        <outlet property="view" destination="8bC-Xf-vdC" id="Poq-UI-NhB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

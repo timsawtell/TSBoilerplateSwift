@@ -1,0 +1,14 @@
+PODS:
+  - FFCircularProgressView (0.3)
+
+DEPENDENCIES:
+  - FFCircularProgressView (from `https://github.com/timsawtell/FFCircularProgressView`)
+
+EXTERNAL SOURCES:
+  FFCircularProgressView:
+    :git: https://github.com/timsawtell/FFCircularProgressView
+
+SPEC CHECKSUMS:
+  FFCircularProgressView: 972f8c316f6a612a9ca55d7800ade41b51efedf2
+
+COCOAPODS: 0.33.1
