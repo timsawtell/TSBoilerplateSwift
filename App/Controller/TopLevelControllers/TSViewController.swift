@@ -98,14 +98,6 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
         }
     }
     
-    func wantsPullToRefresh() -> Bool {
-        return true
-    }
-    
-    func wantsPullToRefreshFooter() -> Bool {
-        return true
-    }
-    
     // TSPullView
     func TSPullDidTriggerRefresh(view: TSPullView) {
         self.fetchData()
@@ -150,8 +142,9 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
             }
             });
     }
-    //TSPullView end
+    //END TSPullView
     
+    //ScrollViewDelegate
     func scrollViewDidScroll(scrollView: UIScrollView!) {
         var currentOffset = scrollView.contentOffset.y
         var maximumOffset = max(scrollView.contentSize.height - scrollView.frame.size.height, 0)
@@ -178,6 +171,16 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
                 footerView!.scrollViewDidEndDragging(scrollView)
             }
         }
+    }
+    //END ScrollViewDelegate
+    
+    //Pull To Refresh and Load data
+    func wantsPullToRefresh() -> Bool {
+        return true
+    }
+    
+    func wantsPullToRefreshFooter() -> Bool {
+        return true
     }
     
     func fetchData() {
@@ -218,7 +221,9 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
             }
         }
     }
+    //END Pull To Refresh and Load data
     
+    //Autolayout + UIScrollView madness
     func specialLayout() {
         if let scrollView = self.scrollViewToResize {
             if scrollView.contentSize.height < scrollView.bounds.size.height {
@@ -234,7 +239,9 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
         }
         return CGSizeZero
     }
+    //END Autolayout + UIScrollView madness
     
+    // Keyboard did show and resize scrollview
     func nextPrevChanged(sender: AnyObject) {
         if let segControl: UISegmentedControl = sender as? UISegmentedControl {
             switch segControl.selectedSegmentIndex {
@@ -356,7 +363,9 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
             activeControl = nil
         }
     }
+    //END Keyboard did show and resize scrollview
     
+    //Show activity message
     func showActivityScreen(message: String) {
         activitySuperview = UIView(frame: view.bounds)
         activitySuperview.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight
@@ -439,4 +448,5 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
             }
         })
     }
+    //END Show activity message
 }
