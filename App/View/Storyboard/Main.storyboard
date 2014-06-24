@@ -53,7 +53,7 @@
                                         </connections>
                                     </textField>
                                 </subviews>
-                                <color key="backgroundColor" red="0.62774801069999997" green="0.97219759230000002" blue="0.67075576169999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <variation key="default">
                                     <mask key="subviews">
                                         <exclude reference="k5E-5w-VGk"/>
@@ -96,16 +96,16 @@
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="EpC-Ap-yBm"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
                             <mask key="constraints">
                                 <include reference="Qhh-SX-ObF"/>
                                 <include reference="4Tf-NG-NgV"/>
                                 <include reference="bpr-ao-sXz"/>
                                 <include reference="r0U-mm-ZNd"/>
-                            </mask>
-                        </variation>
-                        <variation key="widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="EpC-Ap-yBm"/>
                             </mask>
                         </variation>
                     </view>

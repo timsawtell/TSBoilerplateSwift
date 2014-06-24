@@ -29,7 +29,7 @@ class TSPullView: UIView {
     var delegate: TSPullViewDelegate?
     let flipDuration = 0.18
     let dragHeightThreshold: Float = 80.0 // 80 points past top will trigger a state change
-    var highlighterView: HighlighterView
+    var highlighterView: HighlighterView // the slidy uppy whitey boxy thing
     
     init(frame: CGRect, isForBottomOfView: Bool) {
         isForBottomOfScrollView = isForBottomOfView
@@ -107,8 +107,7 @@ class TSPullView: UIView {
                 CATransaction.setAnimationDuration(flipDuration)
                 layerToRotate.transform = CATransform3DMakeRotation(DegreesToRadians(180), 0, 0, 1)
                 CATransaction.commit()
-                
-                break
+            
             case .Normal:
                 if !isForBottomOfScrollView {
                     statusLabel.text = "Pull down to refresh"
@@ -134,7 +133,7 @@ class TSPullView: UIView {
                 layerToRotate.hidden = false
                 layerToRotate.transform = CATransform3DIdentity
                 CATransaction.commit()
-                break
+            
             case .Loading:
                 highlighterView.hidden = false
                 layerToRotate.removeAnimationForKey("flash")
@@ -143,7 +142,7 @@ class TSPullView: UIView {
                 CATransaction.setValue(kCFBooleanTrue, forKey: kCATransactionDisableActions)
                 layerToRotate.hidden = true
                 CATransaction.commit()
-                break
+            
         }
         state = newState
     }
