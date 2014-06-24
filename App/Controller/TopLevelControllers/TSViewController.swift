@@ -9,15 +9,18 @@
 import Foundation
 import UIKit
 
-class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelegate {
+class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelegate, TSPullViewDelegate, UIScrollViewDelegate {
     
-    @IBOutlet var tf1 : UITextField
-    @IBOutlet var tf2 : UITextField
-    @IBOutlet var tf3 : UITextField
+    @IBOutlet var tf1: UITextField
+    @IBOutlet var tf2: UITextField
+    @IBOutlet var tf3: UITextField
     // todo: move the above IBOutlets to the DemoViewController, as soon as XCode lets you hook up an IBOutlet from a parent class (this) to a subclass (DemoViewController)
-    @IBOutlet var scrollViewToResize : UIScrollView?
+    @IBOutlet var scrollViewToResize: UIScrollView?
     var inputFields = NSArray()
     var activitySuperview = UIView() //for the show message function
+    var headerView: TSPullView?
+    var footerView: TSPullView?
+    var fetchingData = false
     weak var activeControl: UIResponder?
     
     override func viewDidLoad() {
@@ -56,10 +59,23 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
                 scrollView.contentInset = UIEdgeInsetsZero
                 scrollView.contentSize = scrollView.frame.size
                 
+                if wantsPullToRefresh() {
+                    let headerFrame = CGRectMake(0, -600, scrollView.bounds.size.width, 600)
+                    headerView = TSPullView(frame: headerFrame, isForBottomOfView: false)
+                    headerView!.delegate = self
+                    scrollView.addSubview(headerView)
+                }
+                
+                if wantsPullToRefreshFooter() {
+                    let footerFrame = CGRectMake(0, scrollView.bounds.size.height, scrollView.bounds.size.width, 600)
+                    footerView = TSPullView(frame: footerFrame, isForBottomOfView: true)
+                    footerView!.delegate = self
+                    scrollView.addSubview(footerView)
+                }
+                
                 NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidShow:", name: UIKeyboardDidShowNotification, object: nil)
                 NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide", name: UIKeyboardWillHideNotification, object: nil)
             }
-            
         }
         
         super.viewDidLoad()
@@ -68,6 +84,9 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
     override func viewDidLayoutSubviews() {
         if self.respondsToSelector("specialLayout") {
             self.specialLayout()
+        }
+        if wantsPullToRefreshFooter() {
+            setupFooterView()
         }
         super.viewDidLayoutSubviews()
     }
@@ -79,10 +98,132 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
         }
     }
     
+    func wantsPullToRefresh() -> Bool {
+        return true
+    }
+    
+    func wantsPullToRefreshFooter() -> Bool {
+        return true
+    }
+    
+    // TSPullView
+    func TSPullDidTriggerRefresh(view: TSPullView) {
+        self.fetchData()
+        self.pullDownAction()
+    }
+    
+    func TSPullDidTriggerLoadMore(view: TSPullView) {
+        self.fetchData()
+        self.pullUpAction()
+    }
+    
+    func TSPullDelegateIsLoadingData() -> Bool {
+        return fetchingData
+    }
+    
+    func TSPullViewLastUpdated(pullView: TSPullView) -> NSDate {
+        return NSDate()
+    }
+    
+    func pullDownAction() {
+        self.showActivityScreen()
+        weak var weakSelf = self
+        let delay = 2.5 * Double(NSEC_PER_SEC)
+        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+        dispatch_after(time, dispatch_get_main_queue(), {
+            if let strongSelf = weakSelf {
+                strongSelf.hideActivityScreen()
+                strongSelf.doneLoadingData()
+            }
+        });
+    }
+    
+    func pullUpAction() {
+        self.showActivityScreen()
+        weak var weakSelf = self
+        let delay = 2.5 * Double(NSEC_PER_SEC)
+        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+        dispatch_after(time, dispatch_get_main_queue(), {
+            if let strongSelf = weakSelf {
+                strongSelf.hideActivityScreen()
+                strongSelf.doneLoadingData()
+            }
+            });
+    }
+    //TSPullView end
+    
+    func scrollViewDidScroll(scrollView: UIScrollView!) {
+        var currentOffset = scrollView.contentOffset.y
+        var maximumOffset = max(scrollView.contentSize.height - scrollView.frame.size.height, 0)
+        if currentOffset < 0 {
+            if wantsPullToRefresh() {
+                headerView!.scrollViewDidScroll(scrollView)
+            }
+        } else if currentOffset > maximumOffset {
+            if wantsPullToRefreshFooter() {
+                footerView!.scrollViewDidScroll(scrollView)
+            }
+        }
+    }
+    
+    func scrollViewDidEndDragging(scrollView: UIScrollView!, willDecelerate decelerate: Bool) {
+        var currentOffset = scrollView.contentOffset.y
+        var maximumOffset = max(scrollView.contentSize.height - scrollView.frame.size.height, 0)
+        if currentOffset < 0 {
+            if wantsPullToRefresh() {
+                headerView!.scrollViewDidEndDragging(scrollView)
+            }
+        } else if currentOffset > maximumOffset {
+            if wantsPullToRefreshFooter() {
+                footerView!.scrollViewDidEndDragging(scrollView)
+            }
+        }
+    }
+    
+    func fetchData() {
+        self.fetchingData = true
+    }
+    
+    func doneLoadingData() {
+        fetchingData = false
+        if let scrollView = scrollViewToResize {
+            headerView?.scrollViewDataSourceDidFinishLoading(scrollView)
+            footerView?.scrollViewDataSourceDidFinishLoading(scrollView)
+        }
+    }
+    
+    func reloadData() {
+        if wantsPullToRefreshFooter() {
+            setupFooterView()
+        }
+        
+        if wantsPullToRefresh() {
+            weak var weakSelf = self
+            let delay = 0.5 * Double(NSEC_PER_SEC)
+            let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+            dispatch_after(time, dispatch_get_main_queue(), {
+                if let strongSelf = weakSelf {
+                    strongSelf.doneLoadingData()
+                }
+            });
+        }
+    }
+    
+    func setupFooterView() {
+        if let scrollView = scrollViewToResize {
+            if scrollView.contentSize.height < scrollView.bounds.size.height {
+                footerView!.frame = CGRectMake(footerView!.frame.origin.x, scrollView.bounds.size.height, footerView!.frame.size.width, footerView!.frame.size.height)
+            } else {
+                footerView!.frame = CGRectMake(footerView!.frame.origin.x, scrollView.contentSize.height, footerView!.frame.size.width, footerView!.frame.size.height)
+            }
+        }
+    }
+    
     func specialLayout() {
         if let scrollView = self.scrollViewToResize {
             if scrollView.contentSize.height < scrollView.bounds.size.height {
                 scrollView.contentSize = self.scrollViewContentSize()
+                scrollView.contentSize.height += 500
             }
         }
     }

@@ -28,6 +28,8 @@
 		2B54AE88193ED5C000DDB1E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B54AE7E193ED5C000DDB1E8 /* Main.storyboard */; };
 		2B54AE89193ED5C000DDB1E8 /* AlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B54AE80193ED5C000DDB1E8 /* AlertViewController.xib */; };
 		2B54AE8B193ED5EB00DDB1E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B54AE75193ED5C000DDB1E8 /* AppDelegate.swift */; };
+		2B61B8041959424500F4D70D /* blackArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B61B8021959424500F4D70D /* blackArrow.png */; };
+		2B61B8051959424500F4D70D /* blackArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B61B8031959424500F4D70D /* blackArrow@2x.png */; };
 		2B7E6C0F194153A4006164B5 /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7E6BE419414E8D006164B5 /* TestModel.swift */; };
 		2B7E6C10194153A6006164B5 /* AsyncCommandForTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAD4719193FF00C00BB718A /* AsyncCommandForTesting.swift */; };
 		2B7E6C11194153A8006164B5 /* TSBoilerplateSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B54AE83193ED5C000DDB1E8 /* TSBoilerplateSwiftTests.swift */; };
@@ -57,6 +59,7 @@
 		2BCD01041958EB1D002ADC27 /* CGRectHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCD01031958EB1D002ADC27 /* CGRectHelper.swift */; };
 		2BCD01091958F75D002ADC27 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCD01081958F75D002ADC27 /* String.swift */; };
 		2BCD010B1958F783002ADC27 /* UIColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCD010A1958F783002ADC27 /* UIColorHelper.swift */; };
+		2BCD010D19590BA9002ADC27 /* TSPullView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCD010C19590BA9002ADC27 /* TSPullView.swift */; };
 		2BEAFDF619416D6E00BF0267 /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEAFDF319416D6E00BF0267 /* Author.swift */; };
 		2BEAFDF719416D6E00BF0267 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEAFDF419416D6E00BF0267 /* Book.swift */; };
 		2BEAFDF819416D6E00BF0267 /* BookAdvertisement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEAFDF519416D6E00BF0267 /* BookAdvertisement.swift */; };
@@ -217,6 +220,8 @@
 		2B54AE7E193ED5C000DDB1E8 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		2B54AE80193ED5C000DDB1E8 /* AlertViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertViewController.xib; sourceTree = "<group>"; };
 		2B54AE83193ED5C000DDB1E8 /* TSBoilerplateSwiftTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSBoilerplateSwiftTests.swift; sourceTree = "<group>"; };
+		2B61B8021959424500F4D70D /* blackArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackArrow.png; sourceTree = "<group>"; };
+		2B61B8031959424500F4D70D /* blackArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blackArrow@2x.png"; sourceTree = "<group>"; };
 		2B7E6BE419414E8D006164B5 /* TestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
 		2B84EAF7194003F90063A646 /* constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
 		2BAD4701193ED8F600BB718A /* DemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
@@ -233,6 +238,7 @@
 		2BCD01031958EB1D002ADC27 /* CGRectHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGRectHelper.swift; sourceTree = "<group>"; };
 		2BCD01081958F75D002ADC27 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		2BCD010A1958F783002ADC27 /* UIColorHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIColorHelper.swift; path = ../Extensions/UIColorHelper.swift; sourceTree = "<group>"; };
+		2BCD010C19590BA9002ADC27 /* TSPullView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSPullView.swift; sourceTree = "<group>"; };
 		2BEAFDF319416D6E00BF0267 /* Author.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Author.swift; sourceTree = "<group>"; };
 		2BEAFDF419416D6E00BF0267 /* Book.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		2BEAFDF519416D6E00BF0267 /* BookAdvertisement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookAdvertisement.swift; sourceTree = "<group>"; };
@@ -381,6 +387,8 @@
 		2B54AE72193ED5C000DDB1E8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2B61B8021959424500F4D70D /* blackArrow.png */,
+				2B61B8031959424500F4D70D /* blackArrow@2x.png */,
 				2B54AE73193ED5C000DDB1E8 /* Images.xcassets */,
 			);
 			path = Resources;
@@ -429,6 +437,7 @@
 		2B54AE7B193ED5C000DDB1E8 /* classes */ = {
 			isa = PBXGroup;
 			children = (
+				2BCD010C19590BA9002ADC27 /* TSPullView.swift */,
 				2B54AE7C193ED5C000DDB1E8 /* cells */,
 			);
 			path = classes;
@@ -634,6 +643,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B54AE85193ED5C000DDB1E8 /* Images.xcassets in Resources */,
+				2B61B8051959424500F4D70D /* blackArrow@2x.png in Resources */,
+				2B61B8041959424500F4D70D /* blackArrow.png in Resources */,
 				2B54AE84193ED5C000DDB1E8 /* InfoPlist.strings in Resources */,
 				2B54AE88193ED5C000DDB1E8 /* Main.storyboard in Resources */,
 				2B54AE87193ED5C000DDB1E8 /* Info.plist in Resources */,
@@ -736,6 +747,7 @@
 				2B54AE8B193ED5EB00DDB1E8 /* AppDelegate.swift in Sources */,
 				2BAD4717193FE7F900BB718A /* Singletons.swift in Sources */,
 				2BAD471F193FF35700BB718A /* CommandCenter.swift in Sources */,
+				2BCD010D19590BA9002ADC27 /* TSPullView.swift in Sources */,
 				2BEAFDF819416D6E00BF0267 /* BookAdvertisement.swift in Sources */,
 				2BAD470A193EE95E00BB718A /* CommandRunner.swift in Sources */,
 				2BCD010B1958F783002ADC27 /* UIColorHelper.swift in Sources */,
