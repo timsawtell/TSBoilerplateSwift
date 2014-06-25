@@ -46,15 +46,13 @@ class TSPullView: UIView {
         
         lastUpdatedLabel.autoresizingMask = .FlexibleWidth
         lastUpdatedLabel.font = UIFont.systemFontOfSize(12)
-        lastUpdatedLabel.textColor = ColorWithHexString("576C89")
-        lastUpdatedLabel.shadowColor = UIColor(white: 0.9, alpha: 1)
+        lastUpdatedLabel.textColor = UIColor.darkGrayColor()
         lastUpdatedLabel.shadowOffset = CGSizeMake(0, 1)
         lastUpdatedLabel.textAlignment = .Center
         
         statusLabel.autoresizingMask = .FlexibleWidth
         statusLabel.font = UIFont.systemFontOfSize(13)
-        statusLabel.textColor = ColorWithHexString("576C89")
-        statusLabel.shadowColor = UIColor(white: 0.9, alpha: 1)
+        statusLabel.textColor = UIColor.blackColor()
         statusLabel.shadowOffset = CGSizeMake(0, 1)
         statusLabel.textAlignment = .Center
         
@@ -74,17 +72,18 @@ class TSPullView: UIView {
         layerToRotate.addSublayer(highlighterView.layer)
         
         super.init(frame: frame)
-        self.autoresizingMask = .FlexibleWidth
-        self.backgroundColor = UIColor.whiteColor()
-        self.addSubview(lastUpdatedLabel)
-        self.addSubview(statusLabel)
-        self.layer.addSublayer(layerToRotate)
-        self.setState(.Normal)
+        autoresizingMask = .FlexibleWidth
+        backgroundColor = UIColor.whiteColor()
+        addSubview(lastUpdatedLabel)
+        addSubview(statusLabel)
+        layer.addSublayer(layerToRotate)
+        setState(.Normal)
     }
     
     func setState(newState: TSPullState) {
         switch newState {
             case .Pulling:
+                layerToRotate.hidden = false
                 if !isForBottomOfScrollView {
                     statusLabel.text = "Release to refresh"
                 } else {
@@ -102,7 +101,7 @@ class TSPullView: UIView {
                 layerToRotate.addAnimation(flash, forKey: "flash")
             
             case .Normal:
-
+                layerToRotate.hidden = false
                 if !isForBottomOfScrollView {
                     statusLabel.text = "Pull down to refresh"
                 } else {

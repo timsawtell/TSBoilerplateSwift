@@ -16,79 +16,62 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EpC-Ap-yBm">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EpC-Ap-yBm">
                                 <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k5E-5w-VGk">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k5E-5w-VGk">
                                         <rect key="frame" x="7" y="14" width="97" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="97" id="YyJ-QP-fNF"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
-                                        <variation key="widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="20" y="42" width="97" height="30"/>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES"/>
-                                        <variation key="heightClass=regular-widthClass=regular">
-                                            <rect key="frame" x="101" y="27" width="97" height="30"/>
-                                        </variation>
+                                        <variation key="widthClass=compact"/>
+                                        <variation key="heightClass=regular-widthClass=regular"/>
                                         <connections>
                                             <outlet property="delegate" destination="BYZ-38-t0r" id="DRt-yO-Osu"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lnv-ac-Kqx">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lnv-ac-Kqx">
                                         <rect key="frame" x="7" y="126" width="97" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
-                                        <variation key="widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="20" y="225" width="97" height="30"/>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES"/>
-                                        <variation key="heightClass=regular-widthClass=regular">
-                                            <rect key="frame" x="101" y="126" width="97" height="30"/>
-                                        </variation>
+                                        <variation key="widthClass=compact"/>
+                                        <variation key="heightClass=regular-widthClass=regular"/>
                                         <connections>
                                             <outlet property="delegate" destination="BYZ-38-t0r" id="X3f-cJ-hfc"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xjj-pc-IR8">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xjj-pc-IR8">
                                         <rect key="frame" x="7" y="244" width="97" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
-                                        <variation key="widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="20" y="430" width="97" height="30"/>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES"/>
-                                        <variation key="heightClass=regular-widthClass=regular">
-                                            <rect key="frame" x="101" y="244" width="97" height="30"/>
-                                        </variation>
+                                        <variation key="widthClass=compact"/>
+                                        <variation key="heightClass=regular-widthClass=regular"/>
                                         <connections>
                                             <outlet property="delegate" destination="BYZ-38-t0r" id="jLs-TZ-8Ti"/>
                                         </connections>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <variation key="heightClass=regular"/>
-                                <variation key="heightClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="480" height="640"/>
-                                </variation>
-                                <variation key="widthClass=compact" ambiguous="YES"/>
-                                <variation key="widthClass=compact">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                                </variation>
-                                <variation key="widthClass=regular" ambiguous="YES" misplaced="YES">
+                                <constraints>
+                                    <constraint firstItem="xjj-pc-IR8" firstAttribute="trailing" secondItem="lnv-ac-Kqx" secondAttribute="trailing" id="1Ci-wW-GY6"/>
+                                    <constraint firstItem="xjj-pc-IR8" firstAttribute="top" secondItem="lnv-ac-Kqx" secondAttribute="bottom" constant="88" id="Bzc-My-IC7"/>
+                                    <constraint firstItem="k5E-5w-VGk" firstAttribute="leading" secondItem="lnv-ac-Kqx" secondAttribute="leading" id="OSz-if-dkU"/>
+                                    <constraint firstItem="k5E-5w-VGk" firstAttribute="trailing" secondItem="lnv-ac-Kqx" secondAttribute="trailing" id="QaZ-aO-QlF"/>
+                                    <constraint firstItem="k5E-5w-VGk" firstAttribute="top" secondItem="EpC-Ap-yBm" secondAttribute="top" constant="14" id="V6Z-2V-jOi"/>
+                                    <constraint firstItem="lnv-ac-Kqx" firstAttribute="top" secondItem="k5E-5w-VGk" secondAttribute="bottom" constant="82" id="au7-gu-cXV"/>
+                                    <constraint firstAttribute="bottom" secondItem="k5E-5w-VGk" secondAttribute="bottom" constant="436" id="cZ7-oZ-FcS"/>
+                                    <constraint firstAttribute="trailing" secondItem="k5E-5w-VGk" secondAttribute="trailing" constant="376" id="epw-6S-2vD"/>
+                                    <constraint firstItem="k5E-5w-VGk" firstAttribute="leading" secondItem="EpC-Ap-yBm" secondAttribute="leading" constant="7" id="jSl-gX-HJ6"/>
+                                    <constraint firstItem="xjj-pc-IR8" firstAttribute="leading" secondItem="lnv-ac-Kqx" secondAttribute="leading" id="whC-yU-Lp3"/>
+                                </constraints>
+                                <variation key="widthClass=regular" fixedFrame="YES">
                                     <rect key="frame" x="0.0" y="0.0" width="640" height="480"/>
                                 </variation>
                                 <variation key="heightClass=compact-widthClass=compact" ambiguous="YES">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
                                 </variation>
-                                <variation key="heightClass=compact-widthClass=regular"/>
-                                <variation key="heightClass=regular-widthClass=compact"/>
-                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="640"/>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="640" height="640"/>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=regular"/>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="pTS-5l-v8g"/>
                                 </connections>
@@ -96,18 +79,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="EpC-Ap-yBm" secondAttribute="trailing" id="FR0-yO-Ygn"/>
-                            <constraint firstItem="EpC-Ap-yBm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="IZv-Z8-TYG"/>
-                            <constraint firstItem="EpC-Ap-yBm" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="tEB-h0-1jh"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="EpC-Ap-yBm" secondAttribute="bottom" id="wld-84-AHi"/>
+                            <constraint firstItem="EpC-Ap-yBm" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Flm-4v-R5k"/>
+                            <constraint firstItem="EpC-Ap-yBm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="LNb-5t-jSP"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="EpC-Ap-yBm" secondAttribute="bottom" id="Ngr-eX-DTw"/>
+                            <constraint firstAttribute="trailing" secondItem="EpC-Ap-yBm" secondAttribute="trailing" id="Tj4-7d-Q7u"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                        <variation key="heightClass=regular"/>
-                        <variation key="widthClass=compact"/>
-                        <variation key="widthClass=regular"/>
-                        <variation key="heightClass=compact-widthClass=regular"/>
-                        <variation key="heightClass=regular-widthClass=compact"/>
-                        <variation key="heightClass=regular-widthClass=regular"/>
                     </view>
                     <connections>
                         <outlet property="scrollViewToResize" destination="EpC-Ap-yBm" id="Ag0-Gk-NzH"/>
@@ -120,71 +97,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="124" y="141"/>
-        </scene>
-        <!--Table View Controller-->
-        <scene sceneID="39x-Y5-V3m">
-            <objects>
-                <viewController id="FUq-tL-apE" customClass="TSTableViewController" customModule="TSBoilerplateSwift" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="GMc-fZ-NTv"/>
-                        <viewControllerLayoutGuide type="bottom" id="jN0-Zl-I5C"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Zag-Gb-fwH">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="CZV-Qv-6kc">
-                                <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellId" id="mj3-zC-4a4" customClass="Cell" customModule="TSBoilerplateSwift" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="480" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mj3-zC-4a4" id="2z5-vm-MHb">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                                <variation key="heightClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
-                                </variation>
-                                <variation key="heightClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="480" height="640"/>
-                                </variation>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                                </variation>
-                                <variation key="widthClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="640" height="480"/>
-                                </variation>
-                                <variation key="heightClass=compact-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
-                                </variation>
-                                <variation key="heightClass=compact-widthClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="640" height="320"/>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="640"/>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="640" height="640"/>
-                                </variation>
-                                <connections>
-                                    <outlet property="dataSource" destination="FUq-tL-apE" id="PnH-DQ-ffR"/>
-                                    <outlet property="delegate" destination="FUq-tL-apE" id="kXN-AX-JPR"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                    </view>
-                    <connections>
-                        <outlet property="tableView" destination="CZV-Qv-6kc" id="5yk-DA-iIh"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="EaS-tc-16w" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="771" y="141"/>
         </scene>
     </scenes>
 </document>

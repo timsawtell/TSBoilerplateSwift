@@ -24,11 +24,13 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
     weak var activeControl: UIResponder?
     
     override func viewDidLoad() {
-        self.inputFields = [tf1, tf2, tf3]
+        if nil != tf1 && nil != tf2 && nil != tf3 {
+            inputFields = [tf1, tf2, tf3]
+        }
+        automaticallyAdjustsScrollViewInsets = false
         
-        self.automaticallyAdjustsScrollViewInsets = false
-        if self.inputFields.count > 0 {
-            var toolbar = UIToolbar(frame: CGRectMake(0, 0, self.view.frame.size.width, 50))
+        if inputFields.count > 0 {
+            var toolbar = UIToolbar(frame: CGRectMake(0, 0, view.frame.size.width, 50))
             toolbar.barStyle = UIBarStyle.Default
             toolbar.opaque = false
             toolbar.translucent = true
@@ -45,7 +47,7 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
                 UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Done, target: self, action: "closeKeyboard")];
             toolbar.sizeToFit()
             
-            for control : AnyObject in self.inputFields {
+            for control : AnyObject in inputFields {
                 if control.isKindOfClass(UITextView.self) {
                     let tv = control as UITextView
                     tv.inputAccessoryView = toolbar
@@ -54,45 +56,42 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
                     tf.inputAccessoryView = toolbar
                 }
             }
-            
-            if let scrollView: UIScrollView = self.scrollViewToResize {
-                scrollView.contentInset = UIEdgeInsetsZero
-                scrollView.contentSize = scrollView.frame.size
-                
-                if wantsPullToRefresh() {
-                    let headerFrame = CGRectMake(0, -600, scrollView.bounds.size.width, 600)
-                    headerView = TSPullView(frame: headerFrame, isForBottomOfView: false)
-                    headerView!.delegate = self
-                    scrollView.addSubview(headerView)
-                }
-                
-                if wantsPullToRefreshFooter() {
-                    let footerFrame = CGRectMake(0, scrollView.bounds.size.height, scrollView.bounds.size.width, 600)
-                    footerView = TSPullView(frame: footerFrame, isForBottomOfView: true)
-                    footerView!.delegate = self
-                    scrollView.addSubview(footerView)
-                }
-                
-                NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidShow:", name: UIKeyboardDidShowNotification, object: nil)
-                NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide", name: UIKeyboardWillHideNotification, object: nil)
-            }
         }
         
+        if let scrollView: UIScrollView = scrollViewToResize {
+            scrollView.contentInset = UIEdgeInsetsZero
+            scrollView.contentSize = scrollView.frame.size
+            
+            if wantsPullToRefresh() {
+                let headerFrame = CGRectMake(0, -600, scrollView.bounds.size.width, 600)
+                headerView = TSPullView(frame: headerFrame, isForBottomOfView: false)
+                headerView!.delegate = self
+                scrollView.addSubview(headerView)
+            }
+            
+            if wantsPullToRefreshFooter() {
+                let footerFrame = CGRectMake(0, scrollView.bounds.size.height, scrollView.bounds.size.width, 600)
+                footerView = TSPullView(frame: footerFrame, isForBottomOfView: true)
+                footerView!.delegate = self
+                scrollView.addSubview(footerView)
+            }
+            
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidShow:", name: UIKeyboardDidShowNotification, object: nil)
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide", name: UIKeyboardWillHideNotification, object: nil)
+        }
         super.viewDidLoad()
     }
     
     override func viewDidLayoutSubviews() {
-        if self.respondsToSelector("specialLayout") {
-            self.specialLayout()
-        }
+        super.viewDidLayoutSubviews()
+        specialLayout()
         if wantsPullToRefreshFooter() {
             setupFooterView()
         }
-        super.viewDidLayoutSubviews()
     }
     
     deinit {
-        if nil != self.scrollViewToResize {
+        if nil != scrollViewToResize {
             NSNotificationCenter.defaultCenter().removeObserver(self, forKeyPath: UIKeyboardDidShowNotification)
             NSNotificationCenter.defaultCenter().removeObserver(self, forKeyPath: UIKeyboardWillHideNotification)
         }
@@ -100,13 +99,13 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
     
     // TSPullView
     func TSPullDidTriggerRefresh(view: TSPullView) {
-        self.fetchData()
-        self.pullDownAction()
+        fetchData()
+        pullDownAction()
     }
     
     func TSPullDidTriggerLoadMore(view: TSPullView) {
-        self.fetchData()
-        self.pullUpAction()
+        fetchData()
+        pullUpAction()
     }
     
     func TSPullDelegateIsLoadingData() -> Bool {
@@ -118,7 +117,7 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
     }
     
     func pullDownAction() {
-        self.showActivityScreen()
+        showActivityScreen()
         weak var weakSelf = self
         
         delay(2.5) {
@@ -130,7 +129,7 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
     }
     
     func pullUpAction() {
-        self.showActivityScreen()
+        showActivityScreen()
         weak var weakSelf = self
         
         delay(2.5) {
@@ -182,7 +181,7 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
     }
     
     func fetchData() {
-        self.fetchingData = true
+        fetchingData = true
     }
     
     func doneLoadingData() {
@@ -221,16 +220,15 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
     
     //Autolayout + UIScrollView madness
     func specialLayout() {
-        if let scrollView = self.scrollViewToResize {
+        if let scrollView = scrollViewToResize {
             if scrollView.contentSize.height < scrollView.bounds.size.height {
-                scrollView.contentSize = self.scrollViewContentSize()
-                scrollView.contentSize.height += 500
+                scrollView.contentSize = scrollViewContentSize()
             }
         }
     }
     
     func scrollViewContentSize() -> CGSize {
-        if let scrollView = self.scrollViewToResize {
+        if let scrollView = scrollViewToResize {
             return scrollView.bounds.size
         }
         return CGSizeZero
@@ -242,9 +240,9 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
         if let segControl: UISegmentedControl = sender as? UISegmentedControl {
             switch segControl.selectedSegmentIndex {
             case 0:
-                self.prevInput()
+                prevInput()
             case 1:
-                self.nextInput()
+                nextInput()
             default:
                 break
             }
@@ -299,23 +297,23 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
     }
     
     func closeKeyboard() {
-        self.activeControl?.resignFirstResponder()
+        activeControl?.resignFirstResponder()
     }
     
     func keyboardDidShow(aNotification: NSNotification) {
         if let scrollView: UIScrollView = scrollViewToResize {
             var info: NSDictionary = aNotification.userInfo
             var kbSize: CGSize = info.objectForKey(UIKeyboardFrameEndUserInfoKey).CGRectValue().size
-            var viewHeight = self.view.frame.size.height
+            var viewHeight = view.frame.size.height
             // bug with the notification being the wrong size when in landscape
             if (isLandscape) {
                 var kbSizeHeight = min(kbSize.width, kbSize.height)
                 var kbSizeWidth = max(kbSize.width, kbSize.height)
                 kbSize = CGSizeMake(kbSizeWidth, kbSizeHeight)
-                viewHeight = min(self.view.frame.size.height, self.view.frame.size.width) // just querying self.view.frame.size.height won't work as it reports a portrait size with a rotation transform applied to the layer
+                viewHeight = min(view.frame.size.height, view.frame.size.width) // just querying self.view.frame.size.height won't work as it reports a portrait size with a rotation transform applied to the layer
             }
             var distanceOfScrollViewFromBottomOfWindow = max(0, viewHeight - scrollView.frame.origin.y - (scrollView.frame.origin.y + scrollView.frame.size.height))
-            var adjustForToolBar = (nil == self.tabBarController) ? 0 : self.tabBarController?.tabBar.frame.size.height
+            var adjustForToolBar = (nil == tabBarController) ? 0 : tabBarController?.tabBar.frame.size.height
             var contentInsets = UIEdgeInsetsMake(0, 0, kbSize.height - scrollView.frame.origin.y - distanceOfScrollViewFromBottomOfWindow - adjustForToolBar!, 0)
             scrollView.scrollIndicatorInsets = contentInsets
             scrollView.contentInset = contentInsets

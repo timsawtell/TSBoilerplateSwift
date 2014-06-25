@@ -31,4 +31,12 @@ class TSTableViewController: TSViewController, UITableViewDataSource, UITableVie
         cell.textLabel.text = "cell \(indexPath.row)"
         return cell
     }
+    
+    override func wantsPullToRefresh() -> Bool {
+        return true
+    }
+    
+    override func wantsPullToRefreshFooter() -> Bool {
+        return true
+    }
 }
