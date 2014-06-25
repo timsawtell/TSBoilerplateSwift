@@ -120,27 +120,25 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
     func pullDownAction() {
         self.showActivityScreen()
         weak var weakSelf = self
-        let delay = 2.5 * Double(NSEC_PER_SEC)
-        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
-        dispatch_after(time, dispatch_get_main_queue(), {
+        
+        delay(2.5) {
             if let strongSelf = weakSelf {
                 strongSelf.hideActivityScreen()
                 strongSelf.doneLoadingData()
             }
-        });
+        }
     }
     
     func pullUpAction() {
         self.showActivityScreen()
         weak var weakSelf = self
-        let delay = 2.5 * Double(NSEC_PER_SEC)
-        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
-        dispatch_after(time, dispatch_get_main_queue(), {
+        
+        delay(2.5) {
             if let strongSelf = weakSelf {
                 strongSelf.hideActivityScreen()
                 strongSelf.doneLoadingData()
             }
-            });
+        }
     }
     //END TSPullView
     
@@ -202,13 +200,11 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
         
         if wantsPullToRefresh() {
             weak var weakSelf = self
-            let delay = 0.5 * Double(NSEC_PER_SEC)
-            let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
-            dispatch_after(time, dispatch_get_main_queue(), {
+            delay(0.5) {
                 if let strongSelf = weakSelf {
                     strongSelf.doneLoadingData()
                 }
-            });
+            }
         }
     }
     
@@ -375,7 +371,7 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
         dimmerView.backgroundColor = UIColor(white: 0.0, alpha: 1.0)
         dimmerView.alpha = 0.6
         activitySuperview.addSubview(dimmerView)
-        let boxEdge: Float = 250.0
+        let boxEdge: CGFloat = 250.0
         let containerBG = CGRectMake(
             (activitySuperview.bounds.size.width / 2) - (boxEdge / 2),
             (activitySuperview.bounds.height / 2) - (boxEdge / 2), boxEdge, boxEdge)
@@ -385,11 +381,11 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
         containerView.backgroundColor = UIColor.clearColor()
         activitySuperview.addSubview(containerView)
         
-        let spinnerEdge: Float = 90
+        let spinnerEdge: CGFloat = 90
         let spinnerBG = CGRectMake((containerBG.size.width / 2) - (spinnerEdge / 2),
             (containerBG.size.height / 2) - (spinnerEdge / 2), spinnerEdge, spinnerEdge)
         let spinnerBGView = UIView(frame: spinnerBG)
-        spinnerBGView.backgroundColor = ColorWithHexString("5266A4")
+        spinnerBGView.backgroundColor = ColorWithHexString("34A9DA")
         spinnerBGView.opaque = false
         spinnerBGView.layer.cornerRadius = 45
         containerView.addSubview(spinnerBGView)

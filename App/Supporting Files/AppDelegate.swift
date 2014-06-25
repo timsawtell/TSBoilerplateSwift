@@ -13,18 +13,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
         // Override point for customization after application launch.  
 
-        var book = Book()
-        book.title = "A storm of swords"
-        var author = Author()
-        author.name = "George R. R. Martin"
-        book.setAuthor(author)
-        globalModel.books.addObject(book)
-        globalModel.save()
-        
         return true
     }
 
@@ -51,7 +42,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         globalModel.save()
     }
-
-
 }
 

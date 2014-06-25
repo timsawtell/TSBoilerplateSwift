@@ -32,5 +32,5 @@ func ColorWithHexString(hexString: String) -> UIColor {
     NSScanner.scannerWithString(gString).scanHexInt(&g)
     NSScanner.scannerWithString(bString).scanHexInt(&b)
     
-    return UIColor(red: Float(r) / 255.0, green: Float(g) / 255.0, blue: Float(b) / 255.0, alpha: Float(1))
+    return UIColor(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: CGFloat(1))
 }

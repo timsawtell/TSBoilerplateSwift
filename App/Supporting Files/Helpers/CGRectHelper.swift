@@ -8,17 +8,17 @@
 
 import Foundation
 
-func DegreesToRadians(degrees: Float) -> Float {
-    return degrees * Float(M_PI) / 180
+func DegreesToRadians(degrees: Float) -> CGFloat {
+    return CGFloat(degrees * Float(M_PI) / 180)
 }
 
-func RadiansToDegrees(radians: Float) -> Float {
-    return radians * 180 / Float(M_PI)
+func RadiansToDegrees(radians: Float) -> CGFloat {
+    return CGFloat(radians * 180 / Float(M_PI))
 }
 
 func CGRectSetX(rect: CGRect, x: Float) -> CGRect {
     var r = rect
-    r.origin.x = x
+    r.origin.x = CGFloat(x)
     return r
 }
 
@@ -60,4 +60,3 @@ func CGRectCenter(rect: CGRect) -> CGPoint {
 func CGRectCenteredInsideRect(outerRect: CGRect, innerRect: CGRect) -> CGRect {
     return CGRectCenteredInnerRect(CGRectCenter(outerRect), innerRect.size)
 }
-

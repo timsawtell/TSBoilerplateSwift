@@ -28,7 +28,7 @@ class TSPullView: UIView {
     var isForBottomOfScrollView = false
     var delegate: TSPullViewDelegate?
     let flipDuration = 0.18
-    let dragHeightThreshold: Float = 80.0 // 80 points past top will trigger a state change
+    let dragHeightThreshold: CGFloat = 80.0 // 80 points past top will trigger a state change
     var highlighterView: HighlighterView // the slidy uppy whitey boxy thing
     
     init(frame: CGRect, isForBottomOfView: Bool) {
@@ -41,7 +41,7 @@ class TSPullView: UIView {
         } else {
             lastUpdatedLabel = UILabel(frame: CGRectMake(0, 20, frame.size.width, 20))
             statusLabel = UILabel(frame: CGRectMake(0, 2, frame.size.width, 20))
-            layerToRotate.frame = CGRectMake(25, 5, 30, 55)
+            layerToRotate.frame = CGRectMake(25, 7, 30, 55)
         }
         
         lastUpdatedLabel.autoresizingMask = .FlexibleWidth
@@ -61,17 +61,14 @@ class TSPullView: UIView {
         layerToRotate.contentsGravity = kCAGravityResizeAspect
         layerToRotate.contents = UIImage(named:"blackArrow").CGImage
         layerToRotate.contentsScale = UIScreen.mainScreen().scale
-        if isForBottomOfView {
-            layerToRotate.transform = CATransform3DMakeRotation(DegreesToRadians(180), 0, 0, 1)
-        }
         
-        highlighterView = HighlighterView(frame: CGRectMake(0, 0, layerToRotate.frame.size.width, 7))
+        highlighterView = HighlighterView(frame: CGRectMake(0, -7, layerToRotate.frame.size.width, 7))
         weak var weakHLV = highlighterView
         var height = layerToRotate.frame.size.height
         UIView.animateWithDuration(1.2, delay: 0.2, options: .Repeat,
             animations: {
                 if let strongHLV = weakHLV {
-                    strongHLV.frame = CGRectSetY(strongHLV.frame, strongHLV.frame.origin.y + height - 7) // scroll up the rotate image
+                    strongHLV.frame = CGRectSetY(strongHLV.frame, strongHLV.frame.origin.y + height + strongHLV.frame.size.height  ) // scroll up the rotate image
                 }
             }, completion: nil)
         layerToRotate.addSublayer(highlighterView.layer)
@@ -103,36 +100,24 @@ class TSPullView: UIView {
                 flash.autoreverses = true
                 flash.repeatCount = MAXFLOAT
                 layerToRotate.addAnimation(flash, forKey: "flash")
-                CATransaction.begin()
-                CATransaction.setAnimationDuration(flipDuration)
-                layerToRotate.transform = CATransform3DMakeRotation(DegreesToRadians(180), 0, 0, 1)
-                CATransaction.commit()
             
             case .Normal:
+
                 if !isForBottomOfScrollView {
                     statusLabel.text = "Pull down to refresh"
                 } else {
                     statusLabel.text = "Pull up to load more"
-                    layerToRotate.transform = CATransform3DIdentity
                     layerToRotate.transform = CATransform3DMakeRotation(DegreesToRadians(180), 0, 0, 1)
+                }
+                
+                if !isForBottomOfScrollView {
+                    statusLabel.text = "Pull down to refresh"
+                } else {
+                    statusLabel.text = "Pull up to load more"
                 }
                 
                 highlighterView.hidden = false
                 layerToRotate.removeAnimationForKey("flash")
-                if state == .Pulling {
-                    CATransaction.begin()
-                    CATransaction.setAnimationDuration(flipDuration)
-                    layerToRotate.transform = CATransform3DIdentity
-                    if isForBottomOfScrollView {
-                        layerToRotate.transform = CATransform3DMakeRotation(DegreesToRadians(180), 0, 0, 1)
-                    }
-                    CATransaction.commit()
-                }
-                CATransaction.begin()
-                CATransaction.setValue(kCFBooleanTrue, forKey: kCATransactionDisableActions)
-                layerToRotate.hidden = false
-                layerToRotate.transform = CATransform3DIdentity
-                CATransaction.commit()
             
             case .Loading:
                 highlighterView.hidden = false
