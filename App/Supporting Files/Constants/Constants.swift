@@ -15,3 +15,5 @@ let kModelArchiveKey = "model"
 var deviceOrientation: UIInterfaceOrientation = UIApplication.sharedApplication().statusBarOrientation
 var isPortrait = deviceOrientation == UIInterfaceOrientation.Portrait || deviceOrientation == UIInterfaceOrientation.PortraitUpsideDown
 var isLandscape = deviceOrientation == UIInterfaceOrientation.LandscapeLeft || deviceOrientation == UIInterfaceOrientation.LandscapeRight
+
+let kBaseURL = "www.example.com"

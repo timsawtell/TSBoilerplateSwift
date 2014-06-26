@@ -44,7 +44,7 @@ class Model :NSObject, NSCoding {
     
     class func sharedModel() -> Model? {
         if _modelInstantied {
-            return globalModel // return the already instantiated global from Singleton.swift
+            return GlobalModel // return the already instantiated global from Singleton.swift
         }
         var path = CommandCenter.pathForModel()
         var error: NSError?
