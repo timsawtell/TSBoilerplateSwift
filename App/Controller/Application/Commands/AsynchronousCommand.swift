@@ -8,7 +8,7 @@
 
 import Foundation
 
-//not sure if this is ever needed typealias commandCompletionBlock = ((error: NSError?) -> Void)!
+typealias commandCompletionBlock = ((error: NSError?) -> Void)!
 
 class AsynchronousCommand : Command {
     

@@ -13,16 +13,3 @@ let GlobalModel = Model.sharedModel()!
 
 let GlobalManager = setupGlobalManager()
 let GlobalSession = setupGlobalSession()
-
-func setupGlobalManager() -> AFHTTPRequestOperationManager {
-    var GlobalManager = AFHTTPRequestOperationManager(baseURL: NSURL(string: kBaseURL))
-    GlobalManager.requestSerializer = AFJSONRequestSerializer(writingOptions: NSJSONWritingOptions.PrettyPrinted)
-    return GlobalManager
-}
-
-func setupGlobalSession() -> AFHTTPSessionManager {
-    
-    var session = NSURLSessionConfiguration.backgroundSessionConfigurationWithIdentifier("au.com.sawtellsoftware.wotif")
-    var sharedSession = AFHTTPSessionManager(baseURL:NSURL(string:kBaseURL), sessionConfiguration:session)
-    return sharedSession
-}

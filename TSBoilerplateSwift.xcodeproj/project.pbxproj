@@ -34,6 +34,8 @@
 		2B61B809195A4A0700F4D70D /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B61B808195A4A0700F4D70D /* Cell.swift */; };
 		2B61B80B195A4A4900F4D70D /* StoryboardContants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B61B80A195A4A4900F4D70D /* StoryboardContants.swift */; };
 		2B61B80D195A8ABA00F4D70D /* GCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B61B80C195A8ABA00F4D70D /* GCD.swift */; };
+		2B7824D9195CD166005278BF /* APICenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7824D8195CD166005278BF /* APICenter.swift */; };
+		2B7824DB195CD3A0005278BF /* NSError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7824DA195CD3A0005278BF /* NSError.swift */; };
 		2B7E6C0F194153A4006164B5 /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7E6BE419414E8D006164B5 /* TestModel.swift */; };
 		2B7E6C10194153A6006164B5 /* AsyncCommandForTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAD4719193FF00C00BB718A /* AsyncCommandForTesting.swift */; };
 		2B7E6C11194153A8006164B5 /* TSBoilerplateSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B54AE83193ED5C000DDB1E8 /* TSBoilerplateSwiftTests.swift */; };
@@ -50,6 +52,7 @@
 		2B7E6C21194153F0006164B5 /* Singletons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAD4716193FE7F900BB718A /* Singletons.swift */; };
 		2B7E6C22194153F0006164B5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B84EAF7194003F90063A646 /* Constants.swift */; };
 		2B84EAF8194003F90063A646 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B84EAF7194003F90063A646 /* Constants.swift */; };
+		2B8BB85B195D07D20016BC63 /* BookBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8BB85A195D07D20016BC63 /* BookBuilder.swift */; };
 		2BAD4704193ED94300BB718A /* TSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAD4703193ED94300BB718A /* TSViewController.swift */; };
 		2BAD4706193EDC5A00BB718A /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAD4705193EDC5A00BB718A /* Command.swift */; };
 		2BAD4708193EDD5000BB718A /* AsynchronousCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAD4707193EDD5000BB718A /* AsynchronousCommand.swift */; };
@@ -229,8 +232,11 @@
 		2B61B808195A4A0700F4D70D /* Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
 		2B61B80A195A4A4900F4D70D /* StoryboardContants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardContants.swift; sourceTree = "<group>"; };
 		2B61B80C195A8ABA00F4D70D /* GCD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCD.swift; sourceTree = "<group>"; };
+		2B7824D8195CD166005278BF /* APICenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APICenter.swift; sourceTree = "<group>"; };
+		2B7824DA195CD3A0005278BF /* NSError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSError.swift; sourceTree = "<group>"; };
 		2B7E6BE419414E8D006164B5 /* TestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
 		2B84EAF7194003F90063A646 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		2B8BB85A195D07D20016BC63 /* BookBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookBuilder.swift; sourceTree = "<group>"; };
 		2BAD4703193ED94300BB718A /* TSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSViewController.swift; sourceTree = "<group>"; };
 		2BAD4705193EDC5A00BB718A /* Command.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
 		2BAD4707193EDD5000BB718A /* AsynchronousCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsynchronousCommand.swift; sourceTree = "<group>"; };
@@ -340,6 +346,7 @@
 		2B54AE6A193ED5C000DDB1E8 /* Builders */ = {
 			isa = PBXGroup;
 			children = (
+				2B8BB85A195D07D20016BC63 /* BookBuilder.swift */,
 			);
 			path = Builders;
 			sourceTree = "<group>";
@@ -428,6 +435,7 @@
 				2BCD010A1958F783002ADC27 /* UIColorHelper.swift */,
 				2BCD01031958EB1D002ADC27 /* CGRectHelper.swift */,
 				2B61B80C195A8ABA00F4D70D /* GCD.swift */,
+				2B7824D8195CD166005278BF /* APICenter.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -512,6 +520,7 @@
 			isa = PBXGroup;
 			children = (
 				2BCD01081958F75D002ADC27 /* String.swift */,
+				2B7824DA195CD3A0005278BF /* NSError.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -751,9 +760,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B8BB85B195D07D20016BC63 /* BookBuilder.swift in Sources */,
 				2BEAFDF619416D6E00BF0267 /* Author.swift in Sources */,
 				2BCD01041958EB1D002ADC27 /* CGRectHelper.swift in Sources */,
 				2B54AE8B193ED5EB00DDB1E8 /* AppDelegate.swift in Sources */,
+				2B7824D9195CD166005278BF /* APICenter.swift in Sources */,
 				2BAD4717193FE7F900BB718A /* Singletons.swift in Sources */,
 				2B61B807195A34E900F4D70D /* TSTableViewController.swift in Sources */,
 				2B61B809195A4A0700F4D70D /* Cell.swift in Sources */,
@@ -773,6 +784,7 @@
 				897F010719406FE800AE9644 /* _Book.swift in Sources */,
 				897F0113194076A400AE9644 /* _BookAdvertisement.swift in Sources */,
 				2BEAFDF719416D6E00BF0267 /* Book.swift in Sources */,
+				2B7824DB195CD3A0005278BF /* NSError.swift in Sources */,
 				2BAD4708193EDD5000BB718A /* AsynchronousCommand.swift in Sources */,
 				2B25BF23194041B600E8B065 /* Model.xcdatamodeld in Sources */,
 				2B84EAF8194003F90063A646 /* Constants.swift in Sources */,
