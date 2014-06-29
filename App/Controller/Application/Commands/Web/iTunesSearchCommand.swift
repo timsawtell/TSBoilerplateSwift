@@ -27,7 +27,7 @@ class iTunesSearchCommand: AsynchronousCommand {
                             if let resultsArray: NSArray = responseDict.valueForKey("results") as? NSArray {
                                 if let bookDictionary: NSDictionary = resultsArray.objectAtIndex(0) as? NSDictionary {
                                     // create the book
-                                    NSLog("\(bookDictionary)")
+                                    let book = BookBuilder.objFromJSONDict(bookDictionary)
                                     strongSelf.finish()
                                     return
                                 }

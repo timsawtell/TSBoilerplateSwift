@@ -13,15 +13,18 @@ class BookBuilder {
     class func objFromJSONDict(json: NSDictionary) ->Book {
         
         let book = Book()
-        book.author = Author()
+        let auth = Author()
+        book.setAuthor(auth)
         BookBuilder.updateObjWithJSONDict(book, json: json)
         return book
     }
     
     class func updateObjWithJSONDict(obj: Book, json: NSDictionary) ->Book {
-        obj.author!.name = json.valueForKey("artistName") as? NSString
-        obj.title = json.valueForKey("trackName") as? NSString
-        
+        if let author = obj.author {
+            author.name = json.objectForKey("artistName") as? NSString
+        }
+        obj.title = json.objectForKey("trackName") as? NSString
+                
         return obj
     }
 }
