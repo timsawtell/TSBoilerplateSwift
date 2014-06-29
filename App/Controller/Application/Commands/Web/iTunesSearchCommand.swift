@@ -19,7 +19,7 @@ class iTunesSearchCommand: AsynchronousCommand {
                 if let responseDict = responseObject as? NSDictionary {
                     if let resultCount: Int = responseDict.valueForKey("resultCount") as? Int {
                         if resultCount <= 0 {
-                            strongSelf.error = NSError.errorWithCode(NSURLErrorCannotParseResponse, text: "No results found")
+                            strongSelf.error = NSError.errorWithCode(NSURLErrorCannotParseResponse, text: kNoResultsText)
                             strongSelf.finish()
                             return
                         } else {

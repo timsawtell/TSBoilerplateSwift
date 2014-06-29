@@ -13,6 +13,7 @@ let kModelFileName = "model.dat"
 let kModelArchiveKey = "model"
 let kReverseDomainName = "au.com.sawtellsoftware.tsboilerplate"
 let kUnableToParseMessageText = "Unable to parse results";
+let kNoResultsText = "No results found"
 
 var deviceOrientation: UIInterfaceOrientation = UIApplication.sharedApplication().statusBarOrientation
 var isPortrait = deviceOrientation == UIInterfaceOrientation.Portrait || deviceOrientation == UIInterfaceOrientation.PortraitUpsideDown
