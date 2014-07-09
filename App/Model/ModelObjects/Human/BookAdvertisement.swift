@@ -1,6 +1,6 @@
 import Foundation
 
-class BookAdvertisement: _BookAdvertisement, NSCoding {
+class BookAdvertisement: _BookAdvertisement, NSSecureCoding {
 
 	// add your custom vars here
 
@@ -19,9 +19,8 @@ class BookAdvertisement: _BookAdvertisement, NSCoding {
 
     }
 
-/*
     override class func supportsSecureCoding() -> Bool {
         return true
     }
-*/
+
 }

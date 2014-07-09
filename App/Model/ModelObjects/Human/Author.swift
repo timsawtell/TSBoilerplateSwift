@@ -1,6 +1,6 @@
 import Foundation
 
-class Author: _Author, NSCoding {
+class Author: _Author, NSSecureCoding {
 
 	// add your custom vars here
 
@@ -19,9 +19,8 @@ class Author: _Author, NSCoding {
 
     }
 
-/*
     override class func supportsSecureCoding() -> Bool {
         return true
     }
-*/
+
 }

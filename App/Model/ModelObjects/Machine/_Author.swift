@@ -1,6 +1,9 @@
 import Foundation
 
-class _Author: NSObject, NSCoding {
+// Dont edit this class! Make your changes in the Human version of this class
+// This may be formatted like arse but I prefer an easy to read machine.motemplate file over an easy to read class file that is never edited
+
+class _Author: NSObject, NSSecureCoding {
 
 			let kModelPropertyAuthorAge = "age"
 
@@ -46,28 +49,6 @@ class _Author: NSObject, NSCoding {
 				self.removeBooksObject(value_, setInverse:true)
 			}
 
-	func encodeWithCoder(aCoder: NSCoder!) {
-
-	    		aCoder.encodeObject(self.age, forKey:kModelPropertyAuthorAge)
-
-	    		aCoder.encodeObject(self.name, forKey:kModelPropertyAuthorName)
-
-	    	aCoder.encodeObject(self.books, forKey:kModelPropertyAuthorBooks)
-
-    }
-
-    init(coder aDecoder: NSCoder!) {
-
-	    				self.age = aDecoder.decodeObjectForKey(kModelPropertyAuthorAge) as? NSNumber
-
-	    				self.name = aDecoder.decodeObjectForKey(kModelPropertyAuthorName) as? NSString
-
-	        	self.books = aDecoder.decodeObjectForKey(kModelPropertyAuthorBooks) as NSMutableSet
-
-    }
-
-/* to be fixed when Swift supports creating a set of Class types
-
     class func supportsSecureCoding() -> Bool {
         return true
     }
@@ -88,11 +69,10 @@ class _Author: NSObject, NSCoding {
 
 	    				self.name = aDecoder.decodeObjectOfClass(NSString.self, forKey:kModelPropertyAuthorName) as? NSString
 
-	        	self.books = aDecoder.decodeObjectOfClass(NSMutableSet.self, forKey:kModelPropertyAuthorBooks) as NSMutableSet
+	        	self.books = aDecoder.decodeObjectOfClasses(NSSet(objects:[NSMutableSet.self, Author.self]), forKey:kModelPropertyAuthorBooks) as NSMutableSet
 
     }
-*/
+
 	init() {
     }
-
 }

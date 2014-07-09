@@ -1,6 +1,9 @@
 import Foundation
 
-class _<$managedObjectClassName$>: NSObject, NSCoding {
+// Dont edit this class! Make your changes in the Human version of this class
+// This may be formatted like arse but I prefer an easy to read machine.motemplate file over an easy to read class file that is never edited
+
+class _<$managedObjectClassName$>: NSObject, NSSecureCoding {
 
 	<$checkNonTransientRelationshipCycles $>
 
@@ -141,40 +144,6 @@ class _<$managedObjectClassName$>: NSObject, NSCoding {
 		<$endif$>
 	<$endforeach do$>
 
-
-	func encodeWithCoder(aCoder: NSCoder!) {
-		<$foreach Attribute noninheritedAttributes do$>
-			<$if Attribute.hasDefinedAttributeType$>
-	    		aCoder.encodeObject(self.<$Attribute.name$>, forKey:kModelProperty<$managedObjectClassName$><$Attribute.name.initialCapitalString$>)
-	    	<$endif$>
-	    <$endforeach do$>
-	    <$foreach Relationship noninheritedRelationships do$>
-	    	aCoder.encodeObject(self.<$Relationship.name$>, forKey:kModelProperty<$managedObjectClassName$><$Relationship.name.initialCapitalString$>)
-	    <$endforeach do$>
-    	
-    }
-
-    init(coder aDecoder: NSCoder!) {
-    	<$foreach Attribute noninheritedAttributes do$>
-			<$if Attribute.hasDefinedAttributeType$>
-	    			<$if Relationship.isTransient || Relationship.isOptional$>
-	    				self.<$Attribute.name$> = aDecoder.decodeObjectForKey(kModelProperty<$managedObjectClassName$><$Attribute.name.initialCapitalString$>) as? <$Attribute.attributeValueClassName$>
-	    			<$else$>
-						self.<$Attribute.name$> = aDecoder.decodeObjectForKey(kModelProperty<$managedObjectClassName$><$Attribute.name.initialCapitalString$>) as <$Attribute.attributeValueClassName$>
-	    			<$endif$>
-	    	<$endif$> 
-	    <$endforeach do$>
-		<$foreach Relationship noninheritedRelationships do$>
-	        <$if Relationship.isToMany$>
-	        	self.<$Relationship.name$> = aDecoder.decodeObjectForKey(kModelProperty<$managedObjectClassName$><$Relationship.name.initialCapitalString$>) as NSMutableSet
-	        <$else$>
-	        	self.<$Relationship.name$> = aDecoder.decodeObjectForKey(kModelProperty<$managedObjectClassName$><$Relationship.name.initialCapitalString$>) as? _<$Relationship.destinationEntity.managedObjectClassName$>
-	        <$endif$>
-	    <$endforeach do$>
-    }
-
-/* to be fixed when Swift supports creating a set of Class types
-
     class func supportsSecureCoding() -> Bool {
         return true
     }
@@ -203,15 +172,13 @@ class _<$managedObjectClassName$>: NSObject, NSCoding {
 	    <$endforeach do$>
 		<$foreach Relationship noninheritedRelationships do$>
 	        <$if Relationship.isToMany$>
-	        	self.<$Relationship.name$> = aDecoder.decodeObjectOfClass(NSMutableSet.self, forKey:kModelProperty<$managedObjectClassName$><$Relationship.name.initialCapitalString$>) as NSMutableSet
+	        	self.<$Relationship.name$> = aDecoder.decodeObjectOfClasses(NSSet(objects:[NSMutableSet.self, <$managedObjectClassName$>.self]), forKey:kModelProperty<$managedObjectClassName$><$Relationship.name.initialCapitalString$>) as NSMutableSet
 	        <$else$>
 	        	self.<$Relationship.name$> = aDecoder.decodeObjectOfClass(<$Relationship.destinationEntity.managedObjectClassName$>.self, forKey:kModelProperty<$managedObjectClassName$><$Relationship.name.initialCapitalString$>) as? _<$Relationship.destinationEntity.managedObjectClassName$>
 	        <$endif$>
 	    <$endforeach do$>
     }
-*/
+
 	init() {
     }
-
-
 }

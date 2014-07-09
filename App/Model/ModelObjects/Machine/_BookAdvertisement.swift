@@ -1,6 +1,9 @@
 import Foundation
 
-class _BookAdvertisement: NSObject, NSCoding {
+// Dont edit this class! Make your changes in the Human version of this class
+// This may be formatted like arse but I prefer an easy to read machine.motemplate file over an easy to read class file that is never edited
+
+class _BookAdvertisement: NSObject, NSSecureCoding {
 
 			let kModelPropertyBookAdvertisementBody = "body"
 
@@ -32,28 +35,6 @@ class _BookAdvertisement: NSObject, NSCoding {
 				    self.setBook(book_, setInverse: true)
 				}
 
-	func encodeWithCoder(aCoder: NSCoder!) {
-
-	    		aCoder.encodeObject(self.body, forKey:kModelPropertyBookAdvertisementBody)
-
-	    		aCoder.encodeObject(self.title, forKey:kModelPropertyBookAdvertisementTitle)
-
-	    	aCoder.encodeObject(self.book, forKey:kModelPropertyBookAdvertisementBook)
-
-    }
-
-    init(coder aDecoder: NSCoder!) {
-
-	    				self.body = aDecoder.decodeObjectForKey(kModelPropertyBookAdvertisementBody) as? NSString
-
-	    				self.title = aDecoder.decodeObjectForKey(kModelPropertyBookAdvertisementTitle) as? NSString
-
-	        	self.book = aDecoder.decodeObjectForKey(kModelPropertyBookAdvertisementBook) as? _Book
-
-    }
-
-/* to be fixed when Swift supports creating a set of Class types
-
     class func supportsSecureCoding() -> Bool {
         return true
     }
@@ -77,8 +58,7 @@ class _BookAdvertisement: NSObject, NSCoding {
 	        	self.book = aDecoder.decodeObjectOfClass(Book.self, forKey:kModelPropertyBookAdvertisementBook) as? _Book
 
     }
-*/
+
 	init() {
     }
-
 }

@@ -10,6 +10,3 @@ import Foundation
 
 let GlobalCommandRunner = CommandRunner()
 let GlobalModel = Model.sharedModel()!
-
-let GlobalManager = setupGlobalManager()
-let GlobalSession = setupGlobalSession()

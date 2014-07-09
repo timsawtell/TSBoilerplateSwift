@@ -39,21 +39,4 @@ class CommandCenter {
         var x = unarchiver.decodeObjectForKey(key) as? NSObject
         return x
     }
-
-    class func pathForModel() -> NSString? {
-        if let paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.ApplicationSupportDirectory, NSSearchPathDomainMask.UserDomainMask, true) as? String[] {
-            if paths.count > 0 {
-                var path = paths[0]
-                var fm = NSFileManager()
-                if !fm.fileExistsAtPath(path) {
-                    var error :NSError?
-                    fm.createDirectoryAtPath(path, withIntermediateDirectories: true, attributes: nil, error: &error)
-                }
-                path = path.stringByAppendingPathComponent(kModelFileName)
-                return path
-            }
-        }
-        return nil
-    }
-    
 }

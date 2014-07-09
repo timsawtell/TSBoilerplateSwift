@@ -1,6 +1,6 @@
 import Foundation
 
-class <$managedObjectClassName$>: _<$managedObjectClassName$>, NSCoding {
+class <$managedObjectClassName$>: _<$managedObjectClassName$>, NSSecureCoding {
 
 	// add your custom vars here
 
@@ -19,9 +19,8 @@ class <$managedObjectClassName$>: _<$managedObjectClassName$>, NSCoding {
 
     }
 
-/*
     override class func supportsSecureCoding() -> Bool {
         return true
     }
-*/
+
 }

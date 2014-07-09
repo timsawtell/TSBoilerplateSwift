@@ -7,6 +7,8 @@
 //
 
 import XCTest
+import Foundation
+import UIKit
 
 class TestModel: XCTestCase {
 

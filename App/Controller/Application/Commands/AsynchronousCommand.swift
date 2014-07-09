@@ -19,10 +19,10 @@ class AsynchronousCommand : Command {
     var _isExecuting: Bool = false
     var _isFinished: Bool = false
     weak var parentCommand: AsynchronousCommand? = nil
-    var subCommands: AsynchronousCommand[]
+    var subCommands: [AsynchronousCommand]
     
     init() {
-        subCommands = AsynchronousCommand[]()
+        subCommands = [AsynchronousCommand]()
     }
     
     override var executing: Bool {
@@ -85,6 +85,9 @@ class AsynchronousCommand : Command {
             stopAllSubCommandsAndDependants()
         }
         
+        if saveModel {
+            GlobalModel.save()
+        }
         // if I am a subcommand (I am if I have a parentCommand) then check if my parent has no other sub commands running. If so, then finish the parent as well
         if let parent = parentCommand {
             var runningSubCommands: Bool = false
@@ -123,7 +126,7 @@ class AsynchronousCommand : Command {
     }
     
     func clearSubCommands() {
-        subCommands = AsynchronousCommand[]()
+        subCommands = [AsynchronousCommand]()
     }
     
 }

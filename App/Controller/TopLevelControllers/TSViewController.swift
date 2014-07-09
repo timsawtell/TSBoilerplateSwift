@@ -11,22 +11,17 @@ import UIKit
 
 class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelegate, TSPullViewDelegate, UIScrollViewDelegate {
     
-    @IBOutlet var tf1: UITextField
-    @IBOutlet var tf2: UITextField
-    @IBOutlet var tf3: UITextField
-    // todo: move the above IBOutlets to the DemoViewController, as soon as XCode lets you hook up an IBOutlet from a parent class (this) to a subclass (DemoViewController)
+    
     @IBOutlet var scrollViewToResize: UIScrollView?
-    var inputFields = NSArray()
+    var inputFields = NSMutableArray()
     var activitySuperview = UIView() //for the show message function
     var headerView: TSPullView?
     var footerView: TSPullView?
     var fetchingData = false
+    var keyboardShowing = false
     weak var activeControl: UIResponder?
     
     override func viewDidLoad() {
-        if nil != tf1 && nil != tf2 && nil != tf3 {
-            inputFields = [tf1, tf2, tf3]
-        }
         automaticallyAdjustsScrollViewInsets = false
         
         if inputFields.count > 0 {
@@ -84,7 +79,6 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        specialLayout()
         if wantsPullToRefreshFooter() {
             setupFooterView()
         }
@@ -118,26 +112,10 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
     
     func pullDownAction() {
         showActivityScreen()
-        weak var weakSelf = self
-        
-        delay(2.5) {
-            if let strongSelf = weakSelf {
-                strongSelf.hideActivityScreen()
-                strongSelf.doneLoadingData()
-            }
-        }
     }
     
     func pullUpAction() {
         showActivityScreen()
-        weak var weakSelf = self
-        
-        delay(2.5) {
-            if let strongSelf = weakSelf {
-                strongSelf.hideActivityScreen()
-                strongSelf.doneLoadingData()
-            }
-        }
     }
     //END TSPullView
     
@@ -146,11 +124,11 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
         var currentOffset = scrollView.contentOffset.y
         var maximumOffset = max(scrollView.contentSize.height - scrollView.frame.size.height, 0)
         if currentOffset < 0 {
-            if wantsPullToRefresh() {
+            if wantsPullToRefresh() && !keyboardShowing {
                 headerView!.scrollViewDidScroll(scrollView)
             }
         } else if currentOffset > maximumOffset {
-            if wantsPullToRefreshFooter() {
+            if wantsPullToRefreshFooter() && !keyboardShowing {
                 footerView!.scrollViewDidScroll(scrollView)
             }
         }
@@ -160,11 +138,11 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
         var currentOffset = scrollView.contentOffset.y
         var maximumOffset = max(scrollView.contentSize.height - scrollView.frame.size.height, 0)
         if currentOffset < 0 {
-            if wantsPullToRefresh() {
+            if wantsPullToRefresh() && !keyboardShowing {
                 headerView!.scrollViewDidEndDragging(scrollView)
             }
         } else if currentOffset > maximumOffset {
-            if wantsPullToRefreshFooter() {
+            if wantsPullToRefreshFooter() && !keyboardShowing {
                 footerView!.scrollViewDidEndDragging(scrollView)
             }
         }
@@ -173,11 +151,11 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
     
     //Pull To Refresh and Load data
     func wantsPullToRefresh() -> Bool {
-        return true
+        return false
     }
     
     func wantsPullToRefreshFooter() -> Bool {
-        return true
+        return false
     }
     
     func fetchData() {
@@ -197,9 +175,9 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
             setupFooterView()
         }
         
-        if wantsPullToRefresh() {
+        if wantsPullToRefresh() || wantsPullToRefreshFooter() {
             weak var weakSelf = self
-            delay(0.5) {
+            waitThenRunOnMain(0.25) {
                 if let strongSelf = weakSelf {
                     strongSelf.doneLoadingData()
                 }
@@ -217,23 +195,6 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
         }
     }
     //END Pull To Refresh and Load data
-    
-    //Autolayout + UIScrollView madness
-    func specialLayout() {
-        if let scrollView = scrollViewToResize {
-            if scrollView.contentSize.height < scrollView.bounds.size.height {
-                scrollView.contentSize = scrollViewContentSize()
-            }
-        }
-    }
-    
-    func scrollViewContentSize() -> CGSize {
-        if let scrollView = scrollViewToResize {
-            return scrollView.bounds.size
-        }
-        return CGSizeZero
-    }
-    //END Autolayout + UIScrollView madness
     
     // Keyboard did show and resize scrollview
     func nextPrevChanged(sender: AnyObject) {
@@ -302,6 +263,7 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
     
     func keyboardDidShow(aNotification: NSNotification) {
         if let scrollView: UIScrollView = scrollViewToResize {
+            keyboardShowing = true
             var info: NSDictionary = aNotification.userInfo
             var kbSize: CGSize = info.objectForKey(UIKeyboardFrameEndUserInfoKey).CGRectValue().size
             var viewHeight = view.frame.size.height
@@ -332,6 +294,7 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
     
     func keyboardWillHide() {
         if let scrollView = scrollViewToResize {
+            keyboardShowing = false
             scrollView.contentInset = UIEdgeInsetsZero
             scrollView.scrollIndicatorInsets = UIEdgeInsetsZero
         }

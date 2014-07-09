@@ -23,13 +23,11 @@ class TSTableViewController: TSViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
-        return 28
+        return 0
     }
     
     func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
-        var cell: Cell = tableView.dequeueReusableCellWithIdentifier(kCellId) as Cell
-        cell.textLabel.text = "cell \(indexPath.row)"
-        return cell
+        return nil
     }
     
     override func wantsPullToRefresh() -> Bool {

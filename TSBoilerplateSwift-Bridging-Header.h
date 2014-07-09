@@ -1,2 +1,2 @@
 #import "FFCircularProgressView.h"
-#import "AFNetworking.h"
+#import "Bridge.h"

@@ -1,0 +1,3 @@
+[submodule "External/TheNetwork"]
+	path = External/TheNetwork
+	url = https://github.com/timsawtell/TheNetwork.git

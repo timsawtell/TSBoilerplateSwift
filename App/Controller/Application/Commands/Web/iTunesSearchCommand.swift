@@ -9,14 +9,15 @@
 import Foundation
 
 class iTunesSearchCommand: AsynchronousCommand {
+    
     override func execute()  {
-        
         weak var weakSelf = self
-        var successBlock = {(operation: AFHTTPRequestOperation!, responseObject: AnyObject!) -> Void in
+        
+        let successBlock: NetworkSuccessBlock = { (resultObject, request, response) -> Void in
             if let strongSelf = weakSelf {
                 if strongSelf.cancelled { return }
                 
-                if let responseDict = responseObject as? NSDictionary {
+                if let responseDict = resultObject as? NSDictionary {
                     if let resultCount: Int = responseDict.valueForKey("resultCount") as? Int {
                         if resultCount <= 0 {
                             strongSelf.error = NSError.errorWithCode(NSURLErrorCannotParseResponse, text: kNoResultsText)
@@ -28,6 +29,7 @@ class iTunesSearchCommand: AsynchronousCommand {
                                 if let bookDictionary: NSDictionary = resultsArray.objectAtIndex(0) as? NSDictionary {
                                     // create the book
                                     let book = BookBuilder.objFromJSONDict(bookDictionary)
+                                    GlobalModel.books.append(book)
                                     strongSelf.finish()
                                     return
                                 }
@@ -44,13 +46,16 @@ class iTunesSearchCommand: AsynchronousCommand {
             }
         }
         
-        let errorBlock = {(operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+        let errorBlock: NetworkErrorBlock = { (resultObject, error, request, response) -> Void in
             if let strongSelf = weakSelf {
                 strongSelf.error = error
                 strongSelf.finish()
             }
         }
-        var params = NSDictionary(object: "055389692X", forKey: "isbn")
-        GlobalManager.GET("http://itunes.apple.com/lookup", parameters: params, success: successBlock, failure: errorBlock)
+        
+        var params = ["isbn": "055389692X"]
+        var headers = ["Accept": "application/json"]
+        Network.setBaseURLString("http://itunes.apple.com")
+        Network.performDataTask(relativePath: "lookup", method: .GET, successBlock: successBlock, errorBlock: errorBlock, parameters: params, additionalHeaders: headers)
     }
 }
