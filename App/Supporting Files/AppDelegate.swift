@@ -15,6 +15,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
         // Override point for customization after application launch.
+        let author = Author()
+        var book = Book()
+        author.addBooksObject(book)
+        NSLog("\(author.books.count)")
+        author.removeBooksObject(book)
+        NSLog("\(author.books.count)")
         return true
     }
 

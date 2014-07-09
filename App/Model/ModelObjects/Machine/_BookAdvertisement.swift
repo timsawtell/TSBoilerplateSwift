@@ -20,19 +20,19 @@ class _BookAdvertisement: NSObject, NSSecureCoding {
 			func setBook(book_: _Book?, setInverse: Bool) {
 
 		    				if book_ == nil && setInverse {
-		        				self.book?.setAdvertisement(nil, setInverse: false)
+		        				book?.setAdvertisement(nil, setInverse: false)
 		    				}
 
-		    	self.book = book_
+		    	book = book_
 
 			    			if setInverse {
-			        			self.book?.setAdvertisement(self, setInverse: false)//2
+			        			book?.setAdvertisement(self, setInverse: false)
 			    			}
 
 			}
 
 				func setBook(book_: _Book?) {
-				    self.setBook(book_, setInverse: true)
+				    setBook(book_, setInverse: true)
 				}
 
     class func supportsSecureCoding() -> Bool {
@@ -41,21 +41,21 @@ class _BookAdvertisement: NSObject, NSSecureCoding {
 
     func encodeWithCoder(aCoder: NSCoder!) {
 
-	    		aCoder.encodeObject(self.body, forKey:kModelPropertyBookAdvertisementBody)
+	    		aCoder.encodeObject(body, forKey:kModelPropertyBookAdvertisementBody)
 
-	    		aCoder.encodeObject(self.title, forKey:kModelPropertyBookAdvertisementTitle)
+	    		aCoder.encodeObject(title, forKey:kModelPropertyBookAdvertisementTitle)
 
-	    	aCoder.encodeObject(self.book, forKey:kModelPropertyBookAdvertisementBook)
+	    	aCoder.encodeObject(book, forKey:kModelPropertyBookAdvertisementBook)
 
     }
 
     init(coder aDecoder: NSCoder!) {
 
-	    				self.body = aDecoder.decodeObjectOfClass(NSString.self, forKey:kModelPropertyBookAdvertisementBody) as? NSString
+	    				body = aDecoder.decodeObjectOfClass(NSString.self, forKey:kModelPropertyBookAdvertisementBody) as? NSString
 
-	    				self.title = aDecoder.decodeObjectOfClass(NSString.self, forKey:kModelPropertyBookAdvertisementTitle) as? NSString
+	    				title = aDecoder.decodeObjectOfClass(NSString.self, forKey:kModelPropertyBookAdvertisementTitle) as? NSString
 
-	        	self.book = aDecoder.decodeObjectOfClass(Book.self, forKey:kModelPropertyBookAdvertisementBook) as? _Book
+	        	book = aDecoder.decodeObjectOfClass(_Book.self, forKey:kModelPropertyBookAdvertisementBook) as? _Book
 
     }
 

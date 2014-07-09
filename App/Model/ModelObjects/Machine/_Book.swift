@@ -15,7 +15,7 @@ class _Book: NSObject, NSSecureCoding {
 
 		let kModelPropertyBookAuthor = "author"
 
-					var advertisement: _BookAdvertisement?;
+					var advertisement: _BookAdvertisement?
 
 				weak var author: _Author?
 
@@ -28,37 +28,37 @@ class _Book: NSObject, NSSecureCoding {
 			func setAdvertisement(advertisement_: _BookAdvertisement?, setInverse: Bool) {
 
 		    				if advertisement_ == nil && setInverse {
-		        				self.advertisement?.setBook(nil, setInverse: false)
+		        				advertisement?.setBook(nil, setInverse: false)
 		    				}
 
-		    	self.advertisement = advertisement_
+		    	advertisement = advertisement_
 
 			    			if setInverse {
-			        			self.advertisement?.setBook(self, setInverse: false)//2
+			        			advertisement?.setBook(self, setInverse: false)
 			    			}
 
 			}
 
 				func setAdvertisement(advertisement_: _BookAdvertisement?) {
-				    self.setAdvertisement(advertisement_, setInverse: true)
+				    setAdvertisement(advertisement_, setInverse: true)
 				}
 
 			func setAuthor(author_: _Author?, setInverse: Bool) {
 
 		    				if author_ == nil && setInverse {
-		        				self.author?.removeBooksObject(self, setInverse: false)
+		        				author?.removeBooksObject(self, setInverse: false)
 		    				}
 
-		    	self.author = author_
+		    	author = author_
 
 			    			if setInverse {
-			        			self.author?.addBooksObject(self, setInverse: false)//0
+			        			author?.addBooksObject(self, setInverse: false)
 			    			}
 
 			}
 
 				func setAuthor(author_: _Author?) {
-				    self.setAuthor(author_, setInverse: true)
+				    setAuthor(author_, setInverse: true)
 				}
 
     class func supportsSecureCoding() -> Bool {
@@ -67,29 +67,29 @@ class _Book: NSObject, NSSecureCoding {
 
     func encodeWithCoder(aCoder: NSCoder!) {
 
-	    		aCoder.encodeObject(self.blurb, forKey:kModelPropertyBookBlurb)
+	    		aCoder.encodeObject(blurb, forKey:kModelPropertyBookBlurb)
 
-	    		aCoder.encodeObject(self.price, forKey:kModelPropertyBookPrice)
+	    		aCoder.encodeObject(price, forKey:kModelPropertyBookPrice)
 
-	    		aCoder.encodeObject(self.title, forKey:kModelPropertyBookTitle)
+	    		aCoder.encodeObject(title, forKey:kModelPropertyBookTitle)
 
-	    	aCoder.encodeObject(self.advertisement, forKey:kModelPropertyBookAdvertisement)
+	    	aCoder.encodeObject(advertisement, forKey:kModelPropertyBookAdvertisement)
 
-	    	aCoder.encodeObject(self.author, forKey:kModelPropertyBookAuthor)
+	    	aCoder.encodeObject(author, forKey:kModelPropertyBookAuthor)
 
     }
 
     init(coder aDecoder: NSCoder!) {
 
-	    				self.blurb = aDecoder.decodeObjectOfClass(NSString.self, forKey:kModelPropertyBookBlurb) as? NSString
+	    				blurb = aDecoder.decodeObjectOfClass(NSString.self, forKey:kModelPropertyBookBlurb) as? NSString
 
-	    				self.price = aDecoder.decodeObjectOfClass(NSString.self, forKey:kModelPropertyBookPrice) as? NSString
+	    				price = aDecoder.decodeObjectOfClass(NSString.self, forKey:kModelPropertyBookPrice) as? NSString
 
-	    				self.title = aDecoder.decodeObjectOfClass(NSString.self, forKey:kModelPropertyBookTitle) as? NSString
+	    				title = aDecoder.decodeObjectOfClass(NSString.self, forKey:kModelPropertyBookTitle) as? NSString
 
-	        	self.advertisement = aDecoder.decodeObjectOfClass(BookAdvertisement.self, forKey:kModelPropertyBookAdvertisement) as? _BookAdvertisement
+	        	advertisement = aDecoder.decodeObjectOfClass(_BookAdvertisement.self, forKey:kModelPropertyBookAdvertisement) as? _BookAdvertisement
 
-	        	self.author = aDecoder.decodeObjectOfClass(Author.self, forKey:kModelPropertyBookAuthor) as? _Author
+	        	author = aDecoder.decodeObjectOfClass(_Author.self, forKey:kModelPropertyBookAuthor) as? _Author
 
     }
 

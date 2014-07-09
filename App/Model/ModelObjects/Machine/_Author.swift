@@ -11,42 +11,44 @@ class _Author: NSObject, NSSecureCoding {
 
 		let kModelPropertyAuthorBooks = "books"
 
-			var books: NSMutableSet = NSMutableSet()
+			var books = [_Book]()
 
 			var age: NSNumber?
 
 			var name: NSString?
 
 			func addBooksObject(value_: _Book, setInverse: Bool) {
-				self.books.addObject(value_)
+				books.append(value_)
 
 						if setInverse {
-					        value_.setAuthor(self, setInverse:false);
+					        value_.setAuthor(self, setInverse:false)
 					    }
 
 			}
 
 			func addBooksObject(value_: _Book) {
-				self.addBooksObject(value_, setInverse: true)
+				addBooksObject(value_, setInverse: true)
 			}
 
 			func removeAllBooks() {
-				self.books = NSMutableSet();
+				books = [_Book]()
 			}
 
 			func removeBooksObject(value_: _Book, setInverse: Bool) {
 
 					    if setInverse {
-					        value_.setAuthor(nil, setInverse:false);
+					        value_.setAuthor(nil, setInverse:false)
 					    }
 
 			    if value_ != nil {
-			        self.books.removeObject(value_)
+			        if let index = find(books, value_) {
+			        	books.removeAtIndex(index)
+			        }
 			    }
 			}
 
 			func removeBooksObject(value_: _Book) {
-				self.removeBooksObject(value_, setInverse:true)
+				removeBooksObject(value_, setInverse:true)
 			}
 
     class func supportsSecureCoding() -> Bool {
@@ -55,21 +57,21 @@ class _Author: NSObject, NSSecureCoding {
 
     func encodeWithCoder(aCoder: NSCoder!) {
 
-	    		aCoder.encodeObject(self.age, forKey:kModelPropertyAuthorAge)
+	    		aCoder.encodeObject(age, forKey:kModelPropertyAuthorAge)
 
-	    		aCoder.encodeObject(self.name, forKey:kModelPropertyAuthorName)
+	    		aCoder.encodeObject(name, forKey:kModelPropertyAuthorName)
 
-	    	aCoder.encodeObject(self.books, forKey:kModelPropertyAuthorBooks)
+	    	aCoder.encodeObject(books, forKey:kModelPropertyAuthorBooks)
 
     }
 
     init(coder aDecoder: NSCoder!) {
 
-	    				self.age = aDecoder.decodeObjectOfClass(NSNumber.self, forKey:kModelPropertyAuthorAge) as? NSNumber
+	    				age = aDecoder.decodeObjectOfClass(NSNumber.self, forKey:kModelPropertyAuthorAge) as? NSNumber
 
-	    				self.name = aDecoder.decodeObjectOfClass(NSString.self, forKey:kModelPropertyAuthorName) as? NSString
+	    				name = aDecoder.decodeObjectOfClass(NSString.self, forKey:kModelPropertyAuthorName) as? NSString
 
-	        	self.books = aDecoder.decodeObjectOfClasses(NSSet(objects:[NSMutableSet.self, Author.self]), forKey:kModelPropertyAuthorBooks) as NSMutableSet
+	        	books = aDecoder.decodeObjectOfClasses(NSSet(objects:[NSArray.self, _Book.self]), forKey:kModelPropertyAuthorBooks) as [_Book]
 
     }
 
