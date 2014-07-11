@@ -9,4 +9,4 @@
 import Foundation
 
 let GlobalCommandRunner = CommandRunner()
-let GlobalModel = Model.sharedModel()!
+let GlobalModel = CommandCenter.getModelDataFromDisk()
