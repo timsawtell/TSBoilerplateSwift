@@ -17,7 +17,7 @@ class _BookAdvertisement: NSObject, NSSecureCoding {
 
 				var title = NSString()
 
-			func setBook(book_: _Book?, setInverse: Bool) {
+				func setBook(book_: _Book?, setInverse: Bool) {
 
 		    				if book_ == nil && setInverse {
 		        				book?.setAdvertisement(nil, setInverse: false)
@@ -26,7 +26,7 @@ class _BookAdvertisement: NSObject, NSSecureCoding {
 		    	book = book_
 
 			    			if setInverse {
-			        			book?.setAdvertisement(self, setInverse: false)
+			        			book?.setAdvertisement(self, setInverse: false) 
 			    			}
 
 			}

@@ -40,10 +40,6 @@ class _Author: NSObject, NSSecureCoding {
 
 			func removeBooksObject(value_: _Book, setInverse: Bool) {
 
-					    if setInverse {
-					        value_.setAuthor(nil, setInverse:false)
-					    }
-
 			    if value_ != nil {
 			        if let index = find(books, value_) {
 			        	books.removeAtIndex(index)

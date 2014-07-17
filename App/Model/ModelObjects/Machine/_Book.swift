@@ -17,7 +17,7 @@ class _Book: NSObject, NSSecureCoding {
 
 					var advertisement: _BookAdvertisement? //optional
 
-					var author: _Author? //optional
+					var author = _Author() //not optional
 
 				var blurb = NSString()
 
@@ -25,7 +25,7 @@ class _Book: NSObject, NSSecureCoding {
 
 				var title = NSString()
 
-			func setAdvertisement(advertisement_: _BookAdvertisement?, setInverse: Bool) {
+				func setAdvertisement(advertisement_: _BookAdvertisement?, setInverse: Bool) {
 
 		    				if advertisement_ == nil && setInverse {
 		        				advertisement?.setBook(nil, setInverse: false)
@@ -34,7 +34,7 @@ class _Book: NSObject, NSSecureCoding {
 		    	advertisement = advertisement_
 
 			    			if setInverse {
-			        			advertisement?.setBook(self, setInverse: false)
+			        			advertisement?.setBook(self, setInverse: false) 
 			    			}
 
 			}
@@ -43,21 +43,21 @@ class _Book: NSObject, NSSecureCoding {
 				    setAdvertisement(advertisement_, setInverse: true)
 				}
 
-			func setAuthor(author_: _Author?, setInverse: Bool) {
+				func setAuthor(author_: _Author, setInverse: Bool) {
 
 		    				if author_ == nil && setInverse {
-		        				author?.removeBooksObject(self, setInverse: false)
+		        				author.removeBooksObject(self, setInverse: false)
 		    				}
 
 		    	author = author_
 
-			    			if setInverse {
-			        			author?.addBooksObject(self, setInverse: false)
+		    				if setInverse {
+			        			author.addBooksObject(self, setInverse: false) 
 			    			}
 
 			}
 
-				func setAuthor(author_: _Author?) {
+				func setAuthor(author_: _Author) {
 				    setAuthor(author_, setInverse: true)
 				}
 
@@ -90,7 +90,7 @@ class _Book: NSObject, NSSecureCoding {
 
 	        		advertisement = aDecoder.decodeObjectOfClass(_BookAdvertisement.self, forKey:kModelPropertyBookAdvertisement) as? _BookAdvertisement // transient or optional
 
-	        		author = aDecoder.decodeObjectOfClass(_Author.self, forKey:kModelPropertyBookAuthor) as? _Author // transient or optional
+	        		author = aDecoder.decodeObjectOfClass(_Author.self, forKey:kModelPropertyBookAuthor) as _Author
 
     }
 

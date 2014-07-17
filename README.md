@@ -10,7 +10,6 @@ This project uses Cocoapods and git submodules (until Apple allow you to build s
     git submodule init
     git submodule update
     pod install
-    sudo cp App/Model/CoreDataModel/MogenTemplate/mogeneratorswift /usr/bin
     open the .xcworkspace
 
 ## Includes:

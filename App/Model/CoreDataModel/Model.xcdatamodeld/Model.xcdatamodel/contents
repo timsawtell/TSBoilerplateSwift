@@ -15,7 +15,7 @@
         <attribute name="price" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="title" attributeType="String" syncable="YES"/>
         <relationship name="advertisement" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BookAdvertisement" inverseName="book" inverseEntity="BookAdvertisement" syncable="YES"/>
-        <relationship name="author" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Author" inverseName="books" inverseEntity="Author" syncable="YES"/>
+        <relationship name="author" maxCount="1" deletionRule="Nullify" destinationEntity="Author" inverseName="books" inverseEntity="Author" syncable="YES"/>
     </entity>
     <entity name="BookAdvertisement" representedClassName="BookAdvertisement" syncable="YES">
         <attribute name="body" attributeType="String" syncable="YES"/>
@@ -24,7 +24,7 @@
     </entity>
     <elements>
         <element name="Author" positionX="0" positionY="27" width="128" height="103"/>
-        <element name="Book" positionX="0" positionY="0" width="128" height="120"/>
+        <element name="Book" positionX="0" positionY="0" width="128" height="118"/>
         <element name="BookAdvertisement" positionX="18" positionY="54" width="128" height="88"/>
     </elements>
 </model>

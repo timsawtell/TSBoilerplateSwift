@@ -46,7 +46,7 @@ class DemoTableViewController: TSTableViewController {
         case 1:
             cell.textBox.text = "\(book.price)"
         case 2:
-            cell.textBox.text = book.author!.name
+            cell.textBox.text = book.author.name
         default:
             cell.textBox.text = book.blurb
         }

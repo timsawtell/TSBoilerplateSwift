@@ -27,7 +27,7 @@ class _<$managedObjectClassName$>: NSObject, NSSecureCoding {
 				<$if Relationship.isOptional $>
 					var <$Relationship.name$>: _<$Relationship.destinationEntity.managedObjectClassName$>? //optional
 				<$else$>
-					var <$Relationship.name$>: _<$Relationship.destinationEntity.managedObjectClassName$> //not optional
+					var <$Relationship.name$> = _<$Relationship.destinationEntity.managedObjectClassName$>() //not optional
 				<$endif$>
 			<$endif$>
 		<$endif$>
@@ -67,7 +67,7 @@ class _<$managedObjectClassName$>: NSObject, NSSecureCoding {
 
 			func remove<$Relationship.name.initialCapitalString$>Object(value_: _<$Relationship.destinationEntity.managedObjectClassName$>, setInverse: Bool) {
 				<$if Relationship.inverseRelationship$>
-					<$if ! Relationship.inverseRelationship.isToMany$>
+					<$if ! Relationship.inverseRelationship.isToMany && ! Relationship.isTransient && ! Relationship.isOptional $>
 					    if setInverse {
 					        value_.set<$Relationship.inverseRelationship.name.initialCapitalString$>(nil, setInverse:false)
 					    }
@@ -85,7 +85,11 @@ class _<$managedObjectClassName$>: NSObject, NSSecureCoding {
 				remove<$Relationship.name.initialCapitalString$>Object(value_, setInverse:true)
 			}
 		<$else$>
-			func set<$Relationship.name.initialCapitalString$>(<$Relationship.name$>_: _<$Relationship.destinationEntity.managedObjectClassName$>?, setInverse: Bool) {
+			<$if Relationship.isTransient || Relationship.isOptional$>
+				func set<$Relationship.name.initialCapitalString$>(<$Relationship.name$>_: _<$Relationship.destinationEntity.managedObjectClassName$>?, setInverse: Bool) {
+			<$else$>
+				func set<$Relationship.name.initialCapitalString$>(<$Relationship.name$>_: _<$Relationship.destinationEntity.managedObjectClassName$>, setInverse: Bool) {
+			<$endif$>
 	    		<$if Relationship.inverseRelationship$>
 	    			<$if Relationship.inverseRelationship.isToMany$>
 	    				<$if Relationship.isTransient || Relationship.isOptional$>
@@ -114,19 +118,19 @@ class _<$managedObjectClassName$>: NSObject, NSSecureCoding {
 
 		    	<$if Relationship.inverseRelationship$>
 		    		<$if Relationship.inverseRelationship.isToMany$>
-		    			<$if Relationship.inverseRelationship.isTransient || Relationship.inverseRelationship.isOptional$>
+		    			<$if Relationship.isTransient || Relationship.isOptional$>
 			    			if setInverse {
 			        			<$Relationship.name$>?.add<$Relationship.inverseRelationship.name.initialCapitalString$>Object(self, setInverse: false)
 			    			}
 		    			<$else$>
 		    				if setInverse {
-			        			<$Relationship.name$>.add<$Relationship.inverseRelationship.name.initialCapitalString$>Object(self, setInverse: false)
+			        			<$Relationship.name$>.add<$Relationship.inverseRelationship.name.initialCapitalString$>Object(self, setInverse: false) 
 			    			}
 		    			<$endif$>
 		    		<$else$>
 		    			<$if Relationship.isTransient || Relationship.isOptional$>
 			    			if setInverse {
-			        			<$Relationship.name$>?.set<$Relationship.inverseRelationship.name.initialCapitalString$>(self, setInverse: false)
+			        			<$Relationship.name$>?.set<$Relationship.inverseRelationship.name.initialCapitalString$>(self, setInverse: false) 
 			    			}
 		    			<$else$>
 			    			if setInverse {
