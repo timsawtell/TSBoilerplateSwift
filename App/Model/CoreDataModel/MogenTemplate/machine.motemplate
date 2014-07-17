@@ -19,15 +19,15 @@ class _<$managedObjectClassName$>: NSObject, NSSecureCoding {
 	
 	<$foreach Relationship noninheritedRelationships do$>
 		<$if Relationship.isToMany$>
-			var <$Relationship.name$> = [_<$Relationship.destinationEntity.managedObjectClassName$>]()
+			var <$Relationship.name$> = [_<$Relationship.destinationEntity.managedObjectClassName$>]() //to many
 		<$else$>
 			<$if Relationship.isTransient $>
-				weak var <$Relationship.name$>: _<$Relationship.destinationEntity.managedObjectClassName$>?
+				weak var <$Relationship.name$>: _<$Relationship.destinationEntity.managedObjectClassName$>? //transient
 			<$else$>
 				<$if Relationship.isOptional $>
-					var <$Relationship.name$>: _<$Relationship.destinationEntity.managedObjectClassName$>?
+					var <$Relationship.name$>: _<$Relationship.destinationEntity.managedObjectClassName$>? //optional
 				<$else$>
-					var <$Relationship.name$>: _<$Relationship.destinationEntity.managedObjectClassName$>
+					var <$Relationship.name$>: _<$Relationship.destinationEntity.managedObjectClassName$> //not optional
 				<$endif$>
 			<$endif$>
 		<$endif$>
@@ -35,7 +35,11 @@ class _<$managedObjectClassName$>: NSObject, NSSecureCoding {
 
 	<$foreach Attribute noninheritedAttributes do$>
 		<$if Attribute.hasDefinedAttributeType$>
-			var <$Attribute.name$>: <$Attribute.objectAttributeType$>
+			<$if Attribute.isTransient || Attribute.isOptional$>
+				var <$Attribute.name$>: <$Attribute.objectAttributeType$>? //optional or transient
+			<$else$>
+				var <$Attribute.name$> = <$Attribute.objectAttributeType$>()
+			<$endif$>
 		<$endif$>
 	<$endforeach do$>
 
@@ -163,20 +167,25 @@ class _<$managedObjectClassName$>: NSObject, NSSecureCoding {
     }
 
     init(coder aDecoder: NSCoder!) {
+    	super.init()
     	<$foreach Attribute noninheritedAttributes do$>
 			<$if Attribute.hasDefinedAttributeType$>
-	    			<$if Relationship.isTransient || Relationship.isOptional$>
-	    				<$Attribute.name$> = aDecoder.decodeObjectOfClass(<$Attribute.attributeValueClassName$>.self, forKey:kModelProperty<$managedObjectClassName$><$Attribute.name.initialCapitalString$>) as? <$Attribute.attributeValueClassName$>
+	    			<$if Attribute.isTransient || Attribute.isOptional$>
+	    				<$Attribute.name$> = aDecoder.decodeObjectOfClass(<$Attribute.objectAttributeType$>.self, forKey:kModelProperty<$managedObjectClassName$><$Attribute.name.initialCapitalString$>) as? <$Attribute.objectAttributeType$> // transient or optional
 	    			<$else$>
-						<$Attribute.name$> = aDecoder.decodeObjectOfClass(<$Attribute.attributeValueClassName$>.self, forKey:kModelProperty<$managedObjectClassName$><$Attribute.name.initialCapitalString$>) as <$Attribute.attributeValueClassName$>
+						<$Attribute.name$> = aDecoder.decodeObjectOfClass(<$Attribute.objectAttributeType$>.self, forKey:kModelProperty<$managedObjectClassName$><$Attribute.name.initialCapitalString$>) as <$Attribute.objectAttributeType$>
 	    			<$endif$>
 	    	<$endif$> 
 	    <$endforeach do$>
 		<$foreach Relationship noninheritedRelationships do$>
 	        <$if Relationship.isToMany$>
-	        	<$Relationship.name$> = aDecoder.decodeObjectOfClasses(NSSet(objects:[NSArray.self, _<$Relationship.destinationEntity.managedObjectClassName$>.self]), forKey:kModelProperty<$managedObjectClassName$><$Relationship.name.initialCapitalString$>) as [_<$Relationship.destinationEntity.managedObjectClassName$>]
+	        	<$Relationship.name$> = aDecoder.decodeObjectOfClasses(NSSet(objects:[NSArray.self, _<$Relationship.destinationEntity.managedObjectClassName$>.self]), forKey:kModelProperty<$managedObjectClassName$><$Relationship.name.initialCapitalString$>) as [_<$Relationship.destinationEntity.managedObjectClassName$>] // to many
 	        <$else$>
-	        	<$Relationship.name$> = aDecoder.decodeObjectOfClass(_<$Relationship.destinationEntity.managedObjectClassName$>.self, forKey:kModelProperty<$managedObjectClassName$><$Relationship.name.initialCapitalString$>) as? _<$Relationship.destinationEntity.managedObjectClassName$>
+	        	<$if Relationship.isTransient || Relationship.isOptional$>
+	        		<$Relationship.name$> = aDecoder.decodeObjectOfClass(_<$Relationship.destinationEntity.managedObjectClassName$>.self, forKey:kModelProperty<$managedObjectClassName$><$Relationship.name.initialCapitalString$>) as? _<$Relationship.destinationEntity.managedObjectClassName$> // transient or optional
+	        	<$else$>
+	        		<$Relationship.name$> = aDecoder.decodeObjectOfClass(_<$Relationship.destinationEntity.managedObjectClassName$>.self, forKey:kModelProperty<$managedObjectClassName$><$Relationship.name.initialCapitalString$>) as _<$Relationship.destinationEntity.managedObjectClassName$>
+	        	<$endif$>
 	        <$endif$>
 	    <$endforeach do$>
     }

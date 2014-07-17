@@ -15,15 +15,15 @@ class _Book: NSObject, NSSecureCoding {
 
 		let kModelPropertyBookAuthor = "author"
 
-					var advertisement: _BookAdvertisement?
+					var advertisement: _BookAdvertisement? //optional
 
-				weak var author: _Author?
+					var author: _Author? //optional
 
-			var blurb: NSString?
+				var blurb = NSString()
 
-			var price: NSString?
+				var price = NSNumber()
 
-			var title: NSString?
+				var title = NSString()
 
 			func setAdvertisement(advertisement_: _BookAdvertisement?, setInverse: Bool) {
 
@@ -80,16 +80,17 @@ class _Book: NSObject, NSSecureCoding {
     }
 
     init(coder aDecoder: NSCoder!) {
+    	super.init()
 
-	    				blurb = aDecoder.decodeObjectOfClass(NSString.self, forKey:kModelPropertyBookBlurb) as? NSString
+						blurb = aDecoder.decodeObjectOfClass(NSString.self, forKey:kModelPropertyBookBlurb) as NSString
 
-	    				price = aDecoder.decodeObjectOfClass(NSString.self, forKey:kModelPropertyBookPrice) as? NSString
+						price = aDecoder.decodeObjectOfClass(NSNumber.self, forKey:kModelPropertyBookPrice) as NSNumber
 
-	    				title = aDecoder.decodeObjectOfClass(NSString.self, forKey:kModelPropertyBookTitle) as? NSString
+						title = aDecoder.decodeObjectOfClass(NSString.self, forKey:kModelPropertyBookTitle) as NSString
 
-	        	advertisement = aDecoder.decodeObjectOfClass(_BookAdvertisement.self, forKey:kModelPropertyBookAdvertisement) as? _BookAdvertisement
+	        		advertisement = aDecoder.decodeObjectOfClass(_BookAdvertisement.self, forKey:kModelPropertyBookAdvertisement) as? _BookAdvertisement // transient or optional
 
-	        	author = aDecoder.decodeObjectOfClass(_Author.self, forKey:kModelPropertyBookAuthor) as? _Author
+	        		author = aDecoder.decodeObjectOfClass(_Author.self, forKey:kModelPropertyBookAuthor) as? _Author // transient or optional
 
     }
 

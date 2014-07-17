@@ -12,6 +12,7 @@ class Model :NSObject, NSSecureCoding {
     
     var strings = [NSString]()
     var books = [Book]()
+    weak var currentBook: Book?
 
     init() {
         

@@ -8,4 +8,4 @@
 
 import Foundation
 
-let kCellId = "cellId"
+let kCellId = "cell"

@@ -26,15 +26,11 @@ class TSTableViewController: TSViewController, UITableViewDataSource, UITableVie
         return 0
     }
     
+    func tableView(tableView: UITableView!, heightForRowAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
+        return 44
+    }
+    
     func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
         return nil
-    }
-    
-    override func wantsPullToRefresh() -> Bool {
-        return true
-    }
-    
-    override func wantsPullToRefreshFooter() -> Bool {
-        return true
     }
 }

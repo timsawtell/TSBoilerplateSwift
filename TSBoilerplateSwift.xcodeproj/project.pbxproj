@@ -34,26 +34,41 @@
 		2B54AE88193ED5C000DDB1E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B54AE7E193ED5C000DDB1E8 /* Main.storyboard */; };
 		2B54AE89193ED5C000DDB1E8 /* AlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B54AE80193ED5C000DDB1E8 /* AlertViewController.xib */; };
 		2B54AE8B193ED5EB00DDB1E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B54AE75193ED5C000DDB1E8 /* AppDelegate.swift */; };
-		2B5A7849196D0FB1007588B1 /* TSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAD4703193ED94300BB718A /* TSViewController.swift */; };
-		2B5A784A196D0FB1007588B1 /* TSTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B61B806195A34E900F4D70D /* TSTableViewController.swift */; };
-		2B5A784B196D0FB1007588B1 /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B130E71196CC2BC001207EF /* DemoViewController.swift */; };
-		2B5A784C196D0FB1007588B1 /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B130E76196CD498001207EF /* Author.swift */; };
-		2B5A784D196D0FB1007588B1 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B130E77196CD498001207EF /* Book.swift */; };
-		2B5A784E196D0FB1007588B1 /* BookAdvertisement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B130E78196CD498001207EF /* BookAdvertisement.swift */; };
-		2B5A784F196D0FB1007588B1 /* _Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897F010219406FE800AE9644 /* _Author.swift */; };
-		2B5A7850196D0FB1007588B1 /* _Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897F010319406FE800AE9644 /* _Book.swift */; };
-		2B5A7851196D0FB1007588B1 /* _BookAdvertisement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897F0112194076A400AE9644 /* _BookAdvertisement.swift */; };
-		2B5A7852196D0FB1007588B1 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAD471C193FF1D600BB718A /* Model.swift */; };
-		2B5A7853196D0FB1007588B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B54AE75193ED5C000DDB1E8 /* AppDelegate.swift */; };
-		2B5A7854196D0FB1007588B1 /* Singletons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAD4716193FE7F900BB718A /* Singletons.swift */; };
-		2B5A7855196D0FB1007588B1 /* NSError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7824DA195CD3A0005278BF /* NSError.swift */; };
-		2B5A7856196D0FB1007588B1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B84EAF7194003F90063A646 /* Constants.swift */; };
-		2B5A7857196D0FB1007588B1 /* StoryboardContants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B61B80A195A4A4900F4D70D /* StoryboardContants.swift */; };
-		2B5A7858196D0FB8007588B1 /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B130E8C196CF36C001207EF /* AFSecurityPolicy.m */; };
-		2B5A7859196D0FB8007588B1 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B130E90196CF36C001207EF /* Reachability.m */; };
-		2B5A785A196D0FCA007588B1 /* TSPullView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCD010C19590BA9002ADC27 /* TSPullView.swift */; };
 		2B5A785C196D1098007588B1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B5A785B196D1098007588B1 /* UIKit.framework */; };
 		2B5A785E196D109F007588B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B5A785D196D109F007588B1 /* Foundation.framework */; };
+		2B5A7863196D1202007588B1 /* BookBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8BB85A195D07D20016BC63 /* BookBuilder.swift */; };
+		2B5A7864196D1202007588B1 /* iTunesSearchCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAD470C193FCFC900BB718A /* iTunesSearchCommand.swift */; };
+		2B5A7865196D1202007588B1 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAD4705193EDC5A00BB718A /* Command.swift */; };
+		2B5A7866196D1202007588B1 /* AsynchronousCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAD4707193EDD5000BB718A /* AsynchronousCommand.swift */; };
+		2B5A7867196D1202007588B1 /* CommandRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAD4709193EE95E00BB718A /* CommandRunner.swift */; };
+		2B5A7868196D1202007588B1 /* CommandCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAD471E193FF35700BB718A /* CommandCenter.swift */; };
+		2B5A7869196D1202007588B1 /* TSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAD4703193ED94300BB718A /* TSViewController.swift */; };
+		2B5A786A196D1202007588B1 /* TSTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B61B806195A34E900F4D70D /* TSTableViewController.swift */; };
+		2B5A786B196D1202007588B1 /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B130E71196CC2BC001207EF /* DemoViewController.swift */; };
+		2B5A786C196D1202007588B1 /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B130E76196CD498001207EF /* Author.swift */; };
+		2B5A786D196D1202007588B1 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B130E77196CD498001207EF /* Book.swift */; };
+		2B5A786E196D1202007588B1 /* BookAdvertisement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B130E78196CD498001207EF /* BookAdvertisement.swift */; };
+		2B5A786F196D1202007588B1 /* _Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897F010219406FE800AE9644 /* _Author.swift */; };
+		2B5A7870196D1202007588B1 /* _Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897F010319406FE800AE9644 /* _Book.swift */; };
+		2B5A7871196D1202007588B1 /* _BookAdvertisement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897F0112194076A400AE9644 /* _BookAdvertisement.swift */; };
+		2B5A7872196D1202007588B1 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAD471C193FF1D600BB718A /* Model.swift */; };
+		2B5A7873196D1202007588B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B54AE75193ED5C000DDB1E8 /* AppDelegate.swift */; };
+		2B5A7874196D1202007588B1 /* Singletons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAD4716193FE7F900BB718A /* Singletons.swift */; };
+		2B5A7875196D1202007588B1 /* NSError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7824DA195CD3A0005278BF /* NSError.swift */; };
+		2B5A7876196D1202007588B1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B84EAF7194003F90063A646 /* Constants.swift */; };
+		2B5A7877196D1202007588B1 /* StoryboardContants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B61B80A195A4A4900F4D70D /* StoryboardContants.swift */; };
+		2B5A7878196D1202007588B1 /* UIColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCD010A1958F783002ADC27 /* UIColorHelper.swift */; };
+		2B5A7879196D1202007588B1 /* CGRectHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCD01031958EB1D002ADC27 /* CGRectHelper.swift */; };
+		2B5A787A196D1202007588B1 /* GCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B61B80C195A8ABA00F4D70D /* GCD.swift */; };
+		2B5A787B196D1202007588B1 /* TSPullView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCD010C19590BA9002ADC27 /* TSPullView.swift */; };
+		2B5A787C196D1202007588B1 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B61B808195A4A0700F4D70D /* Cell.swift */; };
+		2B5A787D196D1202007588B1 /* BodyFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B130E8D196CF36C001207EF /* BodyFormatter.swift */; };
+		2B5A787E196D1202007588B1 /* TheNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B130E91196CF36C001207EF /* TheNetwork.swift */; };
+		2B5A787F196D1202007588B1 /* TSBoilerplateSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B54AE83193ED5C000DDB1E8 /* TSBoilerplateSwiftTests.swift */; };
+		2B5A7880196D1202007588B1 /* AsyncCommandForTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAD4719193FF00C00BB718A /* AsyncCommandForTesting.swift */; };
+		2B5A7881196D1202007588B1 /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7E6BE419414E8D006164B5 /* TestModel.swift */; };
+		2B5A7882196D120B007588B1 /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B130E8C196CF36C001207EF /* AFSecurityPolicy.m */; };
+		2B5A7883196D120B007588B1 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B130E90196CF36C001207EF /* Reachability.m */; };
 		2B61B8041959424500F4D70D /* blackArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B61B8021959424500F4D70D /* blackArrow.png */; };
 		2B61B8051959424500F4D70D /* blackArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B61B8031959424500F4D70D /* blackArrow@2x.png */; };
 		2B61B807195A34E900F4D70D /* TSTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B61B806195A34E900F4D70D /* TSTableViewController.swift */; };
@@ -71,9 +86,11 @@
 		2BAD4717193FE7F900BB718A /* Singletons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAD4716193FE7F900BB718A /* Singletons.swift */; };
 		2BAD471D193FF1D600BB718A /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAD471C193FF1D600BB718A /* Model.swift */; };
 		2BAD471F193FF35700BB718A /* CommandCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAD471E193FF35700BB718A /* CommandCenter.swift */; };
+		2BB5F7B0197347CD00C2C15F /* DemoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB5F7AF197347CD00C2C15F /* DemoTableViewController.swift */; };
 		2BCD01041958EB1D002ADC27 /* CGRectHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCD01031958EB1D002ADC27 /* CGRectHelper.swift */; };
 		2BCD010B1958F783002ADC27 /* UIColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCD010A1958F783002ADC27 /* UIColorHelper.swift */; };
 		2BCD010D19590BA9002ADC27 /* TSPullView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCD010C19590BA9002ADC27 /* TSPullView.swift */; };
+		2BD6B7E61977488C00F889F3 /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD6B7E51977488C00F889F3 /* Builder.swift */; };
 		8641946BEBD646E6AE874229 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB57060D14AD40A2A813596A /* libPods.a */; };
 		897F010619406FE800AE9644 /* _Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897F010219406FE800AE9644 /* _Author.swift */; };
 		897F010719406FE800AE9644 /* _Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897F010319406FE800AE9644 /* _Book.swift */; };
@@ -118,6 +135,13 @@
 			remoteInfo = TSBoilerplateSwift;
 		};
 		2B5A785F196D10B8007588B1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2B54AE3D193ED5A100DDB1E8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2B54AE44193ED5A100DDB1E8;
+			remoteInfo = TSBoilerplateSwift;
+		};
+		2B5A7861196D10B8007588B1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2B54AE3D193ED5A100DDB1E8 /* Project object */;
 			proxyType = 1;
@@ -273,10 +297,12 @@
 		2BAD4719193FF00C00BB718A /* AsyncCommandForTesting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncCommandForTesting.swift; sourceTree = "<group>"; };
 		2BAD471C193FF1D600BB718A /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		2BAD471E193FF35700BB718A /* CommandCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandCenter.swift; sourceTree = "<group>"; };
+		2BB5F7AF197347CD00C2C15F /* DemoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoTableViewController.swift; sourceTree = "<group>"; };
 		2BCD01011957FEEE002ADC27 /* TSBoilerplateSwift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TSBoilerplateSwift-Bridging-Header.h"; sourceTree = "<group>"; };
 		2BCD01031958EB1D002ADC27 /* CGRectHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGRectHelper.swift; sourceTree = "<group>"; };
 		2BCD010A1958F783002ADC27 /* UIColorHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIColorHelper.swift; path = ../Extensions/UIColorHelper.swift; sourceTree = "<group>"; };
 		2BCD010C19590BA9002ADC27 /* TSPullView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSPullView.swift; sourceTree = "<group>"; };
+		2BD6B7E51977488C00F889F3 /* Builder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Builder.swift; sourceTree = "<group>"; };
 		370DCFCBB843473287631F8C /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		897F010219406FE800AE9644 /* _Author.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Author.swift; sourceTree = "<group>"; };
 		897F010319406FE800AE9644 /* _Book.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Book.swift; sourceTree = "<group>"; };
@@ -405,6 +431,7 @@
 			isa = PBXGroup;
 			children = (
 				2B8BB85A195D07D20016BC63 /* BookBuilder.swift */,
+				2BD6B7E51977488C00F889F3 /* Builder.swift */,
 			);
 			path = Builders;
 			sourceTree = "<group>";
@@ -434,6 +461,7 @@
 			isa = PBXGroup;
 			children = (
 				2B130E71196CC2BC001207EF /* DemoViewController.swift */,
+				2BB5F7AF197347CD00C2C15F /* DemoTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -659,6 +687,7 @@
 				2BDB61DD1957DEA500072775 /* PBXTargetDependency */,
 				2B130E74196CD451001207EF /* PBXTargetDependency */,
 				2B5A7860196D10B8007588B1 /* PBXTargetDependency */,
+				2B5A7862196D10B8007588B1 /* PBXTargetDependency */,
 			);
 			name = TSBoilerplateSwiftTests;
 			productName = TSBoilerplateSwiftTests;
@@ -815,6 +844,7 @@
 				2B54AE8B193ED5EB00DDB1E8 /* AppDelegate.swift in Sources */,
 				2B130E79196CD498001207EF /* Author.swift in Sources */,
 				2BAD4717193FE7F900BB718A /* Singletons.swift in Sources */,
+				2BB5F7B0197347CD00C2C15F /* DemoTableViewController.swift in Sources */,
 				2B130E9A196CF36C001207EF /* TheNetwork.swift in Sources */,
 				2B61B807195A34E900F4D70D /* TSTableViewController.swift in Sources */,
 				2B61B809195A4A0700F4D70D /* Cell.swift in Sources */,
@@ -824,6 +854,7 @@
 				2BAD470A193EE95E00BB718A /* CommandRunner.swift in Sources */,
 				2BCD010B1958F783002ADC27 /* UIColorHelper.swift in Sources */,
 				2BAD470D193FCFC900BB718A /* iTunesSearchCommand.swift in Sources */,
+				2BD6B7E61977488C00F889F3 /* Builder.swift in Sources */,
 				2BAD471D193FF1D600BB718A /* Model.swift in Sources */,
 				2B61B80D195A8ABA00F4D70D /* GCD.swift in Sources */,
 				2B130E97196CF36C001207EF /* AFSecurityPolicy.m in Sources */,
@@ -847,24 +878,39 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B5A785A196D0FCA007588B1 /* TSPullView.swift in Sources */,
-				2B5A7858196D0FB8007588B1 /* AFSecurityPolicy.m in Sources */,
-				2B5A7859196D0FB8007588B1 /* Reachability.m in Sources */,
-				2B5A7849196D0FB1007588B1 /* TSViewController.swift in Sources */,
-				2B5A784A196D0FB1007588B1 /* TSTableViewController.swift in Sources */,
-				2B5A784B196D0FB1007588B1 /* DemoViewController.swift in Sources */,
-				2B5A784C196D0FB1007588B1 /* Author.swift in Sources */,
-				2B5A784D196D0FB1007588B1 /* Book.swift in Sources */,
-				2B5A784E196D0FB1007588B1 /* BookAdvertisement.swift in Sources */,
-				2B5A784F196D0FB1007588B1 /* _Author.swift in Sources */,
-				2B5A7850196D0FB1007588B1 /* _Book.swift in Sources */,
-				2B5A7851196D0FB1007588B1 /* _BookAdvertisement.swift in Sources */,
-				2B5A7852196D0FB1007588B1 /* Model.swift in Sources */,
-				2B5A7853196D0FB1007588B1 /* AppDelegate.swift in Sources */,
-				2B5A7854196D0FB1007588B1 /* Singletons.swift in Sources */,
-				2B5A7855196D0FB1007588B1 /* NSError.swift in Sources */,
-				2B5A7856196D0FB1007588B1 /* Constants.swift in Sources */,
-				2B5A7857196D0FB1007588B1 /* StoryboardContants.swift in Sources */,
+				2B5A7882196D120B007588B1 /* AFSecurityPolicy.m in Sources */,
+				2B5A7883196D120B007588B1 /* Reachability.m in Sources */,
+				2B5A7863196D1202007588B1 /* BookBuilder.swift in Sources */,
+				2B5A7864196D1202007588B1 /* iTunesSearchCommand.swift in Sources */,
+				2B5A7865196D1202007588B1 /* Command.swift in Sources */,
+				2B5A7866196D1202007588B1 /* AsynchronousCommand.swift in Sources */,
+				2B5A7867196D1202007588B1 /* CommandRunner.swift in Sources */,
+				2B5A7868196D1202007588B1 /* CommandCenter.swift in Sources */,
+				2B5A7869196D1202007588B1 /* TSViewController.swift in Sources */,
+				2B5A786A196D1202007588B1 /* TSTableViewController.swift in Sources */,
+				2B5A786B196D1202007588B1 /* DemoViewController.swift in Sources */,
+				2B5A786C196D1202007588B1 /* Author.swift in Sources */,
+				2B5A786D196D1202007588B1 /* Book.swift in Sources */,
+				2B5A786E196D1202007588B1 /* BookAdvertisement.swift in Sources */,
+				2B5A786F196D1202007588B1 /* _Author.swift in Sources */,
+				2B5A7870196D1202007588B1 /* _Book.swift in Sources */,
+				2B5A7871196D1202007588B1 /* _BookAdvertisement.swift in Sources */,
+				2B5A7872196D1202007588B1 /* Model.swift in Sources */,
+				2B5A7873196D1202007588B1 /* AppDelegate.swift in Sources */,
+				2B5A7874196D1202007588B1 /* Singletons.swift in Sources */,
+				2B5A7875196D1202007588B1 /* NSError.swift in Sources */,
+				2B5A7876196D1202007588B1 /* Constants.swift in Sources */,
+				2B5A7877196D1202007588B1 /* StoryboardContants.swift in Sources */,
+				2B5A7878196D1202007588B1 /* UIColorHelper.swift in Sources */,
+				2B5A7879196D1202007588B1 /* CGRectHelper.swift in Sources */,
+				2B5A787A196D1202007588B1 /* GCD.swift in Sources */,
+				2B5A787B196D1202007588B1 /* TSPullView.swift in Sources */,
+				2B5A787C196D1202007588B1 /* Cell.swift in Sources */,
+				2B5A787D196D1202007588B1 /* BodyFormatter.swift in Sources */,
+				2B5A787E196D1202007588B1 /* TheNetwork.swift in Sources */,
+				2B5A787F196D1202007588B1 /* TSBoilerplateSwiftTests.swift in Sources */,
+				2B5A7880196D1202007588B1 /* AsyncCommandForTesting.swift in Sources */,
+				2B5A7881196D1202007588B1 /* TestModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -900,6 +946,11 @@
 			isa = PBXTargetDependency;
 			target = 2B54AE44193ED5A100DDB1E8 /* TSBoilerplateSwift */;
 			targetProxy = 2B5A785F196D10B8007588B1 /* PBXContainerItemProxy */;
+		};
+		2B5A7862196D10B8007588B1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2B54AE44193ED5A100DDB1E8 /* TSBoilerplateSwift */;
+			targetProxy = 2B5A7861196D10B8007588B1 /* PBXContainerItemProxy */;
 		};
 		2B7E6BE719414EDA006164B5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1126,6 +1177,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				METAL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TSBoilerplateSwift-Bridging-Header.h";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
 			name = Debug;
@@ -1143,6 +1195,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				METAL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TSBoilerplateSwift-Bridging-Header.h";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
 			name = Release;

@@ -11,11 +11,11 @@ class _BookAdvertisement: NSObject, NSSecureCoding {
 
 		let kModelPropertyBookAdvertisementBook = "book"
 
-				weak var book: _Book?
+				weak var book: _Book? //transient
 
-			var body: NSString?
+				var body = NSString()
 
-			var title: NSString?
+				var title = NSString()
 
 			func setBook(book_: _Book?, setInverse: Bool) {
 
@@ -50,12 +50,13 @@ class _BookAdvertisement: NSObject, NSSecureCoding {
     }
 
     init(coder aDecoder: NSCoder!) {
+    	super.init()
 
-	    				body = aDecoder.decodeObjectOfClass(NSString.self, forKey:kModelPropertyBookAdvertisementBody) as? NSString
+						body = aDecoder.decodeObjectOfClass(NSString.self, forKey:kModelPropertyBookAdvertisementBody) as NSString
 
-	    				title = aDecoder.decodeObjectOfClass(NSString.self, forKey:kModelPropertyBookAdvertisementTitle) as? NSString
+						title = aDecoder.decodeObjectOfClass(NSString.self, forKey:kModelPropertyBookAdvertisementTitle) as NSString
 
-	        	book = aDecoder.decodeObjectOfClass(_Book.self, forKey:kModelPropertyBookAdvertisementBook) as? _Book
+	        		book = aDecoder.decodeObjectOfClass(_Book.self, forKey:kModelPropertyBookAdvertisementBook) as? _Book // transient or optional
 
     }
 

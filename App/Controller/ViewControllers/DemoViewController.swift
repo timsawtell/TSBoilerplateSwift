@@ -19,12 +19,7 @@ class DemoViewController: TSViewController {
         if tf3 { inputFields.addObject(tf3) }
         super.viewDidLoad()
     }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
         
-    }
-    
     override func wantsPullToRefresh() -> Bool {
         return true
     }

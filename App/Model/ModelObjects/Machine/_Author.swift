@@ -9,13 +9,17 @@ class _Author: NSObject, NSSecureCoding {
 
 			let kModelPropertyAuthorName = "name"
 
+			let kModelPropertyAuthorTrans = "trans"
+
 		let kModelPropertyAuthorBooks = "books"
 
-			var books = [_Book]()
+			var books = [_Book]() //to many
 
-			var age: NSNumber?
+				var age: NSNumber? //optional or transient
 
-			var name: NSString?
+				var name = NSString()
+
+				var trans: BookAdvertisement? //optional or transient
 
 			func addBooksObject(value_: _Book, setInverse: Bool) {
 				books.append(value_)
@@ -61,17 +65,22 @@ class _Author: NSObject, NSSecureCoding {
 
 	    		aCoder.encodeObject(name, forKey:kModelPropertyAuthorName)
 
+	    		aCoder.encodeObject(trans, forKey:kModelPropertyAuthorTrans)
+
 	    	aCoder.encodeObject(books, forKey:kModelPropertyAuthorBooks)
 
     }
 
     init(coder aDecoder: NSCoder!) {
+    	super.init()
 
-	    				age = aDecoder.decodeObjectOfClass(NSNumber.self, forKey:kModelPropertyAuthorAge) as? NSNumber
+	    				age = aDecoder.decodeObjectOfClass(NSNumber.self, forKey:kModelPropertyAuthorAge) as? NSNumber // transient or optional
 
-	    				name = aDecoder.decodeObjectOfClass(NSString.self, forKey:kModelPropertyAuthorName) as? NSString
+						name = aDecoder.decodeObjectOfClass(NSString.self, forKey:kModelPropertyAuthorName) as NSString
 
-	        	books = aDecoder.decodeObjectOfClasses(NSSet(objects:[NSArray.self, _Book.self]), forKey:kModelPropertyAuthorBooks) as [_Book]
+	    				trans = aDecoder.decodeObjectOfClass(BookAdvertisement.self, forKey:kModelPropertyAuthorTrans) as? BookAdvertisement // transient or optional
+
+	        	books = aDecoder.decodeObjectOfClasses(NSSet(objects:[NSArray.self, _Book.self]), forKey:kModelPropertyAuthorBooks) as [_Book] // to many
 
     }
 

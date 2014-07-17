@@ -111,11 +111,11 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
     }
     
     func pullDownAction() {
-        showActivityScreen()
+        showLoadingScreen()
     }
     
     func pullUpAction() {
-        showActivityScreen()
+        showLoadingScreen()
     }
     //END TSPullView
     
@@ -323,7 +323,7 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
     //END Keyboard did show and resize scrollview
     
     //Show activity message
-    func showActivityScreen(message: String) {
+    func showLoadingScreen(message: String) {
         activitySuperview = UIView(frame: view.bounds)
         activitySuperview.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight
         view.addSubview(activitySuperview)
@@ -387,11 +387,11 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
         })
     }
     
-    func showActivityScreen() {
-        showActivityScreen("Loading")
+    func showLoadingScreen() {
+        showLoadingScreen("Loading")
     }
     
-    func hideActivityScreen() {
+    func hideLoadingScreen() {
         activitySuperview.alpha = 1
         weak var weakSelf = self
         

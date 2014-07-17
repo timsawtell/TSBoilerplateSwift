@@ -18,7 +18,7 @@ class iTunesSearchCommand: AsynchronousCommand {
                 if strongSelf.cancelled { return }
                 
                 if let responseDict = resultObject as? NSDictionary {
-                    if let resultCount: Int = responseDict.valueForKey("resultCount") as? Int {
+                    if let resultCount: Int = responseDict["resultCount"] as? Int {
                         if resultCount <= 0 {
                             strongSelf.error = NSError.errorWithCode(NSURLErrorCannotParseResponse, text: kNoResultsText)
                             strongSelf.finish()
@@ -30,6 +30,7 @@ class iTunesSearchCommand: AsynchronousCommand {
                                     // create the book
                                     let book = BookBuilder.objFromJSONDict(bookDictionary)
                                     GlobalModel.books.append(book)
+                                    GlobalModel.currentBook = book
                                     strongSelf.finish()
                                     return
                                 }

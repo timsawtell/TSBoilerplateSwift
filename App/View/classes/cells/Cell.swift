@@ -9,5 +9,5 @@
 import Foundation
 
 class Cell: UITableViewCell {
-    
+    @IBOutlet var textBox: UILabel
 }
