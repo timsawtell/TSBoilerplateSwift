@@ -8,6 +8,10 @@
 
 import Foundation
 
+/**
+* Query the iTunes web service for details on a book, build a Book object with the results and add it to the Model
+*/
+
 class iTunesSearchCommand: AsynchronousCommand {
     
     override func execute()  {
@@ -25,7 +29,7 @@ class iTunesSearchCommand: AsynchronousCommand {
                             return
                         } else {
                             // we have the info we need, we can start processing the results
-                            if let resultsArray: NSArray = responseDict.valueForKey("results") as? NSArray {
+                            if let resultsArray: NSArray = responseDict["results"] as? NSArray {
                                 if let bookDictionary: NSDictionary = resultsArray.objectAtIndex(0) as? NSDictionary {
                                     // create the book
                                     let book = BookBuilder.objFromJSONDict(bookDictionary)

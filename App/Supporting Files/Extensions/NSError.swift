@@ -10,10 +10,6 @@ import Foundation
 
 extension NSError {
     class func errorWithCode(code: Int, text: String) -> NSError {
-        
-        var objArray = NSArray(object: text)
-        var keyArray = NSArray(object: NSLocalizedDescriptionKey)
-        var dict = NSDictionary(object: objArray, forKey: keyArray)
-        return NSError(domain: kReverseDomainName, code: code, userInfo: dict)
+        return NSError(domain: kReverseDomainName, code: code, userInfo: [NSLocalizedDescriptionKey:text])
     }
 }

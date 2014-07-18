@@ -25,15 +25,11 @@ class TestModel: XCTestCase {
     func testModelRetainIntegrity() {
         var book = Book()
         weak var ad = BookAdvertisement()
-        weak var author = Author()
+        var author = Author()
         
-        author?.addBooksObject(book)
+        author.addBooksObject(book)
         
         XCTAssertNotNil(book, "book was nil")
-        
-        XCTAssertEqualObjects(author, book.author, "not the same author")
-        book.setAuthor(nil)
-        XCTAssertNil(author, "author not nil!")
     
         book.setAdvertisement(ad)
         XCTAssertEqualObjects(ad, book.advertisement, "not the same advertisement")
@@ -46,6 +42,16 @@ class TestModel: XCTestCase {
         let data = CommandCenter.archiveRootObject(a, key: "author")
         XCTAssertNotNil(data, "data not created")
         let b: AnyObject = CommandCenter.unarchiveData(data!, ofClass: Author.self, key: "author")!
+        XCTAssertNotNil(b, "couldn't unarchive the archived author")
+        XCTAssertTrue(b.isKindOfClass(Author.self), "b wasn't an author when it was decoded")
+    }
+    
+    // this will fail until apple fix the decodeObjectOfClasses method in Swift
+    func testModelSerialiseSecurely() {
+        let a = Author()
+        let data = CommandCenter.securelyArchiveRootObject(a, key: "author")
+        XCTAssertNotNil(data, "data not created")
+        let b: AnyObject = CommandCenter.securelyUnarchiveData(data!, ofClass: Author.self, key: "author")!
         XCTAssertNotNil(b, "couldn't unarchive the archived author")
         XCTAssertTrue(b.isKindOfClass(Author.self), "b wasn't an author when it was decoded")
     }

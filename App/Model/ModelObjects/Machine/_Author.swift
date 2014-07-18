@@ -17,9 +17,12 @@ class _Author: NSObject, NSSecureCoding {
 
 				var age: NSNumber? //optional or transient
 
-				var name = NSString()
+				var name = NSString() // vanilla Foundation type
 
 				var trans: BookAdvertisement? //optional or transient
+
+	init() {
+    }
 
 			func addBooksObject(value_: _Book, setInverse: Bool) {
 				books.append(value_)
@@ -72,14 +75,11 @@ class _Author: NSObject, NSSecureCoding {
 
 	    				age = aDecoder.decodeObjectOfClass(NSNumber.self, forKey:kModelPropertyAuthorAge) as? NSNumber // transient or optional
 
-						name = aDecoder.decodeObjectOfClass(NSString.self, forKey:kModelPropertyAuthorName) as NSString
+						name = aDecoder.decodeObjectOfClass(NSString.self, forKey:kModelPropertyAuthorName) as NSString // vanilla Foundation type
 
 	    				trans = aDecoder.decodeObjectOfClass(BookAdvertisement.self, forKey:kModelPropertyAuthorTrans) as? BookAdvertisement // transient or optional
 
 	        	books = aDecoder.decodeObjectOfClasses(NSSet(objects:[NSArray.self, _Book.self]), forKey:kModelPropertyAuthorBooks) as [_Book] // to many
 
-    }
-
-	init() {
     }
 }

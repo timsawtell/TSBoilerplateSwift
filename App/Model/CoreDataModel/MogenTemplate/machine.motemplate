@@ -27,7 +27,7 @@ class _<$managedObjectClassName$>: NSObject, NSSecureCoding {
 				<$if Relationship.isOptional $>
 					var <$Relationship.name$>: _<$Relationship.destinationEntity.managedObjectClassName$>? //optional
 				<$else$>
-					var <$Relationship.name$> = _<$Relationship.destinationEntity.managedObjectClassName$>() //not optional
+					var <$Relationship.name$> = _<$Relationship.destinationEntity.managedObjectClassName$>() // !transient && !optional relationship
 				<$endif$>
 			<$endif$>
 		<$endif$>
@@ -38,11 +38,13 @@ class _<$managedObjectClassName$>: NSObject, NSSecureCoding {
 			<$if Attribute.isTransient || Attribute.isOptional$>
 				var <$Attribute.name$>: <$Attribute.objectAttributeType$>? //optional or transient
 			<$else$>
-				var <$Attribute.name$> = <$Attribute.objectAttributeType$>()
+				var <$Attribute.name$> = <$Attribute.objectAttributeType$>() // vanilla Foundation type
 			<$endif$>
 		<$endif$>
 	<$endforeach do$>
 
+	init() {
+    }
 	<$foreach Relationship noninheritedRelationships do$>
 		<$if Relationship.isToMany$>
 			func add<$Relationship.name.initialCapitalString$>Object(value_: _<$Relationship.destinationEntity.managedObjectClassName$>, setInverse: Bool) {
@@ -55,7 +57,6 @@ class _<$managedObjectClassName$>: NSObject, NSSecureCoding {
 				    <$endif$>
 				<$endif$>
 			}
-
 
 			func add<$Relationship.name.initialCapitalString$>Object(value_: _<$Relationship.destinationEntity.managedObjectClassName$>) {
 				add<$Relationship.name.initialCapitalString$>Object(value_, setInverse: true)
@@ -79,7 +80,6 @@ class _<$managedObjectClassName$>: NSObject, NSSecureCoding {
 			        }
 			    }
 			}
-
 
 			func remove<$Relationship.name.initialCapitalString$>Object(value_: _<$Relationship.destinationEntity.managedObjectClassName$>) {
 				remove<$Relationship.name.initialCapitalString$>Object(value_, setInverse:true)
@@ -166,8 +166,7 @@ class _<$managedObjectClassName$>: NSObject, NSSecureCoding {
 	    <$endforeach do$>
 	    <$foreach Relationship noninheritedRelationships do$>
 	    	aCoder.encodeObject(<$Relationship.name$>, forKey:kModelProperty<$managedObjectClassName$><$Relationship.name.initialCapitalString$>)
-	    <$endforeach do$>
-    	
+	    <$endforeach do$>	
     }
 
     init(coder aDecoder: NSCoder!) {
@@ -177,7 +176,7 @@ class _<$managedObjectClassName$>: NSObject, NSSecureCoding {
 	    			<$if Attribute.isTransient || Attribute.isOptional$>
 	    				<$Attribute.name$> = aDecoder.decodeObjectOfClass(<$Attribute.objectAttributeType$>.self, forKey:kModelProperty<$managedObjectClassName$><$Attribute.name.initialCapitalString$>) as? <$Attribute.objectAttributeType$> // transient or optional
 	    			<$else$>
-						<$Attribute.name$> = aDecoder.decodeObjectOfClass(<$Attribute.objectAttributeType$>.self, forKey:kModelProperty<$managedObjectClassName$><$Attribute.name.initialCapitalString$>) as <$Attribute.objectAttributeType$>
+						<$Attribute.name$> = aDecoder.decodeObjectOfClass(<$Attribute.objectAttributeType$>.self, forKey:kModelProperty<$managedObjectClassName$><$Attribute.name.initialCapitalString$>) as <$Attribute.objectAttributeType$> // vanilla Foundation type
 	    			<$endif$>
 	    	<$endif$> 
 	    <$endforeach do$>
@@ -188,12 +187,9 @@ class _<$managedObjectClassName$>: NSObject, NSSecureCoding {
 	        	<$if Relationship.isTransient || Relationship.isOptional$>
 	        		<$Relationship.name$> = aDecoder.decodeObjectOfClass(_<$Relationship.destinationEntity.managedObjectClassName$>.self, forKey:kModelProperty<$managedObjectClassName$><$Relationship.name.initialCapitalString$>) as? _<$Relationship.destinationEntity.managedObjectClassName$> // transient or optional
 	        	<$else$>
-	        		<$Relationship.name$> = aDecoder.decodeObjectOfClass(_<$Relationship.destinationEntity.managedObjectClassName$>.self, forKey:kModelProperty<$managedObjectClassName$><$Relationship.name.initialCapitalString$>) as _<$Relationship.destinationEntity.managedObjectClassName$>
+	        		<$Relationship.name$> = aDecoder.decodeObjectOfClass(_<$Relationship.destinationEntity.managedObjectClassName$>.self, forKey:kModelProperty<$managedObjectClassName$><$Relationship.name.initialCapitalString$>) as _<$Relationship.destinationEntity.managedObjectClassName$> // !transient && !optional relationship
 	        	<$endif$>
 	        <$endif$>
 	    <$endforeach do$>
-    }
-
-	init() {
     }
 }

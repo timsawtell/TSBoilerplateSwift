@@ -17,13 +17,16 @@ class _Book: NSObject, NSSecureCoding {
 
 					var advertisement: _BookAdvertisement? //optional
 
-					var author = _Author() //not optional
+					var author = _Author() // !transient && !optional relationship
 
-				var blurb = NSString()
+				var blurb = NSString() // vanilla Foundation type
 
-				var price = NSNumber()
+				var price = NSNumber() // vanilla Foundation type
 
-				var title = NSString()
+				var title = NSString() // vanilla Foundation type
+
+	init() {
+    }
 
 				func setAdvertisement(advertisement_: _BookAdvertisement?, setInverse: Bool) {
 
@@ -82,18 +85,15 @@ class _Book: NSObject, NSSecureCoding {
     init(coder aDecoder: NSCoder!) {
     	super.init()
 
-						blurb = aDecoder.decodeObjectOfClass(NSString.self, forKey:kModelPropertyBookBlurb) as NSString
+						blurb = aDecoder.decodeObjectOfClass(NSString.self, forKey:kModelPropertyBookBlurb) as NSString // vanilla Foundation type
 
-						price = aDecoder.decodeObjectOfClass(NSNumber.self, forKey:kModelPropertyBookPrice) as NSNumber
+						price = aDecoder.decodeObjectOfClass(NSNumber.self, forKey:kModelPropertyBookPrice) as NSNumber // vanilla Foundation type
 
-						title = aDecoder.decodeObjectOfClass(NSString.self, forKey:kModelPropertyBookTitle) as NSString
+						title = aDecoder.decodeObjectOfClass(NSString.self, forKey:kModelPropertyBookTitle) as NSString // vanilla Foundation type
 
 	        		advertisement = aDecoder.decodeObjectOfClass(_BookAdvertisement.self, forKey:kModelPropertyBookAdvertisement) as? _BookAdvertisement // transient or optional
 
-	        		author = aDecoder.decodeObjectOfClass(_Author.self, forKey:kModelPropertyBookAuthor) as _Author
+	        		author = aDecoder.decodeObjectOfClass(_Author.self, forKey:kModelPropertyBookAuthor) as _Author // !transient && !optional relationship
 
-    }
-
-	init() {
     }
 }

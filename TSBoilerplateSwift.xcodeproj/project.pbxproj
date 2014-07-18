@@ -253,6 +253,13 @@
 			remoteGlobalIDString = 2B54AE44193ED5A100DDB1E8;
 			remoteInfo = TSBoilerplateSwift;
 		};
+		2BDCD1791978936500AC70E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2B54AE3D193ED5A100DDB1E8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2B54AE44193ED5A100DDB1E8;
+			remoteInfo = TSBoilerplateSwift;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -688,6 +695,7 @@
 				2B130E74196CD451001207EF /* PBXTargetDependency */,
 				2B5A7860196D10B8007588B1 /* PBXTargetDependency */,
 				2B5A7862196D10B8007588B1 /* PBXTargetDependency */,
+				2BDCD17A1978936500AC70E7 /* PBXTargetDependency */,
 			);
 			name = TSBoilerplateSwiftTests;
 			productName = TSBoilerplateSwiftTests;
@@ -1026,6 +1034,11 @@
 			isa = PBXTargetDependency;
 			target = 2B54AE44193ED5A100DDB1E8 /* TSBoilerplateSwift */;
 			targetProxy = 2BDB61DC1957DEA500072775 /* PBXContainerItemProxy */;
+		};
+		2BDCD17A1978936500AC70E7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2B54AE44193ED5A100DDB1E8 /* TSBoilerplateSwift */;
+			targetProxy = 2BDCD1791978936500AC70E7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
