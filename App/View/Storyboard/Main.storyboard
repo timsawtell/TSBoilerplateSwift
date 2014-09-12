@@ -1,9 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6185.7" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="iJX-G5-8qx">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6181.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="VmE-Yq-E3L">
+            <objects>
+                <navigationController id="iJX-G5-8qx" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="CVu-Cp-S3x">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="bIy-5E-cRA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2h7-je-QgF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-698" y="141"/>
+        </scene>
         <!--Demo View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -13,7 +29,7 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EpC-Ap-yBm">
@@ -116,6 +132,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="480" height="640"/>
                                 </variation>
                                 <variation key="widthClass=compact">
+                                    <mask key="subviews">
+                                        <include reference="c9Y-rV-jDF"/>
+                                    </mask>
                                     <mask key="constraints">
                                         <include reference="6Lw-XB-mvX"/>
                                         <include reference="AUX-oa-YGl"/>
@@ -127,11 +146,6 @@
                                         <exclude reference="epw-6S-2vD"/>
                                         <exclude reference="jSl-gX-HJ6"/>
                                         <include reference="zSs-1d-2h7"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact">
-                                    <mask key="subviews">
-                                        <include reference="c9Y-rV-jDF"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=regular" ambiguous="YES" misplaced="YES">
@@ -172,9 +186,11 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="9dW-Ky-ixi"/>
                     <connections>
                         <outlet property="scrollViewToResize" destination="EpC-Ap-yBm" id="TFd-59-30H"/>
                         <outlet property="tf1" destination="k5E-5w-VGk" id="7KC-ib-rJ2"/>
+                        <outlet property="tf2" destination="lnv-ac-Kqx" id="pul-bd-yfc"/>
                         <outlet property="tf3" destination="xjj-pc-IR8" id="wH8-SO-uuK"/>
                         <outlet property="view" destination="8bC-Xf-vdC" id="sSF-Er-qse"/>
                     </connections>
@@ -192,14 +208,14 @@
                         <viewControllerLayoutGuide type="bottom" id="xZi-vb-1Qe"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="6qP-f5-i21">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="hvH-fS-Cfy">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="44" id="TVZ-KY-MBz" customClass="Cell" customModule="TSBoilerplateSwift" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="44" id="TVZ-KY-MBz" customClass="Cell" customModule="TSBoilerplateSwift" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TVZ-KY-MBz" id="eXn-Aq-9lz">

@@ -43,7 +43,7 @@ class CommandCenter {
     class func getModelDataFromDisk() -> Model {
         var model = Model()
         var error: NSError?
-        if let data = NSData.dataWithContentsOfFile(kPathForModelFile, options: NSDataReadingOptions.DataReadingMappedIfSafe, error:&error) {
+        if let data = NSData.dataWithContentsOfFile(kPathForModelFile!, options: NSDataReadingOptions.DataReadingMappedIfSafe, error:&error) {
             if let modelInstance = CommandCenter.securelyUnarchiveData(data, ofClass:Model.self, key: kModelArchiveKey) as? Model {
                 return modelInstance
             }

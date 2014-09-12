@@ -32,7 +32,7 @@ class TestModel: XCTestCase {
         XCTAssertNotNil(book, "book was nil")
     
         book.setAdvertisement(ad)
-        XCTAssertEqualObjects(ad, book.advertisement, "not the same advertisement")
+        XCTAssertTrue(ad === book.advertisement, "not the same advertisement")
         book.setAdvertisement(nil)
         XCTAssertNil(ad, "ad not nil!")
     }

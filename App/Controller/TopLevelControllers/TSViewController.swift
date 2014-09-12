@@ -11,7 +11,6 @@ import UIKit
 
 class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelegate, TSPullViewDelegate, UIScrollViewDelegate {
     
-    
     @IBOutlet var scrollViewToResize: UIScrollView?
     var inputFields = NSMutableArray()
     var activitySuperview = UIView() //for the show message function
@@ -21,6 +20,14 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
     var keyboardShowing = false
     weak var activeControl: UIResponder?
     
+    override init() {
+        super.init()
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+
     override func viewDidLoad() {
         automaticallyAdjustsScrollViewInsets = false
         
@@ -61,14 +68,14 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
                 let headerFrame = CGRectMake(0, -600, scrollView.bounds.size.width, 600)
                 headerView = TSPullView(frame: headerFrame, isForBottomOfView: false)
                 headerView!.delegate = self
-                scrollView.addSubview(headerView)
+                scrollView.addSubview(headerView!)
             }
             
             if wantsPullToRefreshFooter() {
                 let footerFrame = CGRectMake(0, scrollView.bounds.size.height, scrollView.bounds.size.width, 600)
                 footerView = TSPullView(frame: footerFrame, isForBottomOfView: true)
                 footerView!.delegate = self
-                scrollView.addSubview(footerView)
+                scrollView.addSubview(footerView!)
             }
             
             NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidShow:", name: UIKeyboardDidShowNotification, object: nil)
@@ -264,8 +271,9 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
     func keyboardDidShow(aNotification: NSNotification) {
         if let scrollView: UIScrollView = scrollViewToResize {
             keyboardShowing = true
-            var info: NSDictionary = aNotification.userInfo
-            var kbSize: CGSize = info.objectForKey(UIKeyboardFrameEndUserInfoKey).CGRectValue().size
+            var info: NSDictionary = aNotification.userInfo!
+            let s:NSValue = info.valueForKey(UIKeyboardFrameEndUserInfoKey) as NSValue
+            var kbSize = s.CGRectValue().size
             var viewHeight = view.frame.size.height
             // bug with the notification being the wrong size when in landscape
             if (isLandscape) {
@@ -283,7 +291,7 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
             if let view = activeControl as? UIView {
                 var rect = view.frame
                 var subs = scrollView.subviews as NSArray
-                if !subs.containsObject(activeControl) {
+                if !subs.containsObject(activeControl!) {
                     var p = view.convertPoint(view.frame.origin, toView:scrollView)
                     rect = CGRectMake(1, p.y + view.frame.size.height, 1, 1)
                 }
@@ -346,7 +354,7 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
         let spinnerBG = CGRectMake((containerBG.size.width / 2) - (spinnerEdge / 2),
             (containerBG.size.height / 2) - (spinnerEdge / 2), spinnerEdge, spinnerEdge)
         let spinnerBGView = UIView(frame: spinnerBG)
-        spinnerBGView.backgroundColor = ColorWithHexString("34A9DA")
+        spinnerBGView.backgroundColor = UIColor(rgba: "34A9DA")
         spinnerBGView.opaque = false
         spinnerBGView.layer.cornerRadius = 45
         containerView.addSubview(spinnerBGView)

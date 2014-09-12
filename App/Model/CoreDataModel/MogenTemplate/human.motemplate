@@ -4,16 +4,16 @@ class <$managedObjectClassName$>: _<$managedObjectClassName$>, NSSecureCoding {
 
 	// add your custom vars here
 
-	init() {
+	override init() {
         super.init()
     }
 
-    init(coder aDecoder: NSCoder!) {
+    required init(coder aDecoder: NSCoder) {
     	super.init(coder: aDecoder)
     	// your custom decoding goes here
     }
 
-    override func encodeWithCoder(aCoder: NSCoder!) {
+    override func encodeWithCoder(aCoder: NSCoder) {
     	super.encodeWithCoder(aCoder)
     	// your custom encoding goes here
 

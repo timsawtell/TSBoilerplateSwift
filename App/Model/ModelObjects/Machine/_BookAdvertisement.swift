@@ -17,7 +17,7 @@ class _BookAdvertisement: NSObject, NSSecureCoding {
 
 				var title = NSString() // vanilla Foundation type
 
-	init() {
+	override init() {
     }
 
 				func setBook(book_: _Book?, setInverse: Bool) {
@@ -42,17 +42,19 @@ class _BookAdvertisement: NSObject, NSSecureCoding {
         return true
     }
 
-    func encodeWithCoder(aCoder: NSCoder!) {
+    func encodeWithCoder(aCoder: NSCoder) {
 
-	    		aCoder.encodeObject(body, forKey:kModelPropertyBookAdvertisementBody)
+	    			aCoder.encodeObject(body, forKey:kModelPropertyBookAdvertisementBody)
 
-	    		aCoder.encodeObject(title, forKey:kModelPropertyBookAdvertisementTitle)
+	    			aCoder.encodeObject(title, forKey:kModelPropertyBookAdvertisementTitle)
 
-	    	aCoder.encodeObject(book, forKey:kModelPropertyBookAdvertisementBook)
+	    			if let realbook = book {
+	    				aCoder.encodeObject(realbook, forKey:kModelPropertyBookAdvertisementBook) //2
+	    			}
 
     }
 
-    init(coder aDecoder: NSCoder!) {
+    required init(coder aDecoder: NSCoder) {
     	super.init()
 
 						body = aDecoder.decodeObjectOfClass(NSString.self, forKey:kModelPropertyBookAdvertisementBody) as NSString // vanilla Foundation type

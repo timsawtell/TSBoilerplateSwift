@@ -21,7 +21,7 @@ class AsynchronousCommand : Command {
     weak var parentCommand: AsynchronousCommand? = nil
     var subCommands: [AsynchronousCommand]
     
-    init() {
+    override init() {
         subCommands = [AsynchronousCommand]()
     }
     

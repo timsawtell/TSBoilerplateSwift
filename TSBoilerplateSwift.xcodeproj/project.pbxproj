@@ -78,6 +78,7 @@
 		2B7824DB195CD3A0005278BF /* NSError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7824DA195CD3A0005278BF /* NSError.swift */; };
 		2B84EAF8194003F90063A646 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B84EAF7194003F90063A646 /* Constants.swift */; };
 		2B8BB85B195D07D20016BC63 /* BookBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8BB85A195D07D20016BC63 /* BookBuilder.swift */; };
+		2BA7BD5919C25F08004D48AB /* StringHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7BD5819C25F08004D48AB /* StringHelper.swift */; };
 		2BAD4704193ED94300BB718A /* TSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAD4703193ED94300BB718A /* TSViewController.swift */; };
 		2BAD4706193EDC5A00BB718A /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAD4705193EDC5A00BB718A /* Command.swift */; };
 		2BAD4708193EDD5000BB718A /* AsynchronousCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAD4707193EDD5000BB718A /* AsynchronousCommand.swift */; };
@@ -90,7 +91,6 @@
 		2BCD01041958EB1D002ADC27 /* CGRectHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCD01031958EB1D002ADC27 /* CGRectHelper.swift */; };
 		2BCD010B1958F783002ADC27 /* UIColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCD010A1958F783002ADC27 /* UIColorHelper.swift */; };
 		2BCD010D19590BA9002ADC27 /* TSPullView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCD010C19590BA9002ADC27 /* TSPullView.swift */; };
-		2BD6B7E61977488C00F889F3 /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD6B7E51977488C00F889F3 /* Builder.swift */; };
 		8641946BEBD646E6AE874229 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB57060D14AD40A2A813596A /* libPods.a */; };
 		897F010619406FE800AE9644 /* _Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897F010219406FE800AE9644 /* _Author.swift */; };
 		897F010719406FE800AE9644 /* _Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897F010319406FE800AE9644 /* _Book.swift */; };
@@ -295,6 +295,7 @@
 		2B7E6BE419414E8D006164B5 /* TestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
 		2B84EAF7194003F90063A646 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2B8BB85A195D07D20016BC63 /* BookBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookBuilder.swift; sourceTree = "<group>"; };
+		2BA7BD5819C25F08004D48AB /* StringHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringHelper.swift; sourceTree = "<group>"; };
 		2BAD4703193ED94300BB718A /* TSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSViewController.swift; sourceTree = "<group>"; };
 		2BAD4705193EDC5A00BB718A /* Command.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
 		2BAD4707193EDD5000BB718A /* AsynchronousCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsynchronousCommand.swift; sourceTree = "<group>"; };
@@ -309,7 +310,6 @@
 		2BCD01031958EB1D002ADC27 /* CGRectHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGRectHelper.swift; sourceTree = "<group>"; };
 		2BCD010A1958F783002ADC27 /* UIColorHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIColorHelper.swift; path = ../Extensions/UIColorHelper.swift; sourceTree = "<group>"; };
 		2BCD010C19590BA9002ADC27 /* TSPullView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSPullView.swift; sourceTree = "<group>"; };
-		2BD6B7E51977488C00F889F3 /* Builder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Builder.swift; sourceTree = "<group>"; };
 		370DCFCBB843473287631F8C /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		897F010219406FE800AE9644 /* _Author.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Author.swift; sourceTree = "<group>"; };
 		897F010319406FE800AE9644 /* _Book.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Book.swift; sourceTree = "<group>"; };
@@ -438,7 +438,6 @@
 			isa = PBXGroup;
 			children = (
 				2B8BB85A195D07D20016BC63 /* BookBuilder.swift */,
-				2BD6B7E51977488C00F889F3 /* Builder.swift */,
 			);
 			path = Builders;
 			sourceTree = "<group>";
@@ -528,6 +527,7 @@
 				2BCD010A1958F783002ADC27 /* UIColorHelper.swift */,
 				2BCD01031958EB1D002ADC27 /* CGRectHelper.swift */,
 				2B61B80C195A8ABA00F4D70D /* GCD.swift */,
+				2BA7BD5819C25F08004D48AB /* StringHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -862,7 +862,6 @@
 				2BAD470A193EE95E00BB718A /* CommandRunner.swift in Sources */,
 				2BCD010B1958F783002ADC27 /* UIColorHelper.swift in Sources */,
 				2BAD470D193FCFC900BB718A /* iTunesSearchCommand.swift in Sources */,
-				2BD6B7E61977488C00F889F3 /* Builder.swift in Sources */,
 				2BAD471D193FF1D600BB718A /* Model.swift in Sources */,
 				2B61B80D195A8ABA00F4D70D /* GCD.swift in Sources */,
 				2B130E97196CF36C001207EF /* AFSecurityPolicy.m in Sources */,
@@ -871,6 +870,7 @@
 				897F010619406FE800AE9644 /* _Author.swift in Sources */,
 				2B130E7B196CD498001207EF /* BookAdvertisement.swift in Sources */,
 				2BAD4706193EDC5A00BB718A /* Command.swift in Sources */,
+				2BA7BD5919C25F08004D48AB /* StringHelper.swift in Sources */,
 				2B130E98196CF36C001207EF /* BodyFormatter.swift in Sources */,
 				897F010719406FE800AE9644 /* _Book.swift in Sources */,
 				897F0113194076A400AE9644 /* _BookAdvertisement.swift in Sources */,

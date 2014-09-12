@@ -6,31 +6,38 @@
 //  Copyright (c) 2014 Sawtell Software. All rights reserved.
 //
 
+import UIKit
 import Foundation
 
-func ColorWithHexString(hexString: String) -> UIColor {
-    var cString = hexString.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()).uppercaseString
-    if cString.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) < 6 {
-        return UIColor.blackColor()
+extension UIColor {
+    convenience init(rgba: String) {
+        var red: CGFloat   = 0.0
+        var green: CGFloat = 0.0
+        var blue: CGFloat  = 0.0
+        var alpha: CGFloat = 1.0
+        var moveForward = rgba.hasPrefix("#") ? 1 : 0
+
+        let index = advance(rgba.startIndex, moveForward)
+        let hex = rgba.substringFromIndex(index)
+        let scanner = NSScanner.scannerWithString(hex)
+        var hexValue: CUnsignedLongLong = 0
+        if scanner.scanHexLongLong(&hexValue) {
+            if hex.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) == 6 {
+                red   = CGFloat((hexValue & 0xFF0000) >> 16) / 255.0
+                green = CGFloat((hexValue & 0x00FF00) >> 8)  / 255.0
+                blue  = CGFloat(hexValue & 0x0000FF) / 255.0
+            } else if hex.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) == 8 {
+                red   = CGFloat((hexValue & 0xFF000000) >> 24) / 255.0
+                green = CGFloat((hexValue & 0x00FF0000) >> 16) / 255.0
+                blue  = CGFloat((hexValue & 0x0000FF00) >> 8)  / 255.0
+                alpha = CGFloat(hexValue & 0x000000FF)         / 255.0
+            } else {
+                print("invalid rgb string, length should be 7 or 9")
+            }
+        } else {
+            println("scan hex error")
+        }
+        
+        self.init(red:red, green:green, blue:blue, alpha:alpha)
     }
-    if cString.hasPrefix("0X") {
-        cString = cString.substringFromIndex(2)
-    }
-    if cString.hasPrefix("#") {
-        cString = cString.substringFromIndex(1)
-    }
-    if cString.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) != 6 {
-        return UIColor.blackColor()
-    }
-    
-    var rString = cString.substringToIndex(2)
-    var gString = cString.substringFromIndex(2).substringToIndex(2)
-    var bString = cString.substringFromIndex(4).substringToIndex(2)
-    
-    var r:CUnsignedInt = 0, g:CUnsignedInt = 0, b:CUnsignedInt = 0;
-    NSScanner.scannerWithString(rString).scanHexInt(&r)
-    NSScanner.scannerWithString(gString).scanHexInt(&g)
-    NSScanner.scannerWithString(bString).scanHexInt(&b)
-    
-    return UIColor(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: CGFloat(1))
 }

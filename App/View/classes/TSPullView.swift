@@ -17,7 +17,7 @@ enum TSPullState: Int {
     func TSPullDidTriggerRefresh(view: TSPullView)
     func TSPullDidTriggerLoadMore(view: TSPullView)
     func TSPullDelegateIsLoadingData() -> Bool
-    @optional func TSPullViewLastUpdated(pullView: TSPullView) -> NSDate
+    optional func TSPullViewLastUpdated(pullView: TSPullView) -> NSDate
 }
 
 class TSPullView: UIView {
@@ -78,6 +78,10 @@ class TSPullView: UIView {
         addSubview(statusLabel)
         layer.addSublayer(layerToRotate)
         setState(.Normal)
+    }
+
+    required init(coder: NSCoder) {
+        fatalError("NSCoding not supported")
     }
     
     func setState(newState: TSPullState) {
@@ -214,8 +218,13 @@ class TSPullView: UIView {
 }
 
 class HighlighterView: UIView {
-    init(frame: CGRect) {
+    override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor(white: 1, alpha: 0.7)
     }
+
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+
 }

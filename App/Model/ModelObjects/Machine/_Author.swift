@@ -21,7 +21,7 @@ class _Author: NSObject, NSSecureCoding {
 
 				var trans: BookAdvertisement? //optional or transient
 
-	init() {
+	override init() {
     }
 
 			func addBooksObject(value_: _Book, setInverse: Bool) {
@@ -43,11 +43,10 @@ class _Author: NSObject, NSSecureCoding {
 
 			func removeBooksObject(value_: _Book, setInverse: Bool) {
 
-			    if value_ != nil {
-			        if let index = find(books, value_) {
-			        	books.removeAtIndex(index)
-			        }
+			    if let index = find(books, value_) {
+			       	books.removeAtIndex(index)
 			    }
+
 			}
 
 			func removeBooksObject(value_: _Book) {
@@ -58,19 +57,23 @@ class _Author: NSObject, NSSecureCoding {
         return true
     }
 
-    func encodeWithCoder(aCoder: NSCoder!) {
+    func encodeWithCoder(aCoder: NSCoder) {
 
-	    		aCoder.encodeObject(age, forKey:kModelPropertyAuthorAge)
+					if let tmpage = age {
+						aCoder.encodeObject(tmpage, forKey:kModelPropertyAuthorAge)
+					}
 
-	    		aCoder.encodeObject(name, forKey:kModelPropertyAuthorName)
+	    			aCoder.encodeObject(name, forKey:kModelPropertyAuthorName)
 
-	    		aCoder.encodeObject(trans, forKey:kModelPropertyAuthorTrans)
+					if let tmptrans = trans {
+						aCoder.encodeObject(tmptrans, forKey:kModelPropertyAuthorTrans)
+					}
 
-	    	aCoder.encodeObject(books, forKey:kModelPropertyAuthorBooks)
+	    		aCoder.encodeObject(books, forKey:kModelPropertyAuthorBooks) //1
 
     }
 
-    init(coder aDecoder: NSCoder!) {
+    required init(coder aDecoder: NSCoder) {
     	super.init()
 
 	    				age = aDecoder.decodeObjectOfClass(NSNumber.self, forKey:kModelPropertyAuthorAge) as? NSNumber // transient or optional

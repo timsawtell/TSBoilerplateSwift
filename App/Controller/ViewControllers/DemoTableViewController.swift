@@ -32,23 +32,23 @@ class DemoTableViewController: TSTableViewController {
         GlobalCommandRunner.executeCommand(searchCommand)
     }
     
-    override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var rows = book() != nil ? 4 : 0
         return rows
     }
     
-    override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell: Cell = tableView.dequeueReusableCellWithIdentifier(kCellId, forIndexPath: indexPath) as Cell
         if let book = book() {
             switch indexPath.row {
             case 0:
-                cell.textBox.text = book.title
+                cell.textBox!.text = book.title
             case 1:
-                cell.textBox.text = "\(book.price)"
+                cell.textBox!.text = "\(book.price)"
             case 2:
-                cell.textBox.text = book.author.name
+                cell.textBox!.text = book.author.name
             default:
-                cell.textBox.text = book.blurb
+                cell.textBox!.text = book.blurb
             }
         }
         return cell

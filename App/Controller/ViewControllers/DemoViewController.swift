@@ -9,14 +9,14 @@
 import UIKit
 
 class DemoViewController: TSViewController {
-    @IBOutlet var tf1: UITextField
-    @IBOutlet var tf2: UITextField
-    @IBOutlet var tf3: UITextField
+    @IBOutlet var tf1: UITextField?
+    @IBOutlet var tf2: UITextField?
+    @IBOutlet var tf3: UITextField?
     
     override func viewDidLoad()  {
-        if tf1 { inputFields.addObject(tf1) }
-        if tf2 { inputFields.addObject(tf2) }
-        if tf3 { inputFields.addObject(tf3) }
+        if (tf1 != nil) { inputFields.addObject(tf1!) }
+        if (tf2 != nil) { inputFields.addObject(tf2!) }
+        if (tf3 != nil) { inputFields.addObject(tf3!) }
         super.viewDidLoad()
     }
         

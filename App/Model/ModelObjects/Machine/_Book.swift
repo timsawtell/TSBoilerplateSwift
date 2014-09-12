@@ -25,7 +25,7 @@ class _Book: NSObject, NSSecureCoding {
 
 				var title = NSString() // vanilla Foundation type
 
-	init() {
+	override init() {
     }
 
 				func setAdvertisement(advertisement_: _BookAdvertisement?, setInverse: Bool) {
@@ -48,10 +48,6 @@ class _Book: NSObject, NSSecureCoding {
 
 				func setAuthor(author_: _Author, setInverse: Bool) {
 
-		    				if author_ == nil && setInverse {
-		        				author.removeBooksObject(self, setInverse: false)
-		    				}
-
 		    	author = author_
 
 		    				if setInverse {
@@ -68,21 +64,23 @@ class _Book: NSObject, NSSecureCoding {
         return true
     }
 
-    func encodeWithCoder(aCoder: NSCoder!) {
+    func encodeWithCoder(aCoder: NSCoder) {
 
-	    		aCoder.encodeObject(blurb, forKey:kModelPropertyBookBlurb)
+	    			aCoder.encodeObject(blurb, forKey:kModelPropertyBookBlurb)
 
-	    		aCoder.encodeObject(price, forKey:kModelPropertyBookPrice)
+	    			aCoder.encodeObject(price, forKey:kModelPropertyBookPrice)
 
-	    		aCoder.encodeObject(title, forKey:kModelPropertyBookTitle)
+	    			aCoder.encodeObject(title, forKey:kModelPropertyBookTitle)
 
-	    	aCoder.encodeObject(advertisement, forKey:kModelPropertyBookAdvertisement)
+	    			if let realadvertisement = advertisement {
+	    				aCoder.encodeObject(realadvertisement, forKey:kModelPropertyBookAdvertisement) //2
+	    			}
 
-	    	aCoder.encodeObject(author, forKey:kModelPropertyBookAuthor)
+	    			aCoder.encodeObject(author, forKey:kModelPropertyBookAuthor) //3
 
     }
 
-    init(coder aDecoder: NSCoder!) {
+    required init(coder aDecoder: NSCoder) {
     	super.init()
 
 						blurb = aDecoder.decodeObjectOfClass(NSString.self, forKey:kModelPropertyBookBlurb) as NSString // vanilla Foundation type
