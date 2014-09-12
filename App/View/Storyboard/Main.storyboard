@@ -1,25 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="iJX-G5-8qx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
-        <scene sceneID="VmE-Yq-E3L">
-            <objects>
-                <navigationController id="iJX-G5-8qx" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="CVu-Cp-S3x">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="bIy-5E-cRA"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2h7-je-QgF" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-698" y="141"/>
-        </scene>
         <!--Demo View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -186,11 +170,9 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="9dW-Ky-ixi"/>
                     <connections>
                         <outlet property="scrollViewToResize" destination="EpC-Ap-yBm" id="TFd-59-30H"/>
                         <outlet property="tf1" destination="k5E-5w-VGk" id="7KC-ib-rJ2"/>
-                        <outlet property="tf2" destination="lnv-ac-Kqx" id="pul-bd-yfc"/>
                         <outlet property="tf3" destination="xjj-pc-IR8" id="wH8-SO-uuK"/>
                         <outlet property="view" destination="8bC-Xf-vdC" id="sSF-Er-qse"/>
                     </connections>
@@ -211,6 +193,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V7R-zv-ZGJ">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <items>
+                                    <barButtonItem title="dismiss" id="V6o-rb-Sa5">
+                                        <connections>
+                                            <action selector="dismissTouched:" destination="RNG-46-YAj" id="BVn-Oi-9ph"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="400" height="44"/>
+                                </variation>
+                            </toolbar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="hvH-fS-Cfy">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -263,7 +258,7 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                    <rect key="frame" x="16" y="44" width="320" height="480"/>
                                 </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="RNG-46-YAj" id="J8b-yk-1qn"/>
@@ -274,11 +269,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
                             <mask key="subviews">
+                                <exclude reference="V7R-zv-ZGJ"/>
                                 <exclude reference="hvH-fS-Cfy"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
+                                <include reference="V7R-zv-ZGJ"/>
                                 <include reference="hvH-fS-Cfy"/>
                             </mask>
                         </variation>
@@ -290,7 +287,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I4h-L1-muu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="837" y="141"/>
+            <point key="canvasLocation" x="867" y="141"/>
         </scene>
     </scenes>
 </document>

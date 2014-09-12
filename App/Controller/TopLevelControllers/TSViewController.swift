@@ -19,6 +19,7 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
     var fetchingData = false
     var keyboardShowing = false
     weak var activeControl: UIResponder?
+    var hasObservers = false
     
     override init() {
         super.init()
@@ -60,7 +61,7 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
             }
         }
         
-        if let scrollView: UIScrollView = scrollViewToResize {
+        if let scrollView = scrollViewToResize {
             scrollView.contentInset = UIEdgeInsetsZero
             scrollView.contentSize = scrollView.frame.size
             
@@ -80,21 +81,22 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
             
             NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidShow:", name: UIKeyboardDidShowNotification, object: nil)
             NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide", name: UIKeyboardWillHideNotification, object: nil)
+            hasObservers = true
         }
         super.viewDidLoad()
+    }
+    
+    deinit {
+        if hasObservers {
+            NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardDidShowNotification, object: nil)
+            NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
+        }
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         if wantsPullToRefreshFooter() {
             setupFooterView()
-        }
-    }
-    
-    deinit {
-        if nil != scrollViewToResize {
-            NSNotificationCenter.defaultCenter().removeObserver(self, forKeyPath: UIKeyboardDidShowNotification)
-            NSNotificationCenter.defaultCenter().removeObserver(self, forKeyPath: UIKeyboardWillHideNotification)
         }
     }
     

@@ -58,4 +58,8 @@ class DemoTableViewController: TSTableViewController {
     func book() -> Book? {
         return GlobalModel.currentBook?
     }
+    
+    @IBAction func dismissTouched(sender: AnyObject) {
+        presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+    }
 }
