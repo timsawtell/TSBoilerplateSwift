@@ -100,7 +100,7 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
         }
     }
     
-    // TSPullView
+    //MARK:- TSPullView
     func TSPullDidTriggerRefresh(view: TSPullView) {
         fetchData()
         pullDownAction()
@@ -128,7 +128,7 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
     }
     //END TSPullView
     
-    //ScrollViewDelegate
+    //MARK:- ScrollViewDelegate
     func scrollViewDidScroll(scrollView: UIScrollView!) {
         var currentOffset = scrollView.contentOffset.y
         var maximumOffset = max(scrollView.contentSize.height - scrollView.frame.size.height, 0)
@@ -156,9 +156,9 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
             }
         }
     }
-    //END ScrollViewDelegate
+
     
-    //Pull To Refresh and Load data
+    //MARK:- Pull To Refresh and Load data
     func wantsPullToRefresh() -> Bool {
         return false
     }
@@ -205,7 +205,7 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
     }
     //END Pull To Refresh and Load data
     
-    // Keyboard did show and resize scrollview
+    //MARK:- Keyboard did show and resize scrollview
     func nextPrevChanged(sender: AnyObject) {
         if let segControl: UISegmentedControl = sender as? UISegmentedControl {
             switch segControl.selectedSegmentIndex {
@@ -332,7 +332,7 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
     }
     //END Keyboard did show and resize scrollview
     
-    //Show activity message
+    //MARK:- Show activity message
     func showLoadingScreen(message: String) {
         activitySuperview = UIView(frame: view.bounds)
         activitySuperview.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight
