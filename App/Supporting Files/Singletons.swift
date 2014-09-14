@@ -8,5 +8,5 @@
 
 import Foundation
 
-let GlobalCommandRunner = CommandRunner()
-let GlobalModel = CommandCenter.getModelDataFromDisk()
+let GlobalCommandRunner = CommandRunner()               // Global variable. Singleton like usage.
+let GlobalModel = CommandCenter.getModelDataFromDisk()  // Global variable. Singleton like usage.
