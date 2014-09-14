@@ -16,10 +16,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EpC-Ap-yBm">
-                                <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EpC-Ap-yBm">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k5E-5w-VGk">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k5E-5w-VGk">
                                         <rect key="frame" x="7" y="14" width="97" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="97" id="YyJ-QP-fNF"/>
@@ -30,7 +30,7 @@
                                             <outlet property="delegate" destination="BYZ-38-t0r" id="DRt-yO-Osu"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lnv-ac-Kqx">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lnv-ac-Kqx">
                                         <rect key="frame" x="7" y="126" width="97" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -38,7 +38,7 @@
                                             <outlet property="delegate" destination="BYZ-38-t0r" id="X3f-cJ-hfc"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xjj-pc-IR8">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xjj-pc-IR8">
                                         <rect key="frame" x="7" y="244" width="97" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -68,7 +68,9 @@
                                             </mask>
                                         </variation>
                                         <connections>
-                                            <segue destination="RNG-46-YAj" kind="showDetail" id="Tvl-OS-BjN"/>
+                                            <segue destination="RNG-46-YAj" kind="popoverPresentation" popoverAnchorView="c9Y-rV-jDF" id="Tvl-OS-BjN">
+                                                <popoverArrowDirection key="popoverArrowDirection" left="YES" right="YES"/>
+                                            </segue>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -91,8 +93,8 @@
                                     </constraint>
                                     <constraint firstItem="k5E-5w-VGk" firstAttribute="top" secondItem="EpC-Ap-yBm" secondAttribute="top" constant="14" id="V6Z-2V-jOi"/>
                                     <constraint firstItem="lnv-ac-Kqx" firstAttribute="top" secondItem="k5E-5w-VGk" secondAttribute="bottom" constant="82" id="au7-gu-cXV"/>
-                                    <constraint firstAttribute="bottom" secondItem="k5E-5w-VGk" secondAttribute="bottom" constant="436" id="cZ7-oZ-FcS"/>
-                                    <constraint firstAttribute="trailing" secondItem="k5E-5w-VGk" secondAttribute="trailing" constant="376" id="epw-6S-2vD"/>
+                                    <constraint firstAttribute="bottom" secondItem="k5E-5w-VGk" secondAttribute="bottom" constant="556" id="cZ7-oZ-FcS"/>
+                                    <constraint firstAttribute="trailing" secondItem="k5E-5w-VGk" secondAttribute="trailing" constant="496" id="epw-6S-2vD"/>
                                     <constraint firstItem="k5E-5w-VGk" firstAttribute="leading" secondItem="EpC-Ap-yBm" secondAttribute="leading" constant="7" id="jSl-gX-HJ6"/>
                                     <constraint firstItem="xjj-pc-IR8" firstAttribute="leading" secondItem="lnv-ac-Kqx" secondAttribute="leading" id="whC-yU-Lp3"/>
                                     <constraint firstItem="k5E-5w-VGk" firstAttribute="top" secondItem="EpC-Ap-yBm" secondAttribute="top" constant="14" id="zSs-1d-2h7">
@@ -113,7 +115,7 @@
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular" ambiguous="YES" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="480" height="640"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
                                 </variation>
                                 <variation key="widthClass=compact">
                                     <mask key="subviews">
@@ -133,10 +135,10 @@
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=regular" ambiguous="YES" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="640" height="480"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                                 </variation>
-                                <variation key="heightClass=compact-widthClass=compact" ambiguous="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
+                                <variation key="heightClass=compact-widthClass=regular" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="800" height="480"/>
                                 </variation>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="KRr-AG-N9S"/>
@@ -146,19 +148,18 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="EpC-Ap-yBm" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="CXB-1a-hpw"/>
+                            <constraint firstItem="EpC-Ap-yBm" firstAttribute="trailing" secondItem="wfy-db-euE" secondAttribute="trailing" id="Mfy-oT-hJ3"/>
                             <constraint firstItem="EpC-Ap-yBm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="P1d-Ja-LEw"/>
+                            <constraint firstItem="EpC-Ap-yBm" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="ci0-hu-Cg7"/>
                             <constraint firstAttribute="trailing" secondItem="EpC-Ap-yBm" secondAttribute="trailing" id="hJx-9N-TaC"/>
-                            <constraint firstAttribute="bottom" secondItem="EpC-Ap-yBm" secondAttribute="bottom" id="zEb-9a-g9c">
-                                <variation key="widthClass=compact" constant="-10"/>
-                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
-                            </constraint>
+                            <constraint firstItem="EpC-Ap-yBm" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="iWF-uc-7Gn"/>
+                            <constraint firstItem="EpC-Ap-yBm" firstAttribute="leading" secondItem="y3c-jy-aDJ" secondAttribute="leading" id="ym2-fd-GeF"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="CXB-1a-hpw"/>
                                 <exclude reference="P1d-Ja-LEw"/>
                                 <exclude reference="hJx-9N-TaC"/>
-                                <exclude reference="zEb-9a-g9c"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -166,13 +167,13 @@
                                 <include reference="CXB-1a-hpw"/>
                                 <include reference="P1d-Ja-LEw"/>
                                 <include reference="hJx-9N-TaC"/>
-                                <include reference="zEb-9a-g9c"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
                         <outlet property="scrollViewToResize" destination="EpC-Ap-yBm" id="TFd-59-30H"/>
                         <outlet property="tf1" destination="k5E-5w-VGk" id="7KC-ib-rJ2"/>
+                        <outlet property="tf2" destination="lnv-ac-Kqx" id="hRE-Ff-axf"/>
                         <outlet property="tf3" destination="xjj-pc-IR8" id="wH8-SO-uuK"/>
                         <outlet property="view" destination="8bC-Xf-vdC" id="sSF-Er-qse"/>
                     </connections>
@@ -193,7 +194,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V7R-zv-ZGJ">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V7R-zv-ZGJ">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <items>
                                     <barButtonItem title="dismiss" id="V6o-rb-Sa5">
@@ -202,12 +203,15 @@
                                         </connections>
                                     </barButtonItem>
                                 </items>
+                                <variation key="heightClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="45"/>
+                                </variation>
                                 <variation key="widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="0.0" y="0.0" width="400" height="44"/>
                                 </variation>
                             </toolbar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="hvH-fS-Cfy">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="hvH-fS-Cfy">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="44" id="TVZ-KY-MBz" customClass="Cell" customModule="TSBoilerplateSwift" customModuleProvider="target">
@@ -257,8 +261,20 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <variation key="heightClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="400"/>
+                                </variation>
+                                <variation key="heightClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
+                                </variation>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="16" y="44" width="320" height="480"/>
+                                    <rect key="frame" x="0.0" y="44" width="411" height="563"/>
+                                </variation>
+                                <variation key="heightClass=compact-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="400"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="44" width="411" height="756"/>
                                 </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="RNG-46-YAj" id="J8b-yk-1qn"/>
@@ -267,12 +283,6 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="V7R-zv-ZGJ"/>
-                                <exclude reference="hvH-fS-Cfy"/>
-                            </mask>
-                        </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="V7R-zv-ZGJ"/>

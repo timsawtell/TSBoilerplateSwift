@@ -37,7 +37,7 @@ class AsynchronousCommand : Command {
     }
     
     override func main() {
-        weak var weakSelf: AsynchronousCommand? = self
+        weak var weakSelf = self
         self.completionBlock = {
             if let strongSelf = weakSelf {
                 dispatch_async(dispatch_get_main_queue()) {
