@@ -29,6 +29,8 @@
 		2B130E98196CF36C001207EF /* BodyFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B130E8D196CF36C001207EF /* BodyFormatter.swift */; };
 		2B130E99196CF36C001207EF /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B130E90196CF36C001207EF /* Reachability.m */; };
 		2B130E9A196CF36C001207EF /* TheNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B130E91196CF36C001207EF /* TheNetwork.swift */; };
+		2B48FCDC19D8D24800E5E5E4 /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B48FCDB19D8D24800E5E5E4 /* Builder.swift */; };
+		2B48FCDD19D8D28500E5E5E4 /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B48FCDB19D8D24800E5E5E4 /* Builder.swift */; };
 		2B54AE84193ED5C000DDB1E8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2B54AE6F193ED5C000DDB1E8 /* InfoPlist.strings */; };
 		2B54AE85193ED5C000DDB1E8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B54AE73193ED5C000DDB1E8 /* Images.xcassets */; };
 		2B54AE88193ED5C000DDB1E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B54AE7E193ED5C000DDB1E8 /* Main.storyboard */; };
@@ -275,6 +277,7 @@
 		2B130E90196CF36C001207EF /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		2B130E91196CF36C001207EF /* TheNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TheNetwork.swift; sourceTree = "<group>"; };
 		2B25BF1A194041B600E8B065 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		2B48FCDB19D8D24800E5E5E4 /* Builder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Builder.swift; sourceTree = "<group>"; };
 		2B54AE45193ED5A100DDB1E8 /* TSBoilerplateSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TSBoilerplateSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B54AE57193ED5A100DDB1E8 /* TSBoilerplateSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TSBoilerplateSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B54AE70193ED5C000DDB1E8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -438,6 +441,7 @@
 			isa = PBXGroup;
 			children = (
 				2B8BB85A195D07D20016BC63 /* BookBuilder.swift */,
+				2B48FCDB19D8D24800E5E5E4 /* Builder.swift */,
 			);
 			path = Builders;
 			sourceTree = "<group>";
@@ -861,6 +865,7 @@
 				2BCD010D19590BA9002ADC27 /* TSPullView.swift in Sources */,
 				2BAD470A193EE95E00BB718A /* CommandRunner.swift in Sources */,
 				2BCD010B1958F783002ADC27 /* UIColorHelper.swift in Sources */,
+				2B48FCDC19D8D24800E5E5E4 /* Builder.swift in Sources */,
 				2BAD470D193FCFC900BB718A /* iTunesSearchCommand.swift in Sources */,
 				2BAD471D193FF1D600BB718A /* Model.swift in Sources */,
 				2B61B80D195A8ABA00F4D70D /* GCD.swift in Sources */,
@@ -893,6 +898,7 @@
 				2B5A7865196D1202007588B1 /* Command.swift in Sources */,
 				2B5A7866196D1202007588B1 /* AsynchronousCommand.swift in Sources */,
 				2B5A7867196D1202007588B1 /* CommandRunner.swift in Sources */,
+				2B48FCDD19D8D28500E5E5E4 /* Builder.swift in Sources */,
 				2B5A7868196D1202007588B1 /* CommandCenter.swift in Sources */,
 				2B5A7869196D1202007588B1 /* TSViewController.swift in Sources */,
 				2B5A786A196D1202007588B1 /* TSTableViewController.swift in Sources */,

@@ -8,14 +8,7 @@
 
 import Foundation
 
-class Builder {
-    class func safeAssign(#attemptValue: AnyObject?, defaultValue: AnyObject) ->AnyObject {
-        if let realValue: AnyObject = attemptValue {
-            return realValue
-        }
-        return defaultValue
-    }
-}
+
 
 class BookBuilder: Builder {
     
