@@ -38,7 +38,7 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
             toolbar.opaque = false
             toolbar.translucent = true
             
-            var nextPrev = UISegmentedControl(items: ["Previous", "Next"])
+            var nextPrev = UISegmentedControl(items: ["Previous", "Next"])!
             nextPrev.momentary = true
             nextPrev.highlighted = true
             nextPrev.addTarget(self, action: "nextPrevChanged:", forControlEvents: UIControlEvents.ValueChanged)

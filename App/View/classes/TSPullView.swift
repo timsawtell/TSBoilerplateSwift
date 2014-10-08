@@ -57,7 +57,7 @@ class TSPullView: UIView {
         statusLabel.textAlignment = .Center
         
         layerToRotate.contentsGravity = kCAGravityResizeAspect
-        layerToRotate.contents = UIImage(named:"blackArrow").CGImage
+        layerToRotate.contents = UIImage(named:"blackArrow")?.CGImage
         layerToRotate.contentsScale = UIScreen.mainScreen().scale
         
         highlighterView = HighlighterView(frame: CGRectMake(0, -7, layerToRotate.frame.size.width, 7))

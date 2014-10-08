@@ -19,7 +19,7 @@ extension UIColor {
 
         let index = advance(rgba.startIndex, moveForward)
         let hex = rgba.substringFromIndex(index)
-        let scanner = NSScanner.scannerWithString(hex)
+        let scanner = NSScanner(string: hex)
         var hexValue: CUnsignedLongLong = 0
         if scanner.scanHexLongLong(&hexValue) {
             if hex.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) == 6 {

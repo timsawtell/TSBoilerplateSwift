@@ -19,7 +19,7 @@ class Model :NSObject, NSSecureCoding {
     }
     
     func save() {
-        let data = CommandCenter.securelyArchiveRootObject(self, key: kModelArchiveKey)
+        let data = CommandCenter.archiveRootObject(self, key: kModelArchiveKey)
         if !(data?.writeToFile(kPathForModelFile!, atomically: true) != nil) {
             NSLog("couldn't write model to disk")
         }

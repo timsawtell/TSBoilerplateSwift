@@ -69,7 +69,10 @@
                                         </variation>
                                         <connections>
                                             <segue destination="RNG-46-YAj" kind="popoverPresentation" popoverAnchorView="c9Y-rV-jDF" id="Tvl-OS-BjN">
-                                                <popoverArrowDirection key="popoverArrowDirection" left="YES" right="YES"/>
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                                <popoverPassthroughViews>
+                                                    <scrollView reference="EpC-Ap-yBm"/>
+                                                </popoverPassthroughViews>
                                             </segue>
                                         </connections>
                                     </button>
@@ -114,9 +117,6 @@
                                         <exclude reference="zSs-1d-2h7"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular" ambiguous="YES" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
-                                </variation>
                                 <variation key="widthClass=compact">
                                     <mask key="subviews">
                                         <include reference="c9Y-rV-jDF"/>
@@ -133,9 +133,6 @@
                                         <exclude reference="jSl-gX-HJ6"/>
                                         <include reference="zSs-1d-2h7"/>
                                     </mask>
-                                </variation>
-                                <variation key="widthClass=regular" ambiguous="YES" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                                 </variation>
                                 <variation key="heightClass=compact-widthClass=regular" ambiguous="YES" misplaced="YES">
                                     <rect key="frame" x="0.0" y="0.0" width="800" height="480"/>
@@ -185,7 +182,7 @@
         <!--Demo Table View Controller-->
         <scene sceneID="woW-TQ-DwX">
             <objects>
-                <viewController id="RNG-46-YAj" customClass="DemoTableViewController" customModule="TSBoilerplateSwift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="pageSheet" id="RNG-46-YAj" customClass="DemoTableViewController" customModule="TSBoilerplateSwift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="WYI-PS-Lb9"/>
                         <viewControllerLayoutGuide type="bottom" id="xZi-vb-1Qe"/>
