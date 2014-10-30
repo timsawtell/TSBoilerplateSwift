@@ -2,6 +2,7 @@ import Foundation
 
 // Dont edit this class! Make your changes in the Human version of this class
 // This may be formatted like arse but I prefer an easy to read machine.motemplate file over an easy to read class file that is never edited
+// If you want to alter the model, open the Model.xcdatamodeld file and make your changes. Change the project's scheme to "Build Data Model". Build the app. Switch back to the TSBoilerplateSwift scheme to see the results
 
 class _BookAdvertisement: NSObject, NSSecureCoding {
 
