@@ -230,8 +230,8 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
                     UIView.animateWithDuration(0.2, animations:{
                         scrollView.scrollRectToVisible(nextControl.frame, animated: true)
                         }, completion: ({ finished in
-                            var n = nextControl.becomeFirstResponder() // are you kidding me Swift? becomeFirstResponser returns a bool, so unless I capture this in a variable the parser will think I'm trying to return Bool from this block (and won't compile)
-                            }))
+                            nextControl.becomeFirstResponder()
+                        }))
                     
                     break
                 }
@@ -254,7 +254,7 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
                     UIView.animateWithDuration(0.2, animations:{
                         scrollView.scrollRectToVisible(nextControl.frame, animated: true)
                         }, completion: ({ finished in
-                            var n = nextControl.becomeFirstResponder() // are you kidding me Swift? becomeFirstResponser returns a bool, so unless I capture this in a variable the parser will think I'm trying to return Bool from this block (and won't compile)
+                            nextControl.becomeFirstResponder()
                         }))
                     break
                 }

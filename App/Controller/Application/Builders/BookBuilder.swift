@@ -22,10 +22,10 @@ class BookBuilder: Builder {
     }
     
     class func updateObjWithJSONDict(obj: Book, json: NSDictionary) ->Book {
-        obj.author.name = safeAssign(attemptValue: json["artistName"], defaultValue:"Unknown") as! NSString
-        obj.title = safeAssign(attemptValue: json["trackName"], defaultValue: "Unknown") as! NSString
-        obj.price = safeAssign(attemptValue: json["price"], defaultValue: 0.00) as! Double
-        obj.blurb = safeAssign(attemptValue: json["description"], defaultValue: "Unknown") as! NSString
+        obj.author.name = safeAssign(json["artistName"], defaultValue:"Unknown") as! NSString
+        obj.title = safeAssign(json["trackName"], defaultValue: "Unknown") as! NSString
+        obj.price = safeAssign(json["price"], defaultValue: 0.00) as! Double
+        obj.blurb = safeAssign(json["description"], defaultValue: "Unknown") as! NSString
                 
         return obj
     }

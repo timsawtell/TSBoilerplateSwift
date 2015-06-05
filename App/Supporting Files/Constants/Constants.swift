@@ -11,7 +11,7 @@ import UIKit
 
 let kModelFileName = "model.dat"
 let kModelArchiveKey = "model"
-let kReverseDomainName = "au.com.sawtellsoftware.tsboilerplate"
+let kReverseDomainName = "au.com.sawtellsoftware.tsboilerplateswift"
 let kUnableToParseMessageText = "Unable to parse results";
 let kNoResultsText = "No results found"
 
