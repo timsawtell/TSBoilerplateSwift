@@ -30,7 +30,6 @@ class Model :NSObject, NSSecureCoding {
     }
     
     // NSSecureCoding
-    // There is a bug with NSSecureCoding for collection types (i.e. arrays). I have filed a Radar bug report and when apple fix their sh!t I'll update this.
     func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeObject(strings, forKey: "strings")
         aCoder.encodeObject(books, forKey: "books")
