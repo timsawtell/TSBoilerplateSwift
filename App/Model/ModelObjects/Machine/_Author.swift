@@ -14,7 +14,7 @@ class _Author: NSObject, NSSecureCoding {
 
 		let kModelPropertyAuthorBooks = "books"
 
-			var books = [_Book]() //to many
+			var books = [_Book]()
 
 				var age: NSNumber? //optional or transient
 
@@ -79,11 +79,11 @@ class _Author: NSObject, NSSecureCoding {
 
 	    				age = aDecoder.decodeObjectOfClass(NSNumber.self, forKey:kModelPropertyAuthorAge) as? NSNumber // transient or optional
 
-						name = aDecoder.decodeObjectOfClass(NSString.self, forKey:kModelPropertyAuthorName) as NSString // vanilla Foundation type
+						name = aDecoder.decodeObjectOfClass(NSString.self, forKey:kModelPropertyAuthorName) as! NSString // vanilla Foundation type
 
 	    				trans = aDecoder.decodeObjectOfClass(BookAdvertisement.self, forKey:kModelPropertyAuthorTrans) as? BookAdvertisement // transient or optional
 
-	        	books = aDecoder.decodeObjectOfClasses(NSSet(objects:NSArray.self, _Book.self), forKey:kModelPropertyAuthorBooks) as [_Book] // to many
+	        	books = aDecoder.decodeObjectOfClasses(NSSet(objects:NSArray.self, _Book.self) as Set<NSObject>, forKey:kModelPropertyAuthorBooks) as! [_Book] // to many
 
     }
 }

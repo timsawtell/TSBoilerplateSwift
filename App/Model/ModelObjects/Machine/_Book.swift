@@ -16,9 +16,17 @@ class _Book: NSObject, NSSecureCoding {
 
 		let kModelPropertyBookAuthor = "author"
 
-					var advertisement: _BookAdvertisement? //optional
+			    private var _advertisement: _BookAdvertisement?
+					var advertisement: _BookAdvertisement? {
+					set(value) {
+						_advertisement = value
+					}
+					get {
+						return self._advertisement
+					}
+				}
 
-					var author = _Author() // !transient && !optional relationship
+					var author = _Author()
 
 				var blurb = NSString() // vanilla Foundation type
 
@@ -43,10 +51,6 @@ class _Book: NSObject, NSSecureCoding {
 
 			}
 
-				func setAdvertisement(advertisement_: _BookAdvertisement?) {
-				    setAdvertisement(advertisement_, setInverse: true)
-				}
-
 				func setAuthor(author_: _Author, setInverse: Bool) {
 
 		    	author = author_
@@ -56,10 +60,6 @@ class _Book: NSObject, NSSecureCoding {
 			    			}
 
 			}
-
-				func setAuthor(author_: _Author) {
-				    setAuthor(author_, setInverse: true)
-				}
 
     class func supportsSecureCoding() -> Bool {
         return true
@@ -84,15 +84,15 @@ class _Book: NSObject, NSSecureCoding {
     required init(coder aDecoder: NSCoder) {
     	super.init()
 
-						blurb = aDecoder.decodeObjectOfClass(NSString.self, forKey:kModelPropertyBookBlurb) as NSString // vanilla Foundation type
+						blurb = aDecoder.decodeObjectOfClass(NSString.self, forKey:kModelPropertyBookBlurb) as! NSString // vanilla Foundation type
 
-						price = aDecoder.decodeObjectOfClass(NSNumber.self, forKey:kModelPropertyBookPrice) as NSNumber // vanilla Foundation type
+						price = aDecoder.decodeObjectOfClass(NSNumber.self, forKey:kModelPropertyBookPrice) as! NSNumber // vanilla Foundation type
 
-						title = aDecoder.decodeObjectOfClass(NSString.self, forKey:kModelPropertyBookTitle) as NSString // vanilla Foundation type
+						title = aDecoder.decodeObjectOfClass(NSString.self, forKey:kModelPropertyBookTitle) as! NSString // vanilla Foundation type
 
 	        		advertisement = aDecoder.decodeObjectOfClass(_BookAdvertisement.self, forKey:kModelPropertyBookAdvertisement) as? _BookAdvertisement // transient or optional
 
-	        		author = aDecoder.decodeObjectOfClass(_Author.self, forKey:kModelPropertyBookAuthor) as _Author // !transient && !optional relationship
+	        		author = aDecoder.decodeObjectOfClass(_Author.self, forKey:kModelPropertyBookAuthor) as! _Author // !transient && !optional relationship
 
     }
 }

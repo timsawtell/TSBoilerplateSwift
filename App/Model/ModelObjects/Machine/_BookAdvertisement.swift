@@ -12,7 +12,15 @@ class _BookAdvertisement: NSObject, NSSecureCoding {
 
 		let kModelPropertyBookAdvertisementBook = "book"
 
-				weak var book: _Book? //transient
+			  private weak var _book: _Book?
+				weak var book: _Book? {
+					set(value) {
+						_book = value
+					}
+					get {
+						return self._book
+					}
+				}
 
 				var body = NSString() // vanilla Foundation type
 
@@ -35,10 +43,6 @@ class _BookAdvertisement: NSObject, NSSecureCoding {
 
 			}
 
-				func setBook(book_: _Book?) {
-				    setBook(book_, setInverse: true)
-				}
-
     class func supportsSecureCoding() -> Bool {
         return true
     }
@@ -58,9 +62,9 @@ class _BookAdvertisement: NSObject, NSSecureCoding {
     required init(coder aDecoder: NSCoder) {
     	super.init()
 
-						body = aDecoder.decodeObjectOfClass(NSString.self, forKey:kModelPropertyBookAdvertisementBody) as NSString // vanilla Foundation type
+						body = aDecoder.decodeObjectOfClass(NSString.self, forKey:kModelPropertyBookAdvertisementBody) as! NSString // vanilla Foundation type
 
-						title = aDecoder.decodeObjectOfClass(NSString.self, forKey:kModelPropertyBookAdvertisementTitle) as NSString // vanilla Foundation type
+						title = aDecoder.decodeObjectOfClass(NSString.self, forKey:kModelPropertyBookAdvertisementTitle) as! NSString // vanilla Foundation type
 
 	        		book = aDecoder.decodeObjectOfClass(_Book.self, forKey:kModelPropertyBookAdvertisementBook) as? _Book // transient or optional
 

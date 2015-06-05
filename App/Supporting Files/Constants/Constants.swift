@@ -21,9 +21,9 @@ var isLandscape = deviceOrientation == UIInterfaceOrientation.LandscapeLeft || d
 
 let kBaseURL = "www.example.com"
 
-let kPathForModelFile = pathForModel()
+let kPathForModelFile: String = pathForModel()!
 
-func pathForModel() -> NSString? {
+func pathForModel() -> String? {
     if let paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.ApplicationSupportDirectory, NSSearchPathDomainMask.UserDomainMask, true) as? [String] {
         if paths.count > 0 {
             var path = paths[0]

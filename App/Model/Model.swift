@@ -20,7 +20,7 @@ class Model :NSObject, NSSecureCoding {
     
     func save() {
         let data = CommandCenter.securelyArchiveRootObject(self, key: kModelArchiveKey)
-        if !(data?.writeToFile(kPathForModelFile!, atomically: true) != nil) {
+        if !(data?.writeToFile(kPathForModelFile, atomically: true) != nil) {
             NSLog("couldn't write model to disk")
         }
     }
@@ -37,7 +37,7 @@ class Model :NSObject, NSSecureCoding {
     }
     
     required init(coder aDecoder: NSCoder) {
-        strings = aDecoder.decodeObjectOfClass(NSArray.self, forKey: "strings") as [String]
-        books   = aDecoder.decodeObjectOfClass(NSArray.self, forKey: "books") as [Book]
+        strings = aDecoder.decodeObjectOfClass(NSArray.self, forKey: "strings") as! [String]
+        books   = aDecoder.decodeObjectOfClass(NSArray.self, forKey: "books") as! [Book]
     }
 }

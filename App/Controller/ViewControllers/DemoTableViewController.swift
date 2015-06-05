@@ -38,17 +38,17 @@ class DemoTableViewController: TSTableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell: Cell = tableView.dequeueReusableCellWithIdentifier(kCellId, forIndexPath: indexPath) as Cell
+        var cell: Cell = tableView.dequeueReusableCellWithIdentifier(kCellId, forIndexPath: indexPath) as! Cell
         if let book = book() {
             switch indexPath.row {
             case 0:
-                cell.textBox!.text = book.title
+                cell.textBox!.text = book.title as? String
             case 1:
                 cell.textBox!.text = "\(book.price)"
             case 2:
-                cell.textBox!.text = book.author.name
+                cell.textBox!.text = book.author.name as? String
             default:
-                cell.textBox!.text = book.blurb
+                cell.textBox!.text = book.blurb as? String
             }
         }
         return cell
@@ -56,7 +56,7 @@ class DemoTableViewController: TSTableViewController {
 
     //helpers
     func book() -> Book? {
-        return GlobalModel.currentBook?
+        return GlobalModel.currentBook
     }
     
     @IBAction func dismissTouched(sender: AnyObject) {

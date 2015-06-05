@@ -21,10 +21,6 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
     weak var activeControl: UIResponder?
     var hasObservers = false
     
-    override init() {
-        super.init()
-    }
-    
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -52,10 +48,10 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
             
             for control : AnyObject in inputFields {
                 if control.isKindOfClass(UITextView.self) {
-                    let tv = control as UITextView
+                    let tv = control as! UITextView
                     tv.inputAccessoryView = toolbar
                 } else if control.isKindOfClass(UITextField.self) {
-                    let tf = control as UITextField
+                    let tf = control as! UITextField
                     tf.inputAccessoryView = toolbar
                 }
             }
@@ -129,7 +125,7 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
     //END TSPullView
     
     //MARK:- ScrollViewDelegate
-    func scrollViewDidScroll(scrollView: UIScrollView!) {
+    func scrollViewDidScroll(scrollView: UIScrollView) {
         var currentOffset = scrollView.contentOffset.y
         var maximumOffset = max(scrollView.contentSize.height - scrollView.frame.size.height, 0)
         if currentOffset < 0 {
@@ -143,7 +139,7 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
         }
     }
     
-    func scrollViewDidEndDragging(scrollView: UIScrollView!, willDecelerate decelerate: Bool) {
+    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         var currentOffset = scrollView.contentOffset.y
         var maximumOffset = max(scrollView.contentSize.height - scrollView.frame.size.height, 0)
         if currentOffset < 0 {
@@ -226,9 +222,9 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
                 if inputFields.objectAtIndex(i) === activeControl {
                     var nextControl: UIControl
                     if (i < inputFields.count - 1) {
-                        nextControl = inputFields.objectAtIndex(i+1) as UIControl
+                        nextControl = inputFields.objectAtIndex(i+1) as! UIControl
                     } else {
-                        nextControl = inputFields.objectAtIndex(0) as UIControl
+                        nextControl = inputFields.objectAtIndex(0) as! UIControl
                     }
                     
                     UIView.animateWithDuration(0.2, animations:{
@@ -250,9 +246,9 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
                 if inputFields.objectAtIndex(i) === activeControl {
                     var nextControl: UIControl
                     if (i == 0) {
-                        nextControl = inputFields.objectAtIndex(inputFields.count - 1) as UIControl
+                        nextControl = inputFields.objectAtIndex(inputFields.count - 1) as! UIControl
                     } else {
-                        nextControl = inputFields.objectAtIndex(i - 1) as UIControl
+                        nextControl = inputFields.objectAtIndex(i - 1) as! UIControl
                     }
                     
                     UIView.animateWithDuration(0.2, animations:{
@@ -274,7 +270,7 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
         if let scrollView: UIScrollView = scrollViewToResize {
             keyboardShowing = true
             var info: NSDictionary = aNotification.userInfo!
-            let s:NSValue = info.valueForKey(UIKeyboardFrameEndUserInfoKey) as NSValue
+            let s:NSValue = info.valueForKey(UIKeyboardFrameEndUserInfoKey) as! NSValue
             var kbSize = s.CGRectValue().size
             var viewHeight = view.frame.size.height
             // bug with the notification being the wrong size when in landscape
@@ -310,12 +306,12 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
         }
     }
     
-    func textFieldShouldReturn(textField: UITextField!) -> Bool {
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
     
-    func textFieldDidBeginEditing(textField: UITextField!) {
+    func textFieldDidBeginEditing(textField: UITextField) {
         if inputFields.containsObject(textField) {
             activeControl = textField
         } else {
@@ -323,7 +319,7 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
         }
     }
     
-    func textViewDidBeginEditing(textView: UITextView!) {
+    func textViewDidBeginEditing(textView: UITextView) {
         if inputFields.containsObject(textView) {
             activeControl = textView
         } else {

@@ -16,16 +16,16 @@ class BookBuilder: Builder {
         
         let book = Book()
         let auth = Author()
-        book.setAuthor(auth)
+        book.author = auth
         BookBuilder.updateObjWithJSONDict(book, json: json)
         return book
     }
     
     class func updateObjWithJSONDict(obj: Book, json: NSDictionary) ->Book {
-        obj.author.name = safeAssign(attemptValue: json["artistName"], defaultValue:"Unknown") as NSString
-        obj.title = safeAssign(attemptValue: json["trackName"], defaultValue: "Unknown") as NSString
-        obj.price = safeAssign(attemptValue: json["price"], defaultValue: 0.00) as Double
-        obj.blurb = safeAssign(attemptValue: json["description"], defaultValue: "Unknown") as NSString
+        obj.author.name = safeAssign(attemptValue: json["artistName"], defaultValue:"Unknown") as! NSString
+        obj.title = safeAssign(attemptValue: json["trackName"], defaultValue: "Unknown") as! NSString
+        obj.price = safeAssign(attemptValue: json["price"], defaultValue: 0.00) as! Double
+        obj.blurb = safeAssign(attemptValue: json["description"], defaultValue: "Unknown") as! NSString
                 
         return obj
     }

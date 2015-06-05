@@ -31,9 +31,9 @@ class TestModel: XCTestCase {
         
         XCTAssertNotNil(book, "book was nil")
     
-        book.setAdvertisement(ad)
+        book.advertisement = ad
         XCTAssertTrue(ad === book.advertisement, "not the same advertisement")
-        book.setAdvertisement(nil)
+        book.advertisement = nil
         XCTAssertNil(ad, "ad not nil!")
     }
     
