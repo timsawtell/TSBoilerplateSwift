@@ -15,18 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
      func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
-
-        // Override point for customization after application launch.
-        /*
-        let author = Author()
-        var book = Book()
-        author.addBooksObject(book)
-        NSLog("\(author.books.count)")
-        author.removeBooksObject(book)
-        NSLog("\(author.books.count)")
-        GlobalModel.books.append(book)
-        GlobalModel.save()
-        */
         return true
     }
 

@@ -23,9 +23,9 @@ class TestModel: XCTestCase {
     }
 
     func testModelRetainIntegrity() {
-        var book = Book()
+        let book = Book()
         weak var ad = BookAdvertisement()
-        var author = Author()
+        let author = Author()
         
         author.addBooksObject(book)
         

@@ -62,11 +62,11 @@ class TSPullView: UIView {
         
         highlighterView = HighlighterView(frame: CGRectMake(0, -7, layerToRotate.frame.size.width, 7))
         weak var weakHLV = highlighterView
-        var height = layerToRotate.frame.size.height
+        let height = layerToRotate.frame.size.height
         UIView.animateWithDuration(1.2, delay: 0.2, options: .Repeat,
             animations: {
                 if let strongHLV = weakHLV {
-                    strongHLV.frame = CGRectSetY(strongHLV.frame, strongHLV.frame.origin.y + height + strongHLV.frame.size.height  ) // scroll up the rotate image
+                    strongHLV.frame = CGRectSetY(strongHLV.frame, y: strongHLV.frame.origin.y + height + strongHLV.frame.size.height  ) // scroll up the rotate image
                 }
             }, completion: nil)
         layerToRotate.addSublayer(highlighterView.layer)
@@ -95,8 +95,7 @@ class TSPullView: UIView {
                 }
                 highlighterView.hidden = true
                 
-                weak var weakSelf = self
-                var flash = CABasicAnimation(keyPath: "opacity")
+                let flash = CABasicAnimation(keyPath: "opacity")
                 flash.fromValue = 1
                 flash.toValue = 0.4
                 flash.duration = 0.7
@@ -138,7 +137,7 @@ class TSPullView: UIView {
     func refreshLastUpdatedDate() {
         if let myDelegate = delegate {
             if let date = myDelegate.TSPullViewLastUpdated?(self) {
-                var df = NSDateFormatter()
+                let df = NSDateFormatter()
                 df.dateStyle = .ShortStyle
                 df.timeStyle = .ShortStyle
                 lastUpdatedLabel.text = "Last updated: \(df.stringFromDate(date))"

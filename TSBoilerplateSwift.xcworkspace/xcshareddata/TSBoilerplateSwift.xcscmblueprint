@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "B2D246153D09C90EB4EF7158F016D2FDBB293A27",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "71AF4886B24C017D80A461207EB11EEC4E9FA720" : 0,
+    "B2D246153D09C90EB4EF7158F016D2FDBB293A27" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "80C14147-A129-4272-8F81-6DDAD54D65B1",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "71AF4886B24C017D80A461207EB11EEC4E9FA720" : "TSBoilerplateSwiftExternal\/TheNetwork",
+    "B2D246153D09C90EB4EF7158F016D2FDBB293A27" : "TSBoilerplateSwift"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "TSBoilerplateSwift",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 203,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "TSBoilerplateSwift.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/timsawtell\/TheNetwork.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "71AF4886B24C017D80A461207EB11EEC4E9FA720"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/timsawtell\/TSBoilerplateSwift.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B2D246153D09C90EB4EF7158F016D2FDBB293A27"
+    }
+  ]
+}

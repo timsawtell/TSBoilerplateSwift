@@ -1,6 +1,6 @@
 import Foundation
 
-class BookAdvertisement: _BookAdvertisement, NSSecureCoding {
+class BookAdvertisement: _BookAdvertisement {
 
 	// add your custom vars here
 

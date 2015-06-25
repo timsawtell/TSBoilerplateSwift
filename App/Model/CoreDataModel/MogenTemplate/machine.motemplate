@@ -92,7 +92,7 @@ class _<$managedObjectClassName$>: NSObject, NSSecureCoding {
 					    }
 					<$endif$>
 				<$endif$>
-			    if let index = find(<$Relationship.name$>, value_) {
+			    if let index = <$Relationship.name$>.indexOf(value_) {
 			       	<$Relationship.name$>.removeAtIndex(index)
 			    }
 			    

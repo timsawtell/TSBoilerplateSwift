@@ -15,7 +15,7 @@ extension UIColor {
         var green: CGFloat = 0.0
         var blue: CGFloat  = 0.0
         var alpha: CGFloat = 1.0
-        var moveForward = rgba.hasPrefix("#") ? 1 : 0
+        let moveForward = rgba.hasPrefix("#") ? 1 : 0
 
         let index = advance(rgba.startIndex, moveForward)
         let hex = rgba.substringFromIndex(index)
@@ -32,10 +32,10 @@ extension UIColor {
                 blue  = CGFloat((hexValue & 0x0000FF00) >> 8)  / 255.0
                 alpha = CGFloat(hexValue & 0x000000FF)         / 255.0
             } else {
-                print("invalid rgb string, length should be 7 or 9")
+                print("invalid rgb string, length should be 7 or 9", appendNewline: false)
             }
         } else {
-            println("scan hex error")
+            print("scan hex error")
         }
         
         self.init(red:red, green:green, blue:blue, alpha:alpha)

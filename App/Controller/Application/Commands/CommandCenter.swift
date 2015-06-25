@@ -11,43 +11,46 @@ import Foundation
 class CommandCenter {
 
     class func securelyArchiveRootObject(object: NSObject, key: NSString) -> NSData? {
-        var data = NSMutableData()
-        var archiver = NSKeyedArchiver(forWritingWithMutableData: data);
-        archiver.setRequiresSecureCoding(true)
-        archiver.encodeObject(object, forKey: key as! String)
+        let data = NSMutableData()
+        let archiver = NSKeyedArchiver(forWritingWithMutableData: data);
+        archiver.requiresSecureCoding = true
+        archiver.encodeObject(object, forKey: key as String)
         archiver.finishEncoding()
         return data
     }
     
     class func securelyUnarchiveData(data: NSData, ofClass:AnyClass!, key: NSString) -> AnyObject? {
-        var unarchiver = NSKeyedUnarchiver(forReadingWithData: data);
-        unarchiver.setRequiresSecureCoding(true)
-        var x = unarchiver.decodeObjectOfClass(ofClass, forKey: key as! String) as? NSObject
+        let unarchiver = NSKeyedUnarchiver(forReadingWithData: data);
+        unarchiver.requiresSecureCoding = true
+        let x = unarchiver.decodeObjectOfClass(ofClass, forKey: key as String) as? NSObject
         return x
     }
     
     class func archiveRootObject(object: NSObject, key: NSString) -> NSData? {
-        var data = NSMutableData()
-        var archiver = NSKeyedArchiver(forWritingWithMutableData: data);
-        archiver.encodeObject(object, forKey: key as! String)
+        let data = NSMutableData()
+        let archiver = NSKeyedArchiver(forWritingWithMutableData: data);
+        archiver.encodeObject(object, forKey: key as String)
         archiver.finishEncoding()
         return data
     }
     
     class func unarchiveData(data: NSData, ofClass:AnyClass!, key: NSString) -> AnyObject? {
-        var unarchiver = NSKeyedUnarchiver(forReadingWithData: data);
-        var x = unarchiver.decodeObjectForKey(key as! String) as? NSObject
+        let unarchiver = NSKeyedUnarchiver(forReadingWithData: data);
+        let x = unarchiver.decodeObjectForKey(key as String) as? NSObject
         return x
     }
     
     class func getModelDataFromDisk() -> Model {
-        var model = Model()
-        var error: NSError?
-        if let data = NSData(contentsOfFile: kPathForModelFile, options: NSDataReadingOptions.DataReadingMappedIfSafe, error:&error) {
+        let model = Model()
+        do {
+            let data = try NSData(contentsOfFile: kPathForModelFile, options: NSDataReadingOptions.DataReadingMappedIfSafe)
             if let modelInstance = CommandCenter.securelyUnarchiveData(data, ofClass:Model.self, key: kModelArchiveKey) as? Model {
                 return modelInstance
+            } else {
+                return model
             }
+        } catch {
+            return model
         }
-        return model
     }
 }

@@ -28,11 +28,11 @@ class TSBoilerplateSwiftTests: XCTestCase {
     * when I cancel a parent command, the subcommands should also be cancelled
     */
     func testSubCommands() {
-        var a: AsyncCommandForTesting = AsyncCommandForTesting()
-        var b: AsyncCommandForTesting = AsyncCommandForTesting()
-        var c: AsyncCommandForTesting = AsyncCommandForTesting()
+        let a: AsyncCommandForTesting = AsyncCommandForTesting()
+        let b: AsyncCommandForTesting = AsyncCommandForTesting()
+        let c: AsyncCommandForTesting = AsyncCommandForTesting()
         
-        var commandFinished = expectationWithDescription("command finished")
+        let commandFinished = expectationWithDescription("command finished")
         
         c.commandCompletionBlock = { error in
             b.cancel()

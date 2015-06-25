@@ -58,8 +58,8 @@ class iTunesSearchCommand: AsynchronousCommand {
             }
         }
         
-        var params = ["isbn": "055389692X"]
-        var headers = ["Accept": "application/json"]
+        let params = ["isbn": "055389692X"]
+        let headers = ["Accept": "application/json"]
         Network.setBaseURLString("http://itunes.apple.com")
         Network.performDataTask(relativePath: "lookup", method: .GET, parameters: params, additionalHeaders: headers, successBlock: successBlock, errorBlock: errorBlock)
     }

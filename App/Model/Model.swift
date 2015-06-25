@@ -35,7 +35,7 @@ class Model :NSObject, NSSecureCoding {
         aCoder.encodeObject(books, forKey: "books")
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         strings = aDecoder.decodeObjectOfClass(NSArray.self, forKey: "strings") as! [String]
         books   = aDecoder.decodeObjectOfClass(NSArray.self, forKey: "books") as! [Book]
     }

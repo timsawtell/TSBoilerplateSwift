@@ -1,6 +1,6 @@
 import Foundation
 
-class Author: _Author, NSSecureCoding {
+class Author: _Author {
 
 	// add your custom vars here
 

@@ -58,5 +58,5 @@ func CGRectCenter(rect: CGRect) -> CGPoint {
 }
 
 func CGRectCenteredInsideRect(outerRect: CGRect, innerRect: CGRect) -> CGRect {
-    return CGRectCenteredInnerRect(CGRectCenter(outerRect), innerRect.size)
+    return CGRectCenteredInnerRect(CGRectCenter(outerRect), size: innerRect.size)
 }

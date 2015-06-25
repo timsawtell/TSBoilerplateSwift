@@ -1,6 +1,6 @@
 import Foundation
 
-class Book: _Book, NSSecureCoding {
+class Book: _Book {
 
 	// add your custom vars here
 

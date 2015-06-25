@@ -44,7 +44,7 @@ class _Author: NSObject, NSSecureCoding {
 
 			func removeBooksObject(value_: _Book, setInverse: Bool) {
 
-			    if let index = find(books, value_) {
+			    if let index = books.indexOf(value_) {
 			       	books.removeAtIndex(index)
 			    }
 

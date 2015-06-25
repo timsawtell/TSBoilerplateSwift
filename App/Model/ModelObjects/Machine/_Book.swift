@@ -22,7 +22,7 @@ class _Book: NSObject, NSSecureCoding {
 						_advertisement = value
 					}
 					get {
-						return self._advertisement
+						return _advertisement
 					}
 				}
 

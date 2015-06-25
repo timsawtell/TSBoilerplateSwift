@@ -24,17 +24,20 @@ let kBaseURL = "www.example.com"
 let kPathForModelFile: String = pathForModel()!
 
 func pathForModel() -> String? {
-    if let paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.ApplicationSupportDirectory, NSSearchPathDomainMask.UserDomainMask, true) as? [String] {
-        if paths.count > 0 {
-            var path = paths[0]
-            var fm = NSFileManager()
-            if !fm.fileExistsAtPath(path) {
-                var error :NSError?
-                fm.createDirectoryAtPath(path, withIntermediateDirectories: true, attributes: nil, error: &error)
+    let paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.ApplicationSupportDirectory, NSSearchPathDomainMask.UserDomainMask, true)
+    if paths.count > 0 {
+        var path = paths[0]
+        let fm = NSFileManager()
+        if !fm.fileExistsAtPath(path) {
+            do {
+                try fm.createDirectoryAtPath(path, withIntermediateDirectories: true, attributes: nil)
+            } catch {
+                return nil
             }
-            path = path.stringByAppendingPathComponent(kModelFileName)
-            return path
         }
+        path = path.stringByAppendingPathComponent(kModelFileName)
+        return path
     }
+    
     return nil
 }

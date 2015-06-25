@@ -29,17 +29,17 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
         automaticallyAdjustsScrollViewInsets = false
         
         if inputFields.count > 0 {
-            var toolbar = UIToolbar(frame: CGRectMake(0, 0, view.frame.size.width, 50))
+            let toolbar = UIToolbar(frame: CGRectMake(0, 0, view.frame.size.width, 50))
             toolbar.barStyle = UIBarStyle.Default
             toolbar.opaque = false
             toolbar.translucent = true
             
-            var nextPrev = UISegmentedControl(items: ["Previous", "Next"])
+            let nextPrev = UISegmentedControl(items: ["Previous", "Next"])
             nextPrev.momentary = true
             nextPrev.highlighted = true
             nextPrev.addTarget(self, action: "nextPrevChanged:", forControlEvents: UIControlEvents.ValueChanged)
             
-            var nextPrevItem = UIBarButtonItem(customView: nextPrev)
+            let nextPrevItem = UIBarButtonItem(customView: nextPrev)
             
             toolbar.items = [nextPrevItem,
                 UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil),
@@ -126,8 +126,8 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
     
     //MARK:- ScrollViewDelegate
     func scrollViewDidScroll(scrollView: UIScrollView) {
-        var currentOffset = scrollView.contentOffset.y
-        var maximumOffset = max(scrollView.contentSize.height - scrollView.frame.size.height, 0)
+        let currentOffset = scrollView.contentOffset.y
+        let maximumOffset = max(scrollView.contentSize.height - scrollView.frame.size.height, 0)
         if currentOffset < 0 {
             if wantsPullToRefresh() && !keyboardShowing {
                 headerView!.scrollViewDidScroll(scrollView)
@@ -140,8 +140,8 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
     }
     
     func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        var currentOffset = scrollView.contentOffset.y
-        var maximumOffset = max(scrollView.contentSize.height - scrollView.frame.size.height, 0)
+        let currentOffset = scrollView.contentOffset.y
+        let maximumOffset = max(scrollView.contentSize.height - scrollView.frame.size.height, 0)
         if currentOffset < 0 {
             if wantsPullToRefresh() && !keyboardShowing {
                 headerView!.scrollViewDidEndDragging(scrollView)
@@ -269,28 +269,28 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
     func keyboardDidShow(aNotification: NSNotification) {
         if let scrollView: UIScrollView = scrollViewToResize {
             keyboardShowing = true
-            var info: NSDictionary = aNotification.userInfo!
+            let info: NSDictionary = aNotification.userInfo!
             let s:NSValue = info.valueForKey(UIKeyboardFrameEndUserInfoKey) as! NSValue
             var kbSize = s.CGRectValue().size
             var viewHeight = view.frame.size.height
             // bug with the notification being the wrong size when in landscape
             if (isLandscape) {
-                var kbSizeHeight = min(kbSize.width, kbSize.height)
-                var kbSizeWidth = max(kbSize.width, kbSize.height)
+                let kbSizeHeight = min(kbSize.width, kbSize.height)
+                let kbSizeWidth = max(kbSize.width, kbSize.height)
                 kbSize = CGSizeMake(kbSizeWidth, kbSizeHeight)
                 viewHeight = min(view.frame.size.height, view.frame.size.width) // just querying self.view.frame.size.height won't work as it reports a portrait size with a rotation transform applied to the layer
             }
-            var distanceOfScrollViewFromBottomOfWindow = max(0, viewHeight - scrollView.frame.origin.y - (scrollView.frame.origin.y + scrollView.frame.size.height))
-            var adjustForToolBar = (nil == tabBarController) ? 0 : tabBarController?.tabBar.frame.size.height
-            var contentInsets = UIEdgeInsetsMake(0, 0, kbSize.height - scrollView.frame.origin.y - distanceOfScrollViewFromBottomOfWindow - adjustForToolBar!, 0)
+            let distanceOfScrollViewFromBottomOfWindow = max(0, viewHeight - scrollView.frame.origin.y - (scrollView.frame.origin.y + scrollView.frame.size.height))
+            let adjustForToolBar = (nil == tabBarController) ? 0 : tabBarController?.tabBar.frame.size.height
+            let contentInsets = UIEdgeInsetsMake(0, 0, kbSize.height - scrollView.frame.origin.y - distanceOfScrollViewFromBottomOfWindow - adjustForToolBar!, 0)
             scrollView.scrollIndicatorInsets = contentInsets
             scrollView.contentInset = contentInsets
             
             if let view = activeControl as? UIView {
                 var rect = view.frame
-                var subs = scrollView.subviews as NSArray
+                let subs = scrollView.subviews as NSArray
                 if !subs.containsObject(activeControl!) {
-                    var p = view.convertPoint(view.frame.origin, toView:scrollView)
+                    let p = view.convertPoint(view.frame.origin, toView:scrollView)
                     rect = CGRectMake(1, p.y + view.frame.size.height, 1, 1)
                 }
                 scrollView.scrollRectToVisible(rect, animated: true)
@@ -331,10 +331,10 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
     //MARK:- Show activity message
     func showLoadingScreen(message: String) {
         activitySuperview = UIView(frame: view.bounds)
-        activitySuperview.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight
+        activitySuperview.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
         view.addSubview(activitySuperview)
         let dimmerView = UIView(frame: activitySuperview.bounds)
-        dimmerView.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight
+        dimmerView.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
         dimmerView.backgroundColor = UIColor(white: 0.0, alpha: 1.0)
         dimmerView.alpha = 0.6
         activitySuperview.addSubview(dimmerView)
@@ -344,7 +344,7 @@ class TSViewController : UIViewController, UITextFieldDelegate, UITextViewDelega
             (activitySuperview.bounds.height / 2) - (boxEdge / 2), boxEdge, boxEdge)
         
         let containerView = UIView(frame: containerBG)
-        containerView.autoresizingMask = .FlexibleTopMargin | .FlexibleBottomMargin | .FlexibleLeftMargin | .FlexibleRightMargin
+        containerView.autoresizingMask = [.FlexibleTopMargin, .FlexibleBottomMargin, .FlexibleLeftMargin, .FlexibleRightMargin]
         containerView.backgroundColor = UIColor.clearColor()
         activitySuperview.addSubview(containerView)
         

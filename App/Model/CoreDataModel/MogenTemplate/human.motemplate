@@ -1,6 +1,6 @@
 import Foundation
 
-class <$managedObjectClassName$>: _<$managedObjectClassName$>, NSSecureCoding {
+class <$managedObjectClassName$>: _<$managedObjectClassName$> {
 
 	// add your custom vars here
 

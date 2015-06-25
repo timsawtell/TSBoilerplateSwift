@@ -79,6 +79,7 @@
 		2B61B80D195A8ABA00F4D70D /* GCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B61B80C195A8ABA00F4D70D /* GCD.swift */; };
 		2B7824DB195CD3A0005278BF /* NSError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7824DA195CD3A0005278BF /* NSError.swift */; };
 		2B84EAF8194003F90063A646 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B84EAF7194003F90063A646 /* Constants.swift */; };
+		2B867D991B3BBE7800D23021 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B867D981B3BBE7800D23021 /* Launch Screen.storyboard */; };
 		2B8BB85B195D07D20016BC63 /* BookBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8BB85A195D07D20016BC63 /* BookBuilder.swift */; };
 		2BA7BD5919C25F08004D48AB /* StringHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7BD5819C25F08004D48AB /* StringHelper.swift */; };
 		2BAD4704193ED94300BB718A /* TSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAD4703193ED94300BB718A /* TSViewController.swift */; };
@@ -298,6 +299,7 @@
 		2B7824DA195CD3A0005278BF /* NSError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSError.swift; sourceTree = "<group>"; };
 		2B7E6BE419414E8D006164B5 /* TestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
 		2B84EAF7194003F90063A646 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		2B867D981B3BBE7800D23021 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		2B8BB85A195D07D20016BC63 /* BookBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookBuilder.swift; sourceTree = "<group>"; };
 		2BA7BD5819C25F08004D48AB /* StringHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringHelper.swift; sourceTree = "<group>"; };
 		2BAD4703193ED94300BB718A /* TSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSViewController.swift; sourceTree = "<group>"; };
@@ -568,6 +570,7 @@
 			isa = PBXGroup;
 			children = (
 				2B54AE7E193ED5C000DDB1E8 /* Main.storyboard */,
+				2B867D981B3BBE7800D23021 /* Launch Screen.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -722,7 +725,8 @@
 		2B54AE3D193ED5A100DDB1E8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0600;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Sawtell Software";
 				TargetAttributes = {
 					2B25BF51194042E200E8B065 = {
@@ -768,6 +772,7 @@
 				2B54AE84193ED5C000DDB1E8 /* InfoPlist.strings in Resources */,
 				2B54AE88193ED5C000DDB1E8 /* Main.storyboard in Resources */,
 				2B54AE89193ED5C000DDB1E8 /* AlertViewController.xib in Resources */,
+				2B867D991B3BBE7800D23021 /* Launch Screen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1104,6 +1109,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1171,6 +1177,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = TSBoilerplateSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "au.com.sawtellsoftware.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "TSBoilerplateSwift-Bridging-Header.h";
 			};
@@ -1184,6 +1191,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = TSBoilerplateSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "au.com.sawtellsoftware.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "TSBoilerplateSwift-Bridging-Header.h";
 			};
@@ -1205,6 +1213,7 @@
 				INFOPLIST_FILE = TSBoilerplateSwiftTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				METAL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "au.com.sawtellsoftware.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "TSBoilerplateSwift-Bridging-Header.h";
 				TEST_HOST = "$(BUNDLE_LOADER)";
@@ -1223,6 +1232,7 @@
 				INFOPLIST_FILE = TSBoilerplateSwiftTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				METAL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "au.com.sawtellsoftware.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "TSBoilerplateSwift-Bridging-Header.h";
 				TEST_HOST = "$(BUNDLE_LOADER)";

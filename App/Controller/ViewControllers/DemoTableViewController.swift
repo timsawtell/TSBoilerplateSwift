@@ -13,13 +13,13 @@ class DemoTableViewController: TSTableViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        var searchCommand = iTunesSearchCommand()
+        let searchCommand = iTunesSearchCommand()
         weak var weakSelf = self
         let completionBlock: commandCompletionBlock = { (error) in
             if let strongSelf = weakSelf {
                 strongSelf.hideLoadingScreen()
                 if let realError = error {
-                    var alertView = UIAlertView(title: "Whoops", message: realError.localizedDescription, delegate: strongSelf, cancelButtonTitle: "OK")
+                    let alertView = UIAlertView(title: "Whoops", message: realError.localizedDescription, delegate: strongSelf, cancelButtonTitle: "OK")
                     alertView.show()
                     return
                 }
@@ -33,22 +33,22 @@ class DemoTableViewController: TSTableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var rows = book() != nil ? 4 : 0
+        let rows = book() != nil ? 4 : 0
         return rows
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell: Cell = tableView.dequeueReusableCellWithIdentifier(kCellId, forIndexPath: indexPath) as! Cell
+        let cell = tableView.dequeueReusableCellWithIdentifier(kCellId, forIndexPath: indexPath) as! Cell
         if let book = book() {
             switch indexPath.row {
             case 0:
-                cell.textBox!.text = book.title as? String
+                cell.textBox!.text = book.title as String
             case 1:
                 cell.textBox!.text = "\(book.price)"
             case 2:
-                cell.textBox!.text = book.author.name as? String
+                cell.textBox!.text = book.author.name as String
             default:
-                cell.textBox!.text = book.blurb as? String
+                cell.textBox!.text =  book.blurb as String
             }
         }
         return cell
